@@ -1,0 +1,6 @@
+*.jpg
+.idea
+.vscode
+*.fdb_latexmk
+*.fls
+*.log
