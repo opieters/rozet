@@ -1,4 +1,4 @@
-# Rozet
+<h1>Rozet<img src="logo/logo.png" alt="Roset logo." width="32px"/ ></h1>  
 
 _Rozet_ [rɔːzɛˈt] (Dutch for _rosette_) is a LaTeX document class that helps to typset photo albums.
 
