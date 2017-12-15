@@ -76,13 +76,13 @@ rosetta@PhotoStyle/.style={%
 },
 }
 
-\NewDocumentCommand{\rstFirstAlbumPage}{m}{%
+\NewDocumentCommand{\rztFirstAlbumPage}{m}{%
 \begin{tikzpicture}[remember picture,overlay]
   #1
 \end{tikzpicture}
 }
 
-\NewDocumentCommand{\rstAlbumPage}{mm}{%
+\NewDocumentCommand{\rztAlbumPage}{mm}{%
 \newpage
 \begin{tikzpicture}[remember picture,overlay]
   #1
@@ -94,15 +94,15 @@ rosetta@PhotoStyle/.style={%
 }
 
 
-\@tempcnta=0
-\loop
-  \advance\@tempcnta 1
-  \expandafter\newif\csname ifrst@onlyheight\@Alph\@tempcnta\endcsname%
-  \expandafter\newif\csname ifrst@onlywidth\@Alph\@tempcnta\endcsname%
-  \csname rst@onlyheight\@Alph\@tempcnta false\endcsname
-  \csname rst@onlywidth\@Alph\@tempcnta true\endcsname
-\ifnum\@tempcnta<6
-\repeat
+%\@tempcnta=0
+%\loop
+%  \advance\@tempcnta 1
+%  \expandafter\newif\csname ifrst@onlyheight\@Alph\@tempcnta\endcsname%
+%  \expandafter\newif\csname ifrst@onlywidth\@Alph\@tempcnta\endcsname%
+%  \csname rst@onlyheight\@Alph\@tempcnta false\endcsname
+%  \csname rst@onlywidth\@Alph\@tempcnta true\endcsname
+%\ifnum\@tempcnta<6
+%\repeat
 
 % https://tex.stackexchange.com/questions/206791
 \@tempcnta=0
@@ -135,7 +135,7 @@ rosetta@PhotoStyle/.style={%
 
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
 
-\NewDocumentCommand{\rst@basicParseDefinitions}{mm}{%
+\NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
   \@IfNoValueOrEmptyTF{#2}{%
     \expandafter\def\csname rst@nodestyle#1\endcsname{rst@noImage}%
     \expandafter\def\csname rst@indexLabel#1\endcsname{\Huge #1}%
@@ -151,7 +151,7 @@ rosetta@PhotoStyle/.style={%
       \includegraphics{#2}}%
     % This part of the code defines the options that are passed to the 
     % includegraphics macro.
-    \edef\rst@imageOptions{%
+    \edef\rzt@imageOptions{%
       % check if width or height should be used
       % https://tex.stackexchange.com/questions/124252
       \expandafter%
@@ -173,12 +173,12 @@ rosetta@PhotoStyle/.style={%
          *\csname rstKey@yoffset#1\endcsname%
          -0.5*\csname rst@imgFrameHeight#1\endcsname%
          *\csname rstKey@yoffset#1\endcsname)$){%
-        \expandafter\includegraphics\expandafter[\rst@imageOptions]{#2}%
+        \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
       };}%
   }%
 }
 
-\NewDocumentCommand{\rst@basicNodeDefinition}{m mm mm}{%
+\NewDocumentCommand{\rzt@basicNodeDefinition}{m mm mm}{%
     \expandafter\setlength\csname rst@imgFrameWidth#1\endcsname{#2}%
     \expandafter\setlength\csname rst@imgFrameHeight#1\endcsname{#3}%
     \node[

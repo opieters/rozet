@@ -1,6 +1,6 @@
 # frame with one or less images
 -
-  name: "\\rstOneFull"
+  name: "\\rztOneFull"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -8,7 +8,7 @@
     x_offset: "0"
     y_offset: "0"
 -
-  name: "\\rstTwoPageSpreadRight"
+  name: "\\rztTwoPageSpreadRight"
   images:
   -
     width: "\\twoPageSpreadImageWidth"
@@ -16,7 +16,7 @@
     x_offset: "-\\margin"
     y_offset: "0"
 -
-  name: "\\rstTwoPageSpreadLeft"
+  name: "\\rztTwoPageSpreadLeft"
   images:
   -
     width: "\\twoPageSpreadImageWidth"
@@ -24,7 +24,7 @@
     x_offset: "\\margin"
     y_offset: "0"
 -
-  name: "\\rstOneSmallStroke"
+  name: "\\rztOneSmallStroke"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -32,7 +32,7 @@
     x_offset: "0"
     y_offset: "0"
 -
-  name: "\\rstOneFullPageNoBleed"
+  name: "\\rztOneFullPageNoBleed"
   images:
   -
     width: "\\paperwidth"
@@ -49,7 +49,7 @@
     y_offset: ""
 # frames with two images
 -
-  name: "\\rstTwoSimpleHorizontal"
+  name: "\\rztTwoSimpleHorizontal"
   images:
   -
     width: "\\fourPageHorImageWidth"
@@ -62,7 +62,7 @@
     x_offset: "0"
     y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstTwoLongHorizontal"
+  name: "\\rztTwoLongHorizontal"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -75,7 +75,7 @@
     x_offset: "0"
     y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstTwoLongVertical"
+  name: "\\rztTwoLongVertical"
   images:
   -
     width: "\\fourPageHorImageWidth"
@@ -88,7 +88,7 @@
     x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
     y_offset: "0"
 -
-  name: "\\rstTwoSmallLargeRight"
+  name: "\\rztTwoSmallLargeRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -101,7 +101,7 @@
     x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
     y_offset: "0"
 -
-  name: "\\rstTwoSmallLargeLeft"
+  name: "\\rztTwoSmallLargeLeft"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -114,7 +114,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "0"
 -
-  name: "\\rstTwoStrokesHor"
+  name: "\\rztTwoStrokesHor"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -141,7 +141,7 @@
     y_offset: ""
 # frames with three images
 -
-  name: "\\rstThreeFullLeft"
+  name: "\\rztThreeFullLeft"
   images:
   -
     width: "\\fourPageHorImageWidth"
@@ -160,7 +160,7 @@
     x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
     y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeFullRight"
+  name: "\\rztThreeFullRight"
   images:
   -
     width: "\\fourPageHorImageWidth"
@@ -178,7 +178,7 @@
     x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
     y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeSmallLargeLeft"
+  name: "\\rztThreeSmallLargeLeft"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -196,7 +196,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeSmallLargeRight"
+  name: "\\rztThreeSmallLargeRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -214,7 +214,7 @@
     x_offset: "-\\sixPageHorImageWidth-\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeVerticalStrokes"
+  name: "\\rztThreeVerticalStrokes"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -232,7 +232,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "0"
 -
-  name: "\\rstThreeSmallStrokesHorVerLeft"
+  name: "\\rztThreeSmallStrokesHorVerLeft"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -250,7 +250,7 @@
     x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeSmallStrokesHorVerRight"
+  name: "\\rztThreeSmallStrokesHorVerRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -268,7 +268,7 @@
     x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeLargeBottomSmallRightHor"
+  name: "\\rztThreeLargeBottomSmallRightHor"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -286,7 +286,7 @@
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeLargeTopSmallRightHor"
+  name: "\\rztThreeLargeTopSmallRightHor"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -304,7 +304,7 @@
     x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeLargeBottomSmallLeftHor"
+  name: "\\rztThreeLargeBottomSmallLeftHor"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -322,7 +322,7 @@
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstThreeLargeTopSmallLeftHor"
+  name: "\\rztThreeLargeTopSmallLeftHor"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -359,7 +359,7 @@
     y_offset: ""
 # frames with four images
 -
-  name: "\\rstFourSimple"
+  name: "\\rztFourSimple"
   images:
   -
     width: "\\fourPageHorImageWidth"
@@ -382,7 +382,7 @@
     x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
     y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourLargeHorTopVerLeft"
+  name: "\\rztFourLargeHorTopVerLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -405,7 +405,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourLargeHorBottomVerLeft"
+  name: "\\rztFourLargeHorBottomVerLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -428,7 +428,7 @@
     x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourLargeHorTopVerRight"
+  name: "\\rztFourLargeHorTopVerRight"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -451,7 +451,7 @@
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourLargeHorBottomVerRight"
+  name: "\\rztFourLargeHorBottomVerRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -474,7 +474,7 @@
     x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourTwoLargeTwoSmallLeft"
+  name: "\\rztFourTwoLargeTwoSmallLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -497,7 +497,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourTwoLargeTwoSmallRight"
+  name: "\\rztFourTwoLargeTwoSmallRight"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -520,7 +520,7 @@
     x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourLargeHorStrokeBottom"
+  name: "\\rztFourLargeHorStrokeBottom"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -543,7 +543,7 @@
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourLargeHorStrokeTop"
+  name: "\\rztFourLargeHorStrokeTop"
   images:
   -
     width: "\\onePageHorImageWidth"
@@ -566,7 +566,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourTwoLargeStrokesRight"
+  name: "\\rztFourTwoLargeStrokesRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -589,7 +589,7 @@
     x_offset: "-\\sixPageHorImageWidth-\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourTwoLargeStrokesLeftRight"
+  name: "\\rztFourTwoLargeStrokesLeftRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -612,7 +612,7 @@
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFourTwoLargeStrokesLeft"
+  name: "\\rztFourTwoLargeStrokesLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -659,7 +659,7 @@
     y_offset: ""
 # frames with five images
 -
-  name: "\\rstFiveSmallLargeCenter"
+  name: "\\rztFiveSmallLargeCenter"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -687,7 +687,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFiveSmallLargeRight"
+  name: "\\rztFiveSmallLargeRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -715,7 +715,7 @@
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFiveSmallLargeLeft"
+  name: "\\rztFiveSmallLargeLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
@@ -743,7 +743,7 @@
     x_offset: "\\sixPageHorImageWidth+\\innersep"
     y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
 -
-  name: "\\rstFiveSmallHorLargeTopLeft"
+  name: "\\rztFiveSmallHorLargeTopLeft"
   images:
   -
     width: "2\\sixPageHorImageWidth+\\innersep"
@@ -800,7 +800,7 @@
     y_offset: ""
 # frames with six images
 -
-  name: "\\rstSixSimple"
+  name: "\\rztSixSimple"
   images:
   -
     width: "\\sixPageHorImageWidth"

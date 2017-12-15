@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
             # command name
             if i != 0:
-                name = name.replace("\\rst", "\\rst@") + "Cont"
+                name = name.replace("\\rzt", "\\rzt@") + "Cont"
             if i > 1:
                 name = name + "x"*(i-1)
 
@@ -40,11 +40,11 @@ if __name__ == "__main__":
                 command += "    height={%s},\n" % images[j]["height"]
                 command += "    #%d}%%\n" % (2*j+1)
             for j in range(n_args):
-                command += "  \\rst@basicParseDefinitions{%s}{#%d}%%\n" % (chr(ord("A")+j), 2*j+2)
+                command += "  \\rzt@basicParseDefinitions{%s}{#%d}%%\n" % (chr(ord("A")+j), 2*j+2)
 
             if i == (n_cmds-1):
                 for j in range(n_images):
-                    command += "  \\rst@basicNodeDefinition%\n"
+                    command += "  \\rzt@basicNodeDefinition%\n"
                     command += "    {%s}%%\n" % chr(ord("A")+j)
                     command += "    {%s}%%\n" % frame["images"][j]["width"]
                     command += "    {%s}%%\n" % frame["images"][j]["height"]
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             else:
                 next_name = frame["name"]
                 if i != 0:
-                    next_name = next_name.replace("\\rst", "\\rst@") + "Cont"
+                    next_name = next_name.replace("\\rzt", "\\rzt@") + "Cont"
                 if i > 1:
                     next_name = next_name + "x" * (i - 1)
                 command += "  %s%%\n" % next_name
