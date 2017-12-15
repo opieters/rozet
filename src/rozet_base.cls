@@ -93,105 +93,83 @@ rosetta@PhotoStyle/.style={%
 \end{tikzpicture}
 }
 
-
-%\@tempcnta=0
-%\loop
-%  \advance\@tempcnta 1
-%  \expandafter\newif\csname ifrst@onlyheight\@Alph\@tempcnta\endcsname%
-%  \expandafter\newif\csname ifrst@onlywidth\@Alph\@tempcnta\endcsname%
-%  \csname rst@onlyheight\@Alph\@tempcnta false\endcsname
-%  \csname rst@onlywidth\@Alph\@tempcnta true\endcsname
-%\ifnum\@tempcnta<6
-%\repeat
-
-% https://tex.stackexchange.com/questions/206791
-\@tempcnta=0
-\loop
-  \advance\@tempcnta 1
-  \begingroup\edef\x{\endgroup
-    \noexpand\define@key{rst@image\@Alph\@tempcnta}{xoffset}{%
-      \noexpand\@namedef{rstKey@xoffset\@Alph\@tempcnta}{####1}%
-    }% end of \define@key
-    \noexpand\define@key{rst@image\@Alph\@tempcnta}{yoffset}{%
-      \noexpand\@namedef{rstKey@yoffset\@Alph\@tempcnta}{####1}%
-    }% end of \define@key
-    \noexpand\define@key{rst@image\@Alph\@tempcnta}{width}{%
-      \noexpand\@namedef{rstKey@width\@Alph\@tempcnta}{####1}%
-    }% end of \define@key
-    \noexpand\define@key{rst@image\@Alph\@tempcnta}{height}{%
-      \noexpand\@namedef{rstKey@height\@Alph\@tempcnta}{####1}%
-    }% end of \define@key
-    \noexpand\define@boolkey{rst@image\@Alph\@tempcnta}{onlywidth}[true]{}%
-    \noexpand\define@boolkey{rst@image\@Alph\@tempcnta}{onlyheight}[true]{}%
-    % define size attributes for each image
-    \noexpand\newlength\csname rst@imgWidth\@Alph\@tempcnta\endcsname%
-    \noexpand\newlength\csname rst@imgHeight\@Alph\@tempcnta\endcsname%
-    \noexpand\newlength\csname rst@imgFrameWidth\@Alph\@tempcnta\endcsname%
-    \noexpand\newlength\csname rst@imgFrameHeight\@Alph\@tempcnta\endcsname%
-  }% end of \edef
-  \x % execute \x
-\ifnum\@tempcnta<6
-\repeat
+\define@key{rst@image}{xoffset}{%
+  \def\rstKey@xoffset{#1}%
+}% end of \define@key
+\define@key{rst@image}{yoffset}{%
+  \def\rstKey@yoffset{#1}%
+}% end of \define@key
+\define@key{rst@image}{width}{%
+  \def\rstKey@width{#1}%
+}% end of \define@key
+\define@key{rst@image}{height}{%
+  \def\rstKey@height{#1}%
+}% end of \define@key
+\define@boolkey{rst@image}{onlywidth}[true]{}%
+\define@boolkey{rst@image}{onlyheight}[true]{}%
+% define size attributes for each image
+\newlength\rst@imgWidth%
+\newlength\rst@imgHeight%
+\newlength\rst@imgFrameWidth%
+\newlength\rst@imgFrameHeight%
 
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
 
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
   \@IfNoValueOrEmptyTF{#2}{%
-    \expandafter\def\csname rst@nodestyle#1\endcsname{rst@noImage}%
-    \expandafter\def\csname rst@indexLabel#1\endcsname{\Huge #1}%
-    \expandafter\def\csname rst@imageIncl#1\endcsname{}%
-    \expandafter\setlength\csname rst@imgWidth#1\endcsname{0pt}%
-    \expandafter\setlength\csname rst@imgHeight#1\endcsname{0pt}%
+    \def\rst@nodestyle{rst@noImage}%
+    \def\rst@indexLabel{\Huge #1}%
+    \def\rst@imageIncl{}%
+    \setlength\rst@imgWidth{0pt}%
+    \setlength\rst@imgHeight{0pt}%
   }{%
-    \expandafter\def\csname rst@nodestyle#1\endcsname{rst@image}%
-    \expandafter\def\csname rst@indexLabel#1\endcsname{}%
-    \expandafter\settowidth\csname rst@imgWidth#1\endcsname{%
+    \def\rst@nodestyle{rst@image}%
+    \def\rst@indexLabel{}%
+    \settowidth\rst@imgWidth{%
       \includegraphics{#2}}%
-    \expandafter\settoheight\csname rst@imgHeight#1\endcsname{%
+    \settoheight\rst@imgHeight{%
       \includegraphics{#2}}%
     % This part of the code defines the options that are passed to the 
     % includegraphics macro.
     \edef\rzt@imageOptions{%
       % check if width or height should be used
       % https://tex.stackexchange.com/questions/124252
-      \expandafter%
-      \ifx\csname ifKV@rst@image#1@onlyheight\endcsname%
-        \iftrue%
-        height=\csname rstKey@height#1\endcsname,
+      \ifKV@rst@image@onlyheight%
+        height=\rstKey@height,
       \else%
-        width=\csname rstKey@width#1\endcsname,
+        width=\rstKey@width,
       \fi%
       %
     }%
-    \expandafter\def\csname rst@imageIncl#1\endcsname{%
+    \def\rst@imageIncl{%
       \node at ($(path picture bounding box.center)+%
-        (0.5*\csname rst@imgWidth#1\endcsname%
-         *\csname rstKey@xoffset#1\endcsname%
-         - 0.5*\csname rst@imgFrameWidth#1\endcsname%
-         *\csname rstKey@xoffset#1\endcsname,%
-         0.5*\csname rst@imgHeight#1\endcsname%
-         *\csname rstKey@yoffset#1\endcsname%
-         -0.5*\csname rst@imgFrameHeight#1\endcsname%
-         *\csname rstKey@yoffset#1\endcsname)$){%
+        (0.5*\rst@imgWidth%
+         *\rstKey@xoffset%
+         - 0.5*\rst@imgFrameWidth%
+         *\rstKey@xoffset,%
+         0.5*\rst@imgHeight%
+         *\rstKey@yoffset%
+         -0.5*\rst@imgFrameHeight%
+         *\rstKey@yoffset)$){%
         \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
       };}%
   }%
 }
 
-\NewDocumentCommand{\rzt@basicNodeDefinition}{m mm mm}{%
-    \expandafter\setlength\csname rst@imgFrameWidth#1\endcsname{#2}%
-    \expandafter\setlength\csname rst@imgFrameHeight#1\endcsname{#3}%
+\NewDocumentCommand{\rzt@basicNodeDefinition}{mm mm}{%
+    \setlength\rst@imgFrameWidth{#1}%
+    \setlength\rst@imgFrameHeight{#2}%
     \node[
       rst@basic,
-      \csname rst@nodestyle#1\endcsname,
-      minimum width=#2,
-      minimum height=#3,
+      \rst@nodestyle,
+      minimum width=#1,
+      minimum height=#2,
       anchor=center,
       path picture={%
-        \csname rst@imageIncl#1\endcsname
+        \rst@imageIncl
       },
       ] at ($(current page.center) %
-            +(#4,#5)$)
-      {\csname rst@indexLabel#1\endcsname};
+            +(#3,#4)$)
+      {\rst@indexLabel};
       
 }
