@@ -97,6 +97,9 @@ rosetta@PhotoStyle/.style={%
 \newlength\rstKey@height
 \newlength\rst@imgSize
 
+\define@key{rst@image}{note}{%
+  \def\rstKey@note{#1}%
+}% end of \define@key
 \define@key{rst@image}{xoffset}{%
   \def\rstKey@xoffset{#1}%
 }% end of \define@key
@@ -150,7 +153,7 @@ rosetta@PhotoStyle/.style={%
       %
     }%
     \def\rst@nodestyle{rst@image}%
-    \def\rst@indexLabel{}%
+    \def\rst@indexLabel{\Huge\rstKey@note}%
     \settowidth\rst@imgWidth{%
       \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
     \settoheight\rst@imgHeight{%
