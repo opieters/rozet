@@ -36,6 +36,7 @@ if __name__ == "__main__":
                 command += "    yoffset={0},\n"
                 command += "    onlywidth={true},\n"
                 command += "    onlyheight={false},\n"
+                command += "    zoom={1},\n"
                 command += "    width={%s},\n" % images[j]["width"]
                 command += "    height={%s},\n" % images[j]["height"]
                 command += "    #%d}%%\n" % (2*j+1)

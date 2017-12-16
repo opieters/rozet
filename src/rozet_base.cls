@@ -105,6 +105,9 @@ rosetta@PhotoStyle/.style={%
 \define@key{rst@image}{height}{%
   \def\rstKey@height{#1}%
 }% end of \define@key
+\define@key{rst@image}{zoom}{%
+  \def\rstKey@zoom{#1}%
+}% end of \define@key
 \define@boolkey{rst@image}{onlywidth}[true]{}%
 \define@boolkey{rst@image}{onlyheight}[true]{}%
 % define size attributes for each image
@@ -135,9 +138,9 @@ rosetta@PhotoStyle/.style={%
       % check if width or height should be used
       % https://tex.stackexchange.com/questions/124252
       \ifKV@rst@image@onlyheight%
-        height=\rstKey@height,
+        height=\rstKey@height*\rstKey@zoom,
       \else%
-        width=\rstKey@width,
+        width=\rstKey@width*\rstKey@zoom,
       \fi%
       %
     }%
