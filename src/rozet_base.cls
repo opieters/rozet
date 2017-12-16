@@ -126,12 +126,6 @@ rosetta@PhotoStyle/.style={%
     \setlength\rst@imgWidth{0pt}%
     \setlength\rst@imgHeight{0pt}%
   }{%
-    \def\rst@nodestyle{rst@image}%
-    \def\rst@indexLabel{}%
-    \settowidth\rst@imgWidth{%
-      \includegraphics{#2}}%
-    \settoheight\rst@imgHeight{%
-      \includegraphics{#2}}%
     % This part of the code defines the options that are passed to the 
     % includegraphics macro.
     \edef\rzt@imageOptions{%
@@ -144,16 +138,16 @@ rosetta@PhotoStyle/.style={%
       \fi%
       %
     }%
+    \def\rst@nodestyle{rst@image}%
+    \def\rst@indexLabel{}%
+    \settowidth\rst@imgWidth{%
+      \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
+    \settoheight\rst@imgHeight{%
+      \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
     \def\rst@imageIncl{%
       \node at ($(path picture bounding box.center)+%
-        (0.5*\rst@imgWidth%
-         *\rstKey@xoffset%
-         - 0.5*\rst@imgFrameWidth%
-         *\rstKey@xoffset,%
-         0.5*\rst@imgHeight%
-         *\rstKey@yoffset%
-         -0.5*\rst@imgFrameHeight%
-         *\rstKey@yoffset)$){%
+        (0.5*\rst@imgWidth*\rstKey@xoffset - 0.5*\rst@imgFrameWidth*\rstKey@xoffset,%
+         0.5*\rst@imgHeight*\rstKey@yoffset - 0.5*\rst@imgFrameHeight*\rstKey@yoffset)$){%
         \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
       };}%
   }%
