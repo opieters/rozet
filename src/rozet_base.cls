@@ -93,6 +93,10 @@ rosetta@PhotoStyle/.style={%
 \end{tikzpicture}
 }
 
+\newlength\rstKey@width
+\newlength\rstKey@height
+\newlength\rst@imgSize
+
 \define@key{rst@image}{xoffset}{%
   \def\rstKey@xoffset{#1}%
 }% end of \define@key
@@ -100,10 +104,10 @@ rosetta@PhotoStyle/.style={%
   \def\rstKey@yoffset{#1}%
 }% end of \define@key
 \define@key{rst@image}{width}{%
-  \def\rstKey@width{#1}%
+  \setlength\rstKey@width{#1}%
 }% end of \define@key
 \define@key{rst@image}{height}{%
-  \def\rstKey@height{#1}%
+  \setlength\rstKey@height{#1}%
 }% end of \define@key
 \define@key{rst@image}{zoom}{%
   \def\rstKey@zoom{#1}%
@@ -128,13 +132,20 @@ rosetta@PhotoStyle/.style={%
   }{%
     % This part of the code defines the options that are passed to the 
     % includegraphics macro.
+    %
+    \ifKV@rst@image@onlyheight% 
+      \setlength{\rst@imgSize}{\rstKey@height * \real{\rstKey@zoom}}%
+    \else%
+      \setlength{\rst@imgSize}{\rstKey@width * \real{\rstKey@zoom}}%
+    \fi%
+    %
     \edef\rzt@imageOptions{%
       % check if width or height should be used
       % https://tex.stackexchange.com/questions/124252
       \ifKV@rst@image@onlyheight%
-        height=\rstKey@height*\rstKey@zoom,
+        height=\rst@imgSize,
       \else%
-        width=\rstKey@width*\rstKey@zoom,
+        width=\rst@imgSize,
       \fi%
       %
     }%
