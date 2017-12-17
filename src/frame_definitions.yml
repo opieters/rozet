@@ -55,12 +55,12 @@
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageWidth"
     x_offset: "0"
-    y_offset: "\\fourPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageWidth"
     x_offset: "0"
-    y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztTwoLongHorizontal"
   images:
@@ -68,24 +68,24 @@
     width: "\\onePageHorImageWidth"
     height: "\\fourPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\fourPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\onePageHorImageWidth"
     height: "\\fourPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztTwoLongVertical"
   images:
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
+    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
+    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
 -
   name: "\\rztTwoSmallLargeRight"
@@ -93,25 +93,25 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
 -
   name: "\\rztTwoSmallLargeLeft"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
 -
   name: "\\rztTwoStrokesHor"
@@ -120,12 +120,12 @@
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: ""
   images:
@@ -146,80 +146,80 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
+    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
 
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeFullRight"
   images:
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
+    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeSmallLargeLeft"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeSmallLargeRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeVerticalStrokes"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
@@ -229,62 +229,62 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
 -
   name: "\\rztThreeSmallStrokesHorVerLeft"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeSmallStrokesHorVerRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeLargeBottomSmallRightHor"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeLargeTopSmallRightHor"
   images:
@@ -292,35 +292,35 @@
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeLargeBottomSmallLeftHor"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztThreeLargeTopSmallLeftHor"
   images:
@@ -328,17 +328,17 @@
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: ""
   images:
@@ -364,184 +364,184 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\innersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\innersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourLargeHorTopVerLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourLargeHorBottomVerLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourLargeHorTopVerRight"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourLargeHorBottomVerRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourTwoLargeTwoSmallLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourTwoLargeTwoSmallRight"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\innersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourLargeHorStrokeBottom"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourLargeHorStrokeTop"
   images:
@@ -549,30 +549,30 @@
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourTwoLargeStrokesRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
@@ -581,43 +581,43 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourTwoLargeStrokesLeftRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFourTwoLargeStrokesLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
@@ -627,13 +627,13 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: ""
   images:
@@ -664,8 +664,8 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
@@ -674,102 +674,102 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFiveSmallLargeRight"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFiveSmallLargeLeft"
   images:
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: "\\rztFiveSmallHorLargeTopLeft"
   images:
   -
-    width: "2\\sixPageHorImageWidth+\\innersep"
+    width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\innersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: ""
   images:
@@ -805,33 +805,33 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\innersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\innersep/2"
+    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
+    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
   name: ""
   images:
