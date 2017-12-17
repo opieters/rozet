@@ -35,8 +35,8 @@
   name: "\\rztOneFullPageNoBleed"
   images:
   -
-    width: "\\paperwidth"
-    height: "\\paperheight"
+    width: "\\rztpaperwidth"
+    height: "\\rztpaperheight"
     x_offset: "0"
     y_offset: "0"
 -
