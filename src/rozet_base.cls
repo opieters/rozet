@@ -20,34 +20,35 @@
 \RequirePackage{xparse}
 \RequirePackage{xkeyval}
 
-\newlength\bleed
-\setlength\bleed{3mm}
+\newlength\rztbleed
+\setlength\rztbleed{3mm}
 
-\newlength\margin
-\setlength\margin{1cm}
-\newlength\innersep
-\setlength\innersep{0.3cm}
+\newlength\rztmargin
+\setlength\rztmargin{1cm}
+\newlength\rztinnersep
+\setlength\rztinnersep{0.3cm}
 
 \AtBeginDocument{%
   \newlength\onePageHorImageWidth
-  \setlength\onePageHorImageWidth{\paperwidth-2\margin-2\bleed}
+  \setlength\onePageHorImageWidth{\paperwidth-2\rztmargin-2\rztbleed}
   \newlength\onePageHorImageHeight
   \setlength\onePageHorImageHeight{2\onePageHorImageWidth/3}
 
   \newlength\fourPageHorImageWidth
-  \setlength\fourPageHorImageWidth{(\onePageHorImageWidth-\innersep)/2}
+  \setlength\fourPageHorImageWidth{(\onePageHorImageWidth-\rztinnersep)/2}
   \newlength\fourPageHorImageHeight
-  \setlength\fourPageHorImageHeight{(\onePageHorImageHeight-\innersep)/2}
+  \setlength\fourPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
 
   \newlength\sixPageHorImageWidth
-  \setlength\sixPageHorImageWidth{(\onePageHorImageWidth-2\innersep)/3}
+  \setlength\sixPageHorImageWidth{(\onePageHorImageWidth-2\rztinnersep)/3}
   \newlength\sixPageHorImageHeight
-  \setlength\sixPageHorImageHeight{(\onePageHorImageHeight-\innersep)/2}
+  \setlength\sixPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
 
   \newlength\twoPageSpreadImageWidth
-  \setlength\twoPageSpreadImageWidth{\paperwidth-\margin}
+  \setlength\twoPageSpreadImageWidth{\paperwidth-\rztmargin}
   \newlength\twoPageSpreadImageHeight
-  \setlength\twoPageSpreadImageHeight{\paperheight-2\margin}
+  \setlength\twoPageSpreadImageHeight{\paperheight-2\rztmargin}
+
   \ifx\ifKV@rzt@global@pagenumbers\iffalse
     \pagestyle{empty}
   \fi
