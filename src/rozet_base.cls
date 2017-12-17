@@ -48,6 +48,9 @@
   \setlength\twoPageSpreadImageWidth{\paperwidth-\margin}
   \newlength\twoPageSpreadImageHeight
   \setlength\twoPageSpreadImageHeight{\paperheight-2\margin}
+  \ifx\ifKV@rzt@global@pagenumbers\iffalse
+    \pagestyle{empty}
+  \fi
 }
 
 
@@ -123,6 +126,15 @@ rosetta@PhotoStyle/.style={%
 \newlength\rzt@imgFrameWidth%
 \newlength\rzt@imgFrameHeight%
 
+
+% global options
+\define@boolkey{rzt@global}{pagenumbers}[true]{}
+\NewDocumentCommand{\rztalbumsetup}{m}{
+  \setkeys{rzt@global}{%
+    pagenumbers=false,
+    #1
+  }
+}
 
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
 
