@@ -31,7 +31,7 @@ if __name__ == "__main__":
             command += "\\NewDocumentCommand{%s}{%s}{%%\n" % (name, arguments)
             command += "  \\begingroup%\n"
             for j in range(n_args):
-                command += "  \\setkeys{rst@image}{%%\n"
+                command += "  \\setkeys{rzt@image}{%%\n"
                 command += "    xoffset={0},\n"
                 command += "    yoffset={0},\n"
                 command += "    onlywidth={true},\n"

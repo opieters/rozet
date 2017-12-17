@@ -60,17 +60,17 @@
 \ExplSyntaxOff
 
 \tikzset{%
-rst@basic/.style={%
+rzt@basic/.style={%
   rectangle,
   },
-rst@noImage/.style={%
-  rst@basic,
+rzt@noImage/.style={%
+  rzt@basic,
   fill opacity=0.5,
   text opacity=1,
   fill=gray,
   },
-rst@image/.style={%
-  rst@basic,
+rzt@image/.style={%
+  rzt@basic,
 },
 rosetta@PhotoStyle/.style={%
 },
@@ -93,94 +93,95 @@ rosetta@PhotoStyle/.style={%
 \end{tikzpicture}
 }
 
-\newlength\rstKey@width
-\newlength\rstKey@height
-\newlength\rst@imgSize
+\newlength\rztKey@width
+\newlength\rztKey@height
+\newlength\rzt@imgSize
 
-\define@key{rst@image}{note}{%
-  \def\rstKey@note{#1}%
+\define@key{rzt@image}{note}{%
+  \def\rztKey@note{#1}%
 }% end of \define@key
-\define@key{rst@image}{xoffset}{%
-  \def\rstKey@xoffset{#1}%
+\define@key{rzt@image}{xoffset}{%
+  \def\rztKey@xoffset{#1}%
 }% end of \define@key
-\define@key{rst@image}{yoffset}{%
-  \def\rstKey@yoffset{#1}%
+\define@key{rzt@image}{yoffset}{%
+  \def\rztKey@yoffset{#1}%
 }% end of \define@key
-\define@key{rst@image}{width}{%
-  \setlength\rstKey@width{#1}%
+\define@key{rzt@image}{width}{%
+  \setlength\rztKey@width{#1}%
 }% end of \define@key
-\define@key{rst@image}{height}{%
-  \setlength\rstKey@height{#1}%
+\define@key{rzt@image}{height}{%
+  \setlength\rztKey@height{#1}%
 }% end of \define@key
-\define@key{rst@image}{zoom}{%
-  \def\rstKey@zoom{#1}%
+\define@key{rzt@image}{zoom}{%
+  \def\rztKey@zoom{#1}%
 }% end of \define@key
-\define@boolkey{rst@image}{onlywidth}[true]{}%
-\define@boolkey{rst@image}{onlyheight}[true]{}%
+\define@boolkey{rzt@image}{onlywidth}[true]{}%
+\define@boolkey{rzt@image}{onlyheight}[true]{}%
 % define size attributes for each image
-\newlength\rst@imgWidth%
-\newlength\rst@imgHeight%
-\newlength\rst@imgFrameWidth%
-\newlength\rst@imgFrameHeight%
+\newlength\rzt@imgWidth%
+\newlength\rzt@imgHeight%
+\newlength\rzt@imgFrameWidth%
+\newlength\rzt@imgFrameHeight%
+
 
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
 
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
   \@IfNoValueOrEmptyTF{#2}{%
-    \def\rst@nodestyle{rst@noImage}%
-    \def\rst@indexLabel{\Huge #1}%
-    \def\rst@imageIncl{}%
-    \setlength\rst@imgWidth{0pt}%
-    \setlength\rst@imgHeight{0pt}%
+    \def\rzt@nodestyle{rzt@noImage}%
+    \def\rzt@indexLabel{\Huge #1}%
+    \def\rzt@imageIncl{}%
+    \setlength\rzt@imgWidth{0pt}%
+    \setlength\rzt@imgHeight{0pt}%
   }{%
     % This part of the code defines the options that are passed to the 
     % includegraphics macro.
     %
-    \ifKV@rst@image@onlyheight% 
-      \setlength{\rst@imgSize}{\rstKey@height * \real{\rstKey@zoom}}%
+    \ifKV@rzt@image@onlyheight% 
+      \setlength{\rzt@imgSize}{\rztKey@height * \real{\rztKey@zoom}}%
     \else%
-      \setlength{\rst@imgSize}{\rstKey@width * \real{\rstKey@zoom}}%
+      \setlength{\rzt@imgSize}{\rztKey@width * \real{\rztKey@zoom}}%
     \fi%
     %
     \edef\rzt@imageOptions{%
       % check if width or height should be used
       % https://tex.stackexchange.com/questions/124252
-      \ifKV@rst@image@onlyheight%
-        height=\rst@imgSize,
+      \ifKV@rzt@image@onlyheight%
+        height=\rzt@imgSize,
       \else%
-        width=\rst@imgSize,
+        width=\rzt@imgSize,
       \fi%
       %
     }%
-    \def\rst@nodestyle{rst@image}%
-    \def\rst@indexLabel{\Huge\rstKey@note}%
-    \settowidth\rst@imgWidth{%
+    \def\rzt@nodestyle{rzt@image}%
+    \def\rzt@indexLabel{\Huge\rztKey@note}%
+    \settowidth\rzt@imgWidth{%
       \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
-    \settoheight\rst@imgHeight{%
+    \settoheight\rzt@imgHeight{%
       \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
-    \def\rst@imageIncl{%
+    \def\rzt@imageIncl{%
       \node at ($(path picture bounding box.center)+%
-        (0.5*\rst@imgWidth*\rstKey@xoffset - 0.5*\rst@imgFrameWidth*\rstKey@xoffset,%
-         0.5*\rst@imgHeight*\rstKey@yoffset - 0.5*\rst@imgFrameHeight*\rstKey@yoffset)$){%
+        (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
+         0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$){%
         \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
       };}%
   }%
 }
 
 \NewDocumentCommand{\rzt@basicNodeDefinition}{mm mm}{%
-    \setlength\rst@imgFrameWidth{#1}%
-    \setlength\rst@imgFrameHeight{#2}%
+    \setlength\rzt@imgFrameWidth{#1}%
+    \setlength\rzt@imgFrameHeight{#2}%
     \node[
-      rst@basic,
-      \rst@nodestyle,
+      rzt@basic,
+      \rzt@nodestyle,
       minimum width=#1,
       minimum height=#2,
       anchor=center,
       path picture={%
-        \rst@imageIncl
+        \rzt@imageIncl
       },
       ] at ($(current page.center) %
             +(#3,#4)$)
-      {\rst@indexLabel};
+      {\rzt@indexLabel};
       
 }
