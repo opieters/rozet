@@ -20,34 +20,61 @@
 \RequirePackage{xparse}
 \RequirePackage{xkeyval}
 
-\newlength\rztbleed
-\setlength\rztbleed{3mm}
-
 \newlength\rztmargin
-\setlength\rztmargin{1cm}
+\newlength\rztbleed
+\newlength\rztspine
+\newlength\rztgutter
+\newlength\rztfront
+\newlength\rztback
 \newlength\rztinnersep
-\setlength\rztinnersep{0.3cm}
+\newlength\rztcoverwidth
+\newlength\rztcoverheight
+\newlength\rztpaperwidth
+\newlength\rztpaperheight
 
-\AtBeginDocument{%
-  \newlength\onePageHorImageWidth
-  \setlength\onePageHorImageWidth{\paperwidth-2\rztmargin-2\rztbleed}
-  \newlength\onePageHorImageHeight
+\setlength\rztmargin{1cm}
+\setlength\rztbleed{3mm}
+\setlength\rztspine{8mm}
+\setlength\rztgutter{10mm}
+\setlength\rztfront{200mm}
+\setlength\rztback{200mm}
+\setlength\rztinnersep{0.3cm}
+\setlength\rztcoverwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+\setlength\rztcoverheight{200mm}
+
+\newlength\onePageHorImageWidth
+\newlength\onePageHorImageHeight
+\newlength\fourPageHorImageWidth
+\newlength\fourPageHorImageHeight
+\newlength\sixPageHorImageWidth
+\newlength\sixPageHorImageHeight
+\newlength\twoPageSpreadImageWidth  \newlength\twoPageSpreadImageHeight
+
+\newlength\rzt@coverxoffset
+\setlength\rzt@coverxoffset{0pt}
+\newlength\rzt@coveryoffset
+\setlength\rzt@coveryoffset{0pt}
+
+\NewDocumentCommand{\rzt@setImageDimensions}{}{
+  \setlength\onePageHorImageWidth{\rztpaperwidth-2\rztmargin-2\rztbleed}
   \setlength\onePageHorImageHeight{2\onePageHorImageWidth/3}
 
-  \newlength\fourPageHorImageWidth
+
   \setlength\fourPageHorImageWidth{(\onePageHorImageWidth-\rztinnersep)/2}
-  \newlength\fourPageHorImageHeight
   \setlength\fourPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
 
-  \newlength\sixPageHorImageWidth
   \setlength\sixPageHorImageWidth{(\onePageHorImageWidth-2\rztinnersep)/3}
-  \newlength\sixPageHorImageHeight
   \setlength\sixPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
 
-  \newlength\twoPageSpreadImageWidth
   \setlength\twoPageSpreadImageWidth{\paperwidth-\rztmargin}
-  \newlength\twoPageSpreadImageHeight
   \setlength\twoPageSpreadImageHeight{\paperheight-2\rztmargin}
+}
+
+\AtBeginDocument{%
+  \setlength\rztpaperwidth{\paperwidth}
+  \setlength\rztpaperheight{\paperheight}
+
+  \rzt@setImageDimensions
 
   \ifx\ifKV@rzt@global@pagenumbers\iffalse
     \pagestyle{empty}
@@ -77,6 +104,18 @@ rzt@image/.style={%
   rzt@basic,
 },
 rosetta@PhotoStyle/.style={%
+},
+rztcovertitle/.style={},
+rzt@covertitle/.style={
+  font=\fontsize{5cm}{5.5cm}\selectfont,
+  rztcovertitle,
+},
+rztspinecovertitle/.style={},
+rzt@coverspinetitle/.style={
+  anchor=center,
+  rotate=90,
+  font=\Huge,
+  rztspinecovertitle,
 },
 }
 
@@ -130,11 +169,34 @@ rosetta@PhotoStyle/.style={%
 
 % global options
 \define@boolkey{rzt@global}{pagenumbers}[true]{}
+\define@boolkey{rzt@global}{includegutter}[true]{}
+\define@boolkey{rzt@global}{showcoverframe}[true]{}
+\define@key{rzt@global}{spine}{\setlength\rztspine{#1}}
+\define@key{rzt@global}{bleed}{\setlength\rztbleed{#1}}
+\define@key{rzt@global}{gutter}{\setlength\rztgutter{#1}}
+\define@key{rzt@global}{front}{\setlength\rztfront{#1}}
+\define@key{rzt@global}{back}{\setlength\rztback{#1}}
+\define@key{rzt@global}{coverheight}{\setlength\rztcoverheight{#1}}
+
+% cover options
+\define@key{rzt@cover}{title}{\def\rzt@covertitle{#1}}
+\define@key{rzt@cover}{spinetitle}{\def\rzt@coverspinetitle{#1}}
+
 \NewDocumentCommand{\rztalbumsetup}{m}{
   \setkeys{rzt@global}{%
-    pagenumbers=false,
+    pagenumbers={false},
+    spine={14mm},
+    gutter={10mm},
+    bleed={19mm},
+    front={206.5mm},
+    back={206.5mm},%
+    coverheight={200mm},
+    includegutter={false},
+    showcoverframe={false},
     #1
   }
+  \setlength\rztcoverwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+  \expandafter\message{Set coverwidth to: \the\rztcoverwidth}
 }
 
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
@@ -194,7 +256,7 @@ rosetta@PhotoStyle/.style={%
         \rzt@imageIncl
       },
       ] at ($(current page.center) %
-            +(#3,#4)$)
+            +(#3,#4)
+            +(\rzt@coverxoffset,\rzt@coveryoffset)$)
       {\rzt@indexLabel};
-      
 }
