@@ -31,6 +31,8 @@
 \newlength\rztcoverheight
 \newlength\rztpaperwidth
 \newlength\rztpaperheight
+\newlength\rztwidth
+\newlength\rztheight
 
 \setlength\rztmargin{1cm}
 \setlength\rztbleed{3mm}
@@ -113,7 +115,7 @@ rzt@covertitle/.style={
 rztspinecovertitle/.style={},
 rzt@coverspinetitle/.style={
   anchor=center,
-  rotate=90,
+  rotate=-90,
   font=\Huge,
   rztspinecovertitle,
 },
@@ -140,26 +142,16 @@ rzt@coverspinetitle/.style={
 \newlength\rztKey@height
 \newlength\rzt@imgSize
 
-\define@key{rzt@image}{note}{%
-  \def\rztKey@note{#1}%
-}% end of \define@key
-\define@key{rzt@image}{xoffset}{%
-  \def\rztKey@xoffset{#1}%
-}% end of \define@key
-\define@key{rzt@image}{yoffset}{%
-  \def\rztKey@yoffset{#1}%
-}% end of \define@key
-\define@key{rzt@image}{width}{%
-  \setlength\rztKey@width{#1}%
-}% end of \define@key
-\define@key{rzt@image}{height}{%
-  \setlength\rztKey@height{#1}%
-}% end of \define@key
-\define@key{rzt@image}{zoom}{%
-  \def\rztKey@zoom{#1}%
-}% end of \define@key
-\define@boolkey{rzt@image}{onlywidth}[true]{}%
-\define@boolkey{rzt@image}{onlyheight}[true]{}%
+\define@key{rzt@image}{note}{\def\rztKey@note{#1}}
+\define@key{rzt@image}{xoffset}{\def\rztKey@xoffset{#1}}
+\define@key{rzt@image}{yoffset}{\def\rztKey@yoffset{#1}}
+\define@key{rzt@image}{width}{\setlength\rztKey@width{#1}}
+\define@key{rzt@image}{height}{\setlength\rztKey@height{#1}}
+\define@key{rzt@image}{zoom}{\def\rztKey@zoom{#1}}
+\define@key{rzt@image}{showframe}{\def\rztKey@showframe{#1}}
+\define@boolkey{rzt@image}{onlywidth}[true]{}
+\define@boolkey{rzt@image}{onlyheight}[true]{}
+
 % define size attributes for each image
 \newlength\rzt@imgWidth%
 \newlength\rzt@imgHeight%
@@ -171,12 +163,14 @@ rzt@coverspinetitle/.style={
 \define@boolkey{rzt@global}{pagenumbers}[true]{}
 \define@boolkey{rzt@global}{includegutter}[true]{}
 \define@boolkey{rzt@global}{showcoverframe}[true]{}
+\define@boolkey{rzt@global}{cover}[true]{}
 \define@key{rzt@global}{spine}{\setlength\rztspine{#1}}
 \define@key{rzt@global}{bleed}{\setlength\rztbleed{#1}}
 \define@key{rzt@global}{gutter}{\setlength\rztgutter{#1}}
 \define@key{rzt@global}{front}{\setlength\rztfront{#1}}
 \define@key{rzt@global}{back}{\setlength\rztback{#1}}
-\define@key{rzt@global}{coverheight}{\setlength\rztcoverheight{#1}}
+\define@key{rzt@global}{height}{\setlength\rztheight{#1}}
+\define@key{rzt@global}{width}{\setlength\rztwidth{#1}}
 
 % cover options
 \define@key{rzt@cover}{title}{\def\rzt@covertitle{#1}}
@@ -184,18 +178,28 @@ rzt@coverspinetitle/.style={
 
 \NewDocumentCommand{\rztalbumsetup}{m}{
   \setkeys{rzt@global}{%
-    pagenumbers={false},
-    spine={14mm},
-    gutter={10mm},
-    bleed={19mm},
-    front={206.5mm},
+    pagenumbers={false},%
+    spine={14mm},%
+    gutter={10mm},%
+    bleed={19mm},%
+    front={206.5mm},%
     back={206.5mm},%
-    coverheight={200mm},
-    includegutter={false},
-    showcoverframe={false},
+    includegutter={false},%
+    showcoverframe={false},%
+    height={210mm},%
+    width={297mm},%
+    cover=false,%
     #1
   }
+  \ifKV@rzt@global@cover
   \setlength\rztcoverwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+  \setlength\rztcoverheight{2\rztbleed+\rztheight}
+  \setlength\rztpaperwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+  \setlength\rztpaperheight{2\rztbleed+\rztheight}
+  \else
+  \setlength\rztpaperwidth{\rztwidth+2\rztbleed}
+  \setlength\rztpaperheight{\rztheight+2\rztbleed}
+  \fi
   \expandafter\message{Set coverwidth to: \the\rztcoverwidth}
 }
 
