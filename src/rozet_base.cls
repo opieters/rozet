@@ -264,3 +264,75 @@ rzt@coverspinetitle/.style={
             +(\rzt@coverxoffset,\rzt@coveryoffset)$)
       {\rzt@indexLabel};
 }
+
+\NewDocumentCommand{\rztCover}{O{} mmm}{%
+  \setkeys{rzt@cover}{%
+    title={\@title},
+    spinetitle={\@title},
+    #1
+  }
+\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep={0pt}, outer sep={0pt}}]
+  \ifKV@rzt@global@includegutter
+    \setlength\rztpaperwidth{\rztfront+\rztgutter+\rztbleed}
+    \setlength\rztpaperheight{\rztcoverheight}
+  \else
+    \setlength\rztpaperwidth{\rztfront+\rztbleed}
+    \setlength\rztpaperheight{\rztcoverheight}
+  \fi
+  \rzt@setImageDimensions
+  
+  \ifKV@rzt@global@includegutter
+    \setlength\rzt@coverxoffset{-0.5\rztspine-0.5\rztgutter-0.5\rztfront-0.5\rztbleed}
+  \else
+    \setlength\rzt@coverxoffset{-0.5\rztspine-\rztgutter-0.5\rztfront-0.5\rztbleed}
+  \fi
+  #2
+  
+  \ifKV@rzt@global@includegutter
+    \setlength\rztpaperwidth{\rztspine}
+    \setlength\rztpaperheight{\rztcoverheight}
+  \else
+    \setlength\rztpaperwidth{2\rztgutter+\rztspine}
+    \setlength\rztpaperheight{\rztcoverheight}
+  \fi
+  \setlength\rzt@coverxoffset{0pt}
+  #3
+  
+  \ifKV@rzt@global@includegutter
+    \setlength\rztpaperwidth{\rztfront+\rztgutter+\rztbleed}
+    \setlength\rztpaperheight{\rztcoverheight}
+  \else
+    \setlength\rztpaperwidth{\rztfront+\rztbleed}
+    \setlength\rztpaperheight{\rztcoverheight}
+  \fi
+  \rzt@setImageDimensions
+  
+  \ifKV@rzt@global@includegutter
+    \setlength\rzt@coverxoffset{0.5\rztspine+0.5\rztgutter+0.5\rztfront+0.5\rztbleed}
+  \else
+    \setlength\rzt@coverxoffset{0.5\rztspine+\rztgutter+0.5\rztfront+0.5\rztbleed}
+  \fi
+  #4
+  
+  \ifKV@rzt@global@showcoverframe
+  \draw[fill=green!50] (current page.north) -- ++(\rztspine/2,0) -- ++(0,-\rztcoverheight) -- ++(-\rztspine,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[fill=red!50] (current page.north)++(\rztspine/2,0) -- ++(\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(-\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[fill=blue!50] (current page.north)++(-\rztspine/2,0) -- ++(-\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[fill=yellow!50] (current page.north west) -- ++(\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(-\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[fill=yellow!50] (current page.north east) -- ++(-\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[fill=yellow!50] (current page.north west) -- ++(\paperwidth,0) -- ++(0,-\rztbleed) -- ++(-\paperwidth,0) -- ++(0,\rztbleed) -- cycle;
+  \draw[fill=yellow!50] (current page.south west) -- ++(\paperwidth,0) -- ++(0,\rztbleed) -- ++(-\paperwidth,0) -- ++(0,-\rztbleed) -- cycle;
+  \fi
+  
+  \node[rzt@coverspinetitle,white] at (current page.center) {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont \rzt@coverspinetitle };
+  \node[rzt@covertitle,white,align=right,anchor=south east] at ($(current page.south east)+(-2\rztbleed,2\rztbleed)$) {\rzt@covertitle };
+\end{tikzpicture}
+}
+
+\NewDocumentCommand{\rztBackground}{m}{
+  \node[
+    minimum width=\rztpaperwidth,
+    minimum height=\rztpaperheight,
+    #1 %
+    ] at (current page.center) {};
+}
