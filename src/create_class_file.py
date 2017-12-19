@@ -40,6 +40,7 @@ if __name__ == "__main__":
                 command += "    note={},\n"
                 command += "    width={%s},\n" % images[j]["width"]
                 command += "    height={%s},\n" % images[j]["height"]
+                command += "    text={false},%\n"
                 command += "    #%d}%%\n" % (2*j+1)
 
                 command += "  \\rzt@basicParseDefinitions{%s}{#%d}%%\n" % (chr(ord("A")+j+4*i), 2*j+2)

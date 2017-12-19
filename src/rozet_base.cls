@@ -81,6 +81,13 @@
   \ifx\ifKV@rzt@global@pagenumbers\iffalse
     \pagestyle{empty}
   \fi
+
+  \newwrite\rzt@imagedatafile
+  \immediate\openout\rzt@imagedatafile=\jobname.rzt\relax
+}
+
+\AtEndDocument{%
+\closeout\rzt@imagedatafile\relax
 }
 
 
@@ -151,6 +158,7 @@ rzt@coverspinetitle/.style={
 \define@key{rzt@image}{showframe}{\def\rztKey@showframe{#1}}
 \define@boolkey{rzt@image}{onlywidth}[true]{}
 \define@boolkey{rzt@image}{onlyheight}[true]{}
+\define@boolkey{rzt@image}{text}[true]{}
 
 % define size attributes for each image
 \newlength\rzt@imgWidth%
@@ -188,7 +196,7 @@ rzt@coverspinetitle/.style={
     showcoverframe={false},%
     height={210mm},%
     width={297mm},%
-    cover=false,%
+    cover={false},%
     #1
   }
   \ifKV@rzt@global@cover
@@ -205,13 +213,33 @@ rzt@coverspinetitle/.style={
 
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
 
+% from: \url{https://tex.stackexchange.com/questions/8260}
+\NewDocumentCommand{\rzt@convertto}{mm}{\strip@pt\dimexpr #2*65536/\number\dimexpr 1#1}
+
+\NewDocumentCommand{\rzt@reportImage}{m}{%
+  \immediate\write\expandafter\rzt@imagedatafile{#1, \the\rzt@imgWidth}%
+  \immediate\write\expandafter\rzt@imagedatafile{#1, \the\rzt@imgHeight}%
+  \message{HERE AM I}
+}
+
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
   \@IfNoValueOrEmptyTF{#2}{%
-    \def\rzt@nodestyle{rzt@noImage}%
-    \def\rzt@indexLabel{\Huge #1}%
-    \def\rzt@imageIncl{}%
-    \setlength\rzt@imgWidth{0pt}%
-    \setlength\rzt@imgHeight{0pt}%
+    \ifKV@rzt@image@text
+      \def\rzt@nodestyle{}%
+      \def\rzt@indexLabel{}%
+      \def\rzt@imageIncl{%
+      \node at ($(path picture bounding box.center)+%
+        (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
+         0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$){};}%
+      \setlength\rzt@imgWidth{0pt}%
+      \setlength\rzt@imgHeight{0pt}%
+    \else
+      \def\rzt@nodestyle{rzt@noImage}%
+      \def\rzt@indexLabel{\Huge #1}%
+      \def\rzt@imageIncl{}%
+      \setlength\rzt@imgWidth{0pt}%
+      \setlength\rzt@imgHeight{0pt}%
+    \fi
   }{%
     % This part of the code defines the options that are passed to the 
     % includegraphics macro.
@@ -238,6 +266,7 @@ rzt@coverspinetitle/.style={
       \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
     \settoheight\rzt@imgHeight{%
       \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
+    \rzt@reportImage{#2}
     \def\rzt@imageIncl{%
       \node at ($(path picture bounding box.center)+%
         (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
@@ -246,6 +275,7 @@ rzt@coverspinetitle/.style={
       };}%
   }%
 }
+
 
 \NewDocumentCommand{\rzt@basicNodeDefinition}{mm mm}{%
     \setlength\rzt@imgFrameWidth{#1}%
@@ -336,3 +366,4 @@ rzt@coverspinetitle/.style={
     #1 %
     ] at (current page.center) {};
 }
+
