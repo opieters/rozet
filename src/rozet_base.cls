@@ -85,6 +85,8 @@
   \newwrite\rzt@imagedatafile
   \immediate\openout\rzt@imagedatafile=\jobname.rzt
   \immediate\write\rzt@imagedatafile{"images":}
+
+  \rzt@resetTextBox
 }
 
 \AtEndDocument{%
@@ -127,6 +129,12 @@ rzt@coverspinetitle/.style={
   font=\Huge,
   rztspinecovertitle,
 },
+rzt@text/.style={
+  text width=\rzt@imgSize,
+  align=justify,
+  inner sep=0pt,
+  outer sep=0pt,
+}
 }
 
 \NewDocumentCommand{\rztFirstAlbumPage}{m}{%
@@ -229,57 +237,83 @@ rzt@coverspinetitle/.style={
   \immediate\write\rzt@imagedatafile{\space\space\space\space "height": "\thelength{\rzt@imgHeight}"}
 }
 
+\newsavebox{\rzt@box}
+
+\newcommand{\IfNoText}[3]{%
+\begingroup
+\sbox0{#1}%
+\ifdim\wd0=0pt %
+    {#2}% if #1 is empty
+\else%
+  \ifdim0pt=\dimexpr\ht0+\dp0\relax
+    {#2}
+  \else
+    {#3}% if #1 is not empty
+  \fi
+\fi%
+\endgroup
+}
+
+\def\rzt@boxText{}
+\def\rzt@boxTextOptions{}
+\NewDocumentCommand{\rztTextBox}{O{} m}{% 
+  \gdef\rzt@boxText{#2}%
+  \gdef\rzt@boxTextOptions{#1}%
+}
+\NewDocumentCommand{\rzt@resetTextBox}{}{
+  \gdef\rzt@boxText{}%
+  \gdef\rzt@boxTextOptions{}%
+}
+
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
   \@IfNoValueOrEmptyTF{#2}{%
-    \ifKV@rzt@image@text
-      \def\rzt@nodestyle{}%
-      \def\rzt@indexLabel{}%
-      \def\rzt@imageIncl{%
-      \node at ($(path picture bounding box.center)+%
-        (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
-         0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$){};}%
-      \setlength\rzt@imgWidth{0pt}%
-      \setlength\rzt@imgHeight{0pt}%
-    \else
-      \def\rzt@nodestyle{rzt@noImage}%
-      \def\rzt@indexLabel{\Huge #1}%
-      \def\rzt@imageIncl{}%
-      \setlength\rzt@imgWidth{0pt}%
-      \setlength\rzt@imgHeight{0pt}%
-    \fi
+    \def\rzt@nodestyle{rzt@noImage}%
+    \def\rzt@indexLabel{\Huge #1}%
+    \def\rzt@imageIncl{}%
+    \setlength\rzt@imgWidth{0pt}%
+    \setlength\rzt@imgHeight{0pt}%
   }{%
-    % This part of the code defines the options that are passed to the 
-    % includegraphics macro.
-    %
     \ifKV@rzt@image@onlyheight% 
       \setlength{\rzt@imgSize}{\rztKey@height * \real{\rztKey@zoom}}%
     \else%
       \setlength{\rzt@imgSize}{\rztKey@width * \real{\rztKey@zoom}}%
     \fi%
-    %
-    \edef\rzt@imageOptions{%
-      % check if width or height should be used
-      % https://tex.stackexchange.com/questions/124252
-      \ifKV@rzt@image@onlyheight%
-        height=\rzt@imgSize,
-      \else%
-        width=\rzt@imgSize,
-      \fi%
+    \ifKV@rzt@image@text%
+      \sbox{\rzt@box}{#2}
+      \def\rzt@nodestyle{rzt@text}%
+      \def\rzt@indexLabel{\IfNoText{\rzt@boxText}{#2}{\rzt@boxText}}%
+      \def\rzt@imageIncl{}%
+      \setlength\rzt@imgWidth{0pt}%
+      \setlength\rzt@imgHeight{0pt}%
+    \else%
+      % This part of the code defines the options that are passed to the 
+      % includegraphics macro.
       %
-    }%
-    \def\rzt@nodestyle{rzt@image}%
-    \def\rzt@indexLabel{\Huge\rztKey@note}%
-    \settowidth\rzt@imgWidth{%
-      \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
-    \settoheight\rzt@imgHeight{%
-      \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
-    \rzt@reportImage{#2}
-    \def\rzt@imageIncl{%
-      \node at ($(path picture bounding box.center)+%
-        (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
-         0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$){%
-        \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
-      };}%
+      %
+      \edef\rzt@imageOptions{%
+        % check if width or height should be used
+        % https://tex.stackexchange.com/questions/124252
+        \ifKV@rzt@image@onlyheight%
+          height=\rzt@imgSize,
+        \else%
+          width=\rzt@imgSize,
+        \fi%
+        %
+      }%
+      \def\rzt@nodestyle{rzt@image}%
+      \def\rzt@indexLabel{\Huge\rztKey@note}%
+      \settowidth\rzt@imgWidth{%
+        \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
+      \settoheight\rzt@imgHeight{%
+        \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
+      \rzt@reportImage{#2}
+      \def\rzt@imageIncl{%
+        \node at ($(path picture bounding box.center)+%
+          (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
+          0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$){%
+          \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
+        };}%
+    \fi%
   }%
 }
 
@@ -289,9 +323,9 @@ rzt@coverspinetitle/.style={
     \setlength\rzt@imgFrameHeight{#2}%
     \node[
       rzt@basic,
-      \rzt@nodestyle,
       minimum width=#1,
       minimum height=#2,
+      \rzt@nodestyle,
       anchor=center,
       path picture={%
         \rzt@imageIncl
@@ -300,6 +334,7 @@ rzt@coverspinetitle/.style={
             +(#3,#4)
             +(\rzt@coverxoffset,\rzt@coveryoffset)$)
       {\rzt@indexLabel};
+      \rzt@resetTextBox
 }
 
 \NewDocumentCommand{\rztCover}{O{} mmm}{%
