@@ -134,7 +134,15 @@ rzt@text/.style={
   align=justify,
   inner sep=0pt,
   outer sep=0pt,
-}
+},
+rzt@captionbasicstyle/.style={
+  inner sep=0pt,
+  outer sep=0pt,
+  align=center,
+  text width=\rzt@imgSize,
+  above=0cm of image.north,
+  anchor=south,
+},
 }
 
 \NewDocumentCommand{\rztFirstAlbumPage}{m}{%
@@ -158,6 +166,7 @@ rzt@text/.style={
 \newlength\rztKey@height
 \newlength\rzt@imgSize
 
+
 \define@key{rzt@image}{note}{\def\rztKey@note{#1}}
 \define@key{rzt@image}{xoffset}{\def\rztKey@xoffset{#1}}
 \define@key{rzt@image}{yoffset}{\def\rztKey@yoffset{#1}}
@@ -168,6 +177,9 @@ rzt@text/.style={
 \define@boolkey{rzt@image}{onlywidth}[true]{}
 \define@boolkey{rzt@image}{onlyheight}[true]{}
 \define@boolkey{rzt@image}{text}[true]{}
+\define@key{rzt@image}{caption}{\def\rztKey@caption{#1}}
+\define@key{rzt@image}{captionsetup}{\tikzset{rzt@captionopt/.style={#1}}}
+
 
 % define size attributes for each image
 \newlength\rzt@imgWidth%
@@ -264,6 +276,7 @@ rzt@text/.style={
   \gdef\rzt@boxText{}%
   \gdef\rzt@boxTextOptions{}%
 }
+\newif\ifrzt@imageIncluded
 
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
   \@IfNoValueOrEmptyTF{#2}{%
@@ -272,6 +285,7 @@ rzt@text/.style={
     \def\rzt@imageIncl{}%
     \setlength\rzt@imgWidth{0pt}%
     \setlength\rzt@imgHeight{0pt}%
+    \rzt@imageIncludedfalse
   }{%
     \ifKV@rzt@image@onlyheight% 
       \setlength{\rzt@imgSize}{\rztKey@height * \real{\rztKey@zoom}}%
@@ -286,6 +300,7 @@ rzt@text/.style={
       \setlength\rzt@imgWidth{0pt}%
       \setlength\rzt@imgHeight{0pt}%
     \else%
+    \rzt@imageIncludedtrue
       % This part of the code defines the options that are passed to the 
       % includegraphics macro.
       %
@@ -310,9 +325,9 @@ rzt@text/.style={
       \def\rzt@imageIncl{%
         \node at ($(path picture bounding box.center)+%
           (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
-          0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$){%
-          \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}%
-        };}%
+          0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$) %
+          (image)
+          {\expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}};}%
     \fi%
   }%
 }
@@ -322,18 +337,22 @@ rzt@text/.style={
     \setlength\rzt@imgFrameWidth{#1}%
     \setlength\rzt@imgFrameHeight{#2}%
     \node[
-      rzt@basic,
-      minimum width=#1,
-      minimum height=#2,
-      \rzt@nodestyle,
-      anchor=center,
+      rzt@basic,%
+      minimum width=#1,%
+      minimum height=#2,%
+      \rzt@nodestyle,%
+      anchor=center,%
       path picture={%
-        \rzt@imageIncl
-      },
+        \rzt@imageIncl%
+      },%
+      \rzt@boxTextOptions,%
       ] at ($(current page.center) %
             +(#3,#4)
             +(\rzt@coverxoffset,\rzt@coveryoffset)$)
       {\rzt@indexLabel};
+      \ifrzt@imageIncluded
+      \node[rzt@captionbasicstyle,rzt@captionopt] {\rztKey@caption};
+      \fi
       \rzt@resetTextBox
 }
 
