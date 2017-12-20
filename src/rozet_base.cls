@@ -83,11 +83,12 @@
   \fi
 
   \newwrite\rzt@imagedatafile
-  \immediate\openout\rzt@imagedatafile=\jobname.rzt\relax
+  \immediate\openout\rzt@imagedatafile=\jobname.rzt
+  \immediate\write\rzt@imagedatafile{"images":}
 }
 
 \AtEndDocument{%
-\closeout\rzt@imagedatafile\relax
+\immediate\closeout\rzt@imagedatafile
 }
 
 
@@ -214,12 +215,18 @@ rzt@coverspinetitle/.style={
 % key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
 
 % from: \url{https://tex.stackexchange.com/questions/8260}
-\NewDocumentCommand{\rzt@convertto}{mm}{\strip@pt\dimexpr #2*65536/\number\dimexpr 1#1}
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\thelength}{ O{mm} m }
+ {
+  \fp_to_decimal:n { round ( (#2)/(1#1), 5 ) } #1
+ }
+\ExplSyntaxOff
 
 \NewDocumentCommand{\rzt@reportImage}{m}{%
-  \immediate\write\expandafter\rzt@imagedatafile{#1, \the\rzt@imgWidth}%
-  \immediate\write\expandafter\rzt@imagedatafile{#1, \the\rzt@imgHeight}%
-  \message{HERE AM I}
+  \immediate\write\rzt@imagedatafile{\space\space -}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "filename": "#1":}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "width": "\thelength{\rzt@imgWidth}"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "height": "\thelength{\rzt@imgHeight}"}
 }
 
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
