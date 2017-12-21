@@ -68,8 +68,8 @@
   \setlength\sixPageHorImageWidth{(\onePageHorImageWidth-2\rztinnersep)/3}
   \setlength\sixPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
 
-  \setlength\twoPageSpreadImageWidth{\paperwidth-\rztmargin}
-  \setlength\twoPageSpreadImageHeight{\paperheight-2\rztmargin}
+  \setlength\twoPageSpreadImageWidth{\rztpaperwidth-\rztmargin}
+  \setlength\twoPageSpreadImageHeight{\rztpaperheight-2\rztmargin}
 }
 
 \AtBeginDocument{%
@@ -140,7 +140,7 @@ rzt@captionbasicstyle/.style={
   outer sep=0pt,
   align=center,
   text width=\rzt@imgSize,
-  above=0cm of image.north,
+  above=0cm of rzt image.north,
   anchor=south,
 },
 }
@@ -326,7 +326,7 @@ rzt@captionbasicstyle/.style={
         \node at ($(path picture bounding box.center)+%
           (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
           0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$) %
-          (image)
+          (rzt image)
           {\expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}};}%
     \fi%
   }%
@@ -349,6 +349,7 @@ rzt@captionbasicstyle/.style={
       ] at ($(current page.center) %
             +(#3,#4)
             +(\rzt@coverxoffset,\rzt@coveryoffset)$)
+      (rzt wrapper)
       {\rzt@indexLabel};
       \ifrzt@imageIncluded
       \node[rzt@captionbasicstyle,rzt@captionopt] {\rztKey@caption};
