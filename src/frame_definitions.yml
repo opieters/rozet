@@ -7,22 +7,31 @@
     height: "\\onePageHorImageHeight"
     x_offset: "0"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoPageSpreadRight"
   images:
   -
     width: "\\twoPageSpreadImageWidth"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "-\\margin"
+    x_offset: "-\\rztmargin"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoPageSpreadLeft"
   images:
   -
     width: "\\twoPageSpreadImageWidth"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "\\margin"
+    x_offset: "\\rztmargin"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztOneSmallStroke"
   images:
@@ -31,6 +40,9 @@
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztOneFullPageNoBleed"
   images:
@@ -39,6 +51,9 @@
     height: "\\rztpaperheight"
     x_offset: "0"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: ""
   images:
@@ -47,6 +62,9 @@
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
 # frames with two images
 -
   name: "\\rztTwoSimpleHorizontal"
@@ -56,11 +74,17 @@
     height: "\\fourPageHorImageWidth"
     x_offset: "0"
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "top"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageWidth"
     x_offset: "0"
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoLongHorizontal"
   images:
@@ -69,11 +93,17 @@
     height: "\\fourPageHorImageHeight"
     x_offset: "0"
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "top"
   -
     width: "\\onePageHorImageWidth"
     height: "\\fourPageHorImageHeight"
     x_offset: "0"
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoLongVertical"
   images:
@@ -82,11 +112,17 @@
     height: "\\onePageHorImageHeight"
     x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
+    caption:
+      align: "left"
+      position: "bottom"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
     x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoSmallLargeRight"
   images:
@@ -95,11 +131,17 @@
     height: "\\onePageHorImageHeight"
     x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
     y_offset: "0"
+    caption:
+      align: "left"
+      position: "bottom"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
     x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoSmallLargeLeft"
   images:
@@ -108,11 +150,17 @@
     height: "\\onePageHorImageHeight"
     x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
+    caption:
+      align: "left"
+      position: "bottom"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
     x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztTwoStrokesHor"
   images:
@@ -121,11 +169,17 @@
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
     y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "top"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: ""
   images:
@@ -134,11 +188,17 @@
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
 # frames with three images
 -
   name: "\\rztThreeFullLeft"
@@ -148,17 +208,25 @@
     height: "\\onePageHorImageHeight"
     x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "0"
-
+    caption:
+      align: "left"
+      position: "bottom"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
     x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "top"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
     x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    caption:
+      align: "right"
+      position: "bottom"
 -
   name: "\\rztThreeFullRight"
   images:
@@ -167,16 +235,25 @@
     height: "\\fourPageHorImageHeight"
     x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    caption:
+      align: "left"
+      position: "top"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
     x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
     y_offset: "0"
+    caption:
+      align: "right"
+      position: "top"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
     x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    caption:
+      align: "left"
+      position: "bottom"
 -
   name: "\\rztThreeSmallLargeLeft"
   images:
@@ -308,17 +385,17 @@
   images:
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
-    height: "sixPageHorImageHeight"
+    height: "\\sixPageHorImageHeight"
     x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
     y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "\\sixPageHorImageWidth"
-    height: "sixPageHorImageHeight"
+    height: "\\sixPageHorImageHeight"
     x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
     y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
-    width: "\\sixPageHorImageWidth"
-    height: "sixPageHorImageHeight"
+    width: "\\onePageHorImageWidth"
+    height: "\\sixPageHorImageHeight"
     x_offset: "0"
     y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
 -
@@ -347,16 +424,25 @@
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
 # frames with four images
 -
   name: "\\rztFourSimple"
@@ -480,7 +566,7 @@
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
     x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
@@ -642,21 +728,33 @@
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
 # frames with five images
 -
   name: "\\rztFiveSmallLargeCenter"
@@ -778,26 +876,41 @@
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
 # frames with six images
 -
   name: "\\rztSixSimple"
@@ -840,30 +953,48 @@
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
   -
     width: ""
     height: ""
     x_offset: ""
     y_offset: ""
+    caption:
+      align: ""
+      position: ""
 
 
