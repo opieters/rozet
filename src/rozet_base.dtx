@@ -1,0 +1,178 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2017 by Olivier Pieters - me (at) olivierpieters (dot) be
+% --------------------------------------------------------------------------
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Olivier Pieters.
+%
+% This work consists of the files rozet.dtx and rozet.ins
+% and the derived filebase rozet.cls.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{rozet.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesClass{rozet}
+%<*class>
+    [2017/09/12 v0.1.3 rozet Document class for Photo Albums.]
+%</class>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{calc}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{xparse}
+\usetikzlibrary{calc,positioning}
+
+\lstset{%
+  basicstyle=\ttfamily, % font style and size
+  breakatwhitespace=false,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  language=[LaTeX]{TeX},
+  keywordstyle=\color{blue},
+  commentstyle=\color{red}
+}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{rozet.dtx}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{1525}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{v0.1}{2017/09/12}{Initial version.}
+%
+% \DoNotIndex{\NewDocumentCommand,\NewDocumentEnvironment}
+%
+% 
+% \def\fileversion{v0.1.3}
+% \def\filedate{2017/11/25}
+%
+% \GetFileInfo{rozet.dtx}
+% \title{The \textsf{rozet} document class\thanks{This document corresponds %
+%   to \textsf{rozet}~\fileversion, dated \filedate.}}
+% \author{Olivier Pieters \\ \url{me (at) olivierpieters (dot) be}}
+% \date{\fileversion~from \filedate}
+% 
+% \maketitle
+% 
+% \tableofcontents
+% 
+% \section{Introduction}
+% 
+% 
+% 
+% \section{Requirements}
+% 
+% 
+% \section{General Macros and Document Class Options}
+%
+%
+% \iffalse
+%<*example>
+% \fi
+  \begin{lstlisting}
+  \end{lstlisting}
+% \iffalse
+%</example>
+% \fi
+%
+% 
+%   \DescribeMacro{cvInterests} 
+%   Typeset interests (can be both professional and personal) using 
+%   |cvInterests|. By default it just typesets a list of items in the long 
+%   format  (|long|). The short format can be activated by passing the |short| 
+%   option to the  environment. Inside this environment, three commands can be 
+%   used: |\cvInterestsPersonal|, |\cvInterestsProfessional| and |\cvInterest|. 
+%   \DescribeMacro{\cvInterestsPersonal} |\cvInterestsPersonal| and 
+%   \DescribeMacro{\cvInterestsProfessional} |\cvInterestsProfessional| add 
+%   optional sections inside this environment to differentiate between personal 
+%   and professional interests respectively. Both macros have no options nor 
+%   arguments. The \DescribeMacro{\cvInterest} |\cvInterest{|\meta{icon}|}{|
+%   \meta{interest}|}| command takes an icon and interest as arguments.
+%   
+% 
+% \section{Frame Definitions}
+%
+% In this section, an overview of all predefined frames can be found with a
+% visual example. All of these frames have the same API that is described above. 
+% Caption locations are indicated by small green bars. 
+%
+%
+% \newlength\rztmargin  
+% \setlength\rztmargin{0.33cm}
+% \newlength\rztinnersep 
+% \setlength\rztinnersep{1mm}
+% \newlength\rztbleed 
+% \setlength\rztbleed{1mm}
+%
+% \newlength\rztpaperwidth 
+% \setlength\rztpaperwidth{10cm}
+%
+% \newlength\rztpaperheight 
+% \setlength\rztpaperheight{7cm}
+%
+% \newlength\onePageHorImageWidth 
+% \setlength\onePageHorImageWidth{\rztpaperwidth-2\rztmargin-2\rztbleed}
+%
+% \newlength\onePageHorImageHeight 
+% \setlength\onePageHorImageHeight{2\onePageHorImageWidth/3}
+%
+% \newlength\fourPageHorImageWidth 
+% \setlength\fourPageHorImageWidth{(\onePageHorImageWidth-\rztinnersep)/2}
+%
+% \newlength\fourPageHorImageHeight 
+% \setlength\fourPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
+%
+% \newlength\sixPageHorImageWidth 
+% \setlength\sixPageHorImageWidth{(\onePageHorImageWidth-2\rztinnersep)/3}
+%
+% \newlength\sixPageHorImageHeight 
+% \setlength\sixPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
+%
+% \newlength\twoPageSpreadImageWidth 
+% \setlength\twoPageSpreadImageWidth{\rztpaperwidth-\rztmargin}
+%
+% \newlength\twoPageSpreadImageHeight 
+% \setlength\twoPageSpreadImageHeight{\rztpaperheight-2\rztmargin}
