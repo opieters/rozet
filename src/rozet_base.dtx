@@ -101,14 +101,48 @@
 % 
 % \section{Introduction}
 % 
-% 
+% |rozet| is a document class that is well suited to design photo albums. It 
+% defines a general layout system that allows to design the album in an easy 
+% way. Additionally, it also facilitates the use of text along imagery. Its 
+% extensive API and TikZ construction allow for easy extensibility. 
 % 
 % \section{Requirements}
 % 
 % 
-% \section{General Macros and Document Class Options}
+% \section{General Usage}
 %
+% An album page is created by inserting the \DescribeMacro{\rztAlbumPage} 
+% |\rztAlbumPage| macro. This macro takes two arguments: the content for the 
+% left page (first argument) and the content for the right page (second 
+% argument). Inside the first argument, one can add collections of image frames 
+% such as |\rztOneFull| and |\rztFourSimple|. These macros define the image 
+% layout and can have optional arguments to facilitate easy placement (more on 
+% this later). 
+% 
+% However, albums usually start on a left page. So the actual PDF usually needs 
+% to start with this page. This special first page should be typeset using the 
+% \DescribeMacro{\rztFirstAlbumPage} |\rztFirstAlbumPage| macro. This macro 
+% takes only one argument (the image layout), but behaves exactly the same as 
+% |\rztAlbumPage| otherwise.
 %
+% The actual image layouts are inserted using a wide variety of macros. All of 
+% them are listed in \cref{frame-definitions} along with an illustration. All 
+% of them have a similar structure: |[|\meta{options}|]{|\meta{image}|}| for 
+% each image. That means that there can be a lof of arguments for a single 
+% macro. The order is also important, and is indicated in each of the 
+% illustrations from \cref{frame-definitions}. But the following general rule 
+% applies: start in the upper left corner and continue row wise to the right.
+% 
+% The options can describe special actions that need to be taken such as zoom 
+% in or move the picture or insert a caption. The image argument should contain 
+% the location of the image. There is also the possibility to insert text. For 
+% this, we refer to the actual reference documentation in \cref{}.
+%
+% Not all albums are equal, some are in portrait instead of (the default) 
+% landscape or have special requirements for the bleed or margin options. To 
+% facilitate this, the |\rztalbumsetup| macro is provided. General 
+% configuration options need to be set using this macro.
+% 
 % \iffalse
 %<*example>
 % \fi
