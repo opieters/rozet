@@ -7,10 +7,12 @@ if __name__ == "__main__":
     data = yaml.load(open("frame_definitions.yml"))
     data = [i for i in data if i["name"] != ""]
 
-    for frame in data:
+    for frame_idx, frame in enumerate(data):
       source_file += "%% \subsection{\\texttt{%s}}\n%%\n" % frame["name"].replace("\\", "\\textbackslash ")
+
+      source_file += ("%% \DescribeMacro{%s}" % frame["name"]) + ("\\allowbreak |[|\\meta{options}|]|\\allowbreak |{|\meta{image}|}|"*len(frame["images"])) + "\n%\n"
       
-      source_file += "% \\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt}]\n"
+      source_file += "% \\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt}]\n%"
 
       for j, i in enumerate(frame["images"]):
         source_file += "% \\node[\n"
@@ -27,6 +29,9 @@ if __name__ == "__main__":
         source_file += "% \\node[draw,rectangle,minimum width=\\rztpaperwidth+2\\rztbleed,minimum height=\\rztpaperheight+2\\rztbleed,anchor=center] at (0,0) {};\n"
 
       source_file += "% \\end{tikzpicture}\n%\n"
+    
+      if frame_idx % 2 == 1:
+        source_file += "% \clearpage\n"
 
     source_file += "% \StopEventually{}"
     source_file += "%"
