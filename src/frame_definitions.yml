@@ -71,7 +71,7 @@
   images:
   -
     width: "\\fourPageHorImageWidth"
-    height: "\\fourPageHorImageWidth"
+    height: "\\fourPageHorImageHeight"
     x_offset: "0"
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
@@ -79,7 +79,7 @@
       position: "top"
   -
     width: "\\fourPageHorImageWidth"
-    height: "\\fourPageHorImageWidth"
+    height: "\\fourPageHorImageHeight"
     x_offset: "0"
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
