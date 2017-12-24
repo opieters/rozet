@@ -176,9 +176,10 @@
 % \end{itemize}
 % 
 % It is important to have a good understanding of the different sizes. To that
-% end, have a look at \cref{coverpage-layout}. 
+% end, have a look at \cref{cover-page-layout}. 
 %
 % \begin{figure}[!ht]
+% \centering
 % \begin{tikzpicture}
 %  \draw[black] (0,0) rectangle ++(10,7);
 %  \draw[red] (1,1) rectangle ++(8,5);
@@ -190,35 +191,97 @@
 %  \node[above] at (5,2.5) {|\rztgutter|};
 %  \draw[<->] (0,3.5) -- ++(1,0) node[midway,above] {|\rztbleed|};
 %  \draw[<->] (9,3.5) -- ++(1,0) node[midway,above] {|\rztbleed|};
-%  \draw[<->] (1,0) -- ++(0,1) node[midway,right] {|\rztbleed|};
-%  \draw[<->] (1,6) -- ++(0,1) node[midway,right] {|\rztbleed|};
+%  \draw[<->] (1.5,0) -- ++(0,1) node[midway,right] {|\rztbleed|};
+%  \draw[<->] (1.5,6) -- ++(0,1) node[midway,right] {|\rztbleed|};
+%  \draw[<->] (1,5.5) -- ++(3.5,0) node[midway,above] {|\rztback|};
+%  \draw[<->] (5.5,5.5) -- ++(3.5,0) node[midway,above] {|\rztfront|};
 % \end{tikzpicture}
 % \caption{Illustration of the different lengths for the cover page.}
-% \label{coverpage-layout}
+% \label{cover-page-layout}
 % \end{figure}
+%
+% The page size is \emph{not} set automatically by the package! It is still
+% required to load the |geometry| package in the actual document and define the
+% page sizes. However, some convenience macros have been defined and are set 
+% automatically to ease the design. The paper width and height (width and height
+% of the entire page, including all margins and required bleeds) is available 
+% using the |\rztpaperwidth| and |\rztpaperheight| \emph{after} using the 
+% |\rztalbumsetup| macro. The geometry package should thus be loaded as
+% indicated in \cref{geometry-pkg-album}.
 %
 % \iffalse
 %<*example>
 % \fi
-  \begin{lstlisting}
+  \begin{lstlisting}[%
+   caption={Example load snippet of the geometry package for the actual album %
+    pages.},%
+   label={geometry-pkg-album}]
+\usepackage[
+  paperwidth=\rztpaperwidth,
+  paperheight=\rztpaperheight,
+  noheadfoot,
+  margin=\rztbleed,
+  ]{geometry}
+  \end{lstlisting}
+% \iffalse
+%</example>
+% \fi
+% 
+% Additionally, for the cover page (which is usually a large single page PDF 
+% file), this is automatically adjusted to the correct sizes for the font and 
+% back pages inside the arguments of |\rztCover|. As a consequence, two
+% additional macros are available: |\rztcoverwidth| and |\rztcoverheight|. 
+% These macros store the width and height of the \emph{entire} cover. This is 
+% the sum of the back and front pages, bleeds, spine\ldots\ One should thus use 
+% these lengths to define the page layout for the cover. However, for 
+% convenience |\rztpaperwidth| and |\rztpaperheight| are initialised to 
+% |\rztcoverwidth| and |\rztcoverheight| respectively after |\rztalbumsetup|.
+% This should avoid copy-paste errors. It is only until one issues |\rztCover|
+% that the lengths of |\rztpaperwidth| and |\rztpaperheight| will be adjusted 
+% automatically. This is very important to keep in mind when wrapping something
+% into a marco that uses these lengths in the preamble. 
+%
+% \iffalse
+%<*example>
+% \fi
+  \begin{lstlisting}[%
+   caption={Example load snippet of the geometry package for the cover.},%
+   label={geometry-pkg-cover}]
+\usepackage[
+  paperwidth=\rztcoverwidth,
+  paperheight=\rztcoverheight,
+  noheadfoot,
+  margin=\rztbleed,
+  ]{geometry}
   \end{lstlisting}
 % \iffalse
 %</example>
 % \fi
 %
-% 
-%   \DescribeMacro{cvInterests} 
-%   Typeset interests (can be both professional and personal) using 
-%   |cvInterests|. By default it just typesets a list of items in the long 
-%   format  (|long|). The short format can be activated by passing the |short| 
-%   option to the  environment. Inside this environment, three commands can be 
-%   used: |\cvInterestsPersonal|, |\cvInterestsProfessional| and |\cvInterest|. 
-%   \DescribeMacro{\cvInterestsPersonal} |\cvInterestsPersonal| and 
-%   \DescribeMacro{\cvInterestsProfessional} |\cvInterestsProfessional| add 
-%   optional sections inside this environment to differentiate between personal 
-%   and professional interests respectively. Both macros have no options nor 
-%   arguments. The \DescribeMacro{\cvInterest} |\cvInterest{|\meta{icon}|}{|
-%   \meta{interest}|}| command takes an icon and interest as arguments.
+% If |includegutter| is false, the gutters are typeset using the spine argument 
+% of |\rztCover| and thus, |\rztpaperwidth| and |\rztpaperheight| do \emph{not}
+% include the width of the gutter (|\rztgutter|). 
+%
+% \begin{figure}[!ht]
+% \centering
+% \begin{tikzpicture}
+%  \draw[black] (0,0) rectangle ++(10,7);
+%  \draw[black] (1,1) rectangle ++(8,5);
+%  \draw[<->] (0,3.5) -- ++(1,0) node[midway,above] {|\rztbleed|};
+%  \draw[<->] (9,3.5) -- ++(1,0) node[midway,above] {|\rztbleed|};
+%  \draw[<->] (8.5,0) -- ++(0,1) node[midway,right] {|\rztbleed|};
+%  \draw[<->] (8.5,6) -- ++(0,1) node[midway,right] {|\rztbleed|};
+%  \draw[<->] (1,2) -- ++(8,0) node[midway,above] {|\rztwidth|};
+%  \draw[<->] (8,1) -- ++(0,5) node[midway,left] {|\rztheight|};
+%  \draw[<->] (0,5) -- ++(10,0) node[midway,above] {|\rztpaperwidth|};
+%  \draw[<->] (2.5,0) -- ++(0,7) node[midway,right] {|\rztpaperheight|};
+% \end{tikzpicture}
+% \caption{Illustration of the different lengths for an album page.}
+% \label{album-page-layout}
+% \end{figure}
+%
+%
+%
 %   
 % 
 % \section{Frame Definitions}
