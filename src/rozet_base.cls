@@ -244,7 +244,7 @@ rzt@captionbasicstyle/.style={
 
 \NewDocumentCommand{\rzt@reportImage}{m}{%
   \immediate\write\rzt@imagedatafile{\space\space -}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "filename": "#1":}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "filename": "#1"}
   \immediate\write\rzt@imagedatafile{\space\space\space\space "width": "\thelength{\rzt@imgWidth}"}
   \immediate\write\rzt@imagedatafile{\space\space\space\space "height": "\thelength{\rzt@imgHeight}"}
 }
