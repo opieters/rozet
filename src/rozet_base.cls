@@ -151,6 +151,11 @@ rzt@captionbasicstyle/.style={
 \end{tikzpicture}
 }
 
+\NewDocumentCommand{\rztLastAlbumPage}{m}{%
+  \newpage
+  \rztFirstAlbumPage{#1}%
+}
+
 \NewDocumentCommand{\rztAlbumPage}{mm}{%
 \newpage
 \begin{tikzpicture}[remember picture,overlay]
