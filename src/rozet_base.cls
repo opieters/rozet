@@ -407,13 +407,13 @@ rzt@captionbasicstyle/.style={
   #4
   
   \ifKV@rzt@global@showcoverframe
-  \draw[fill=green!50] (current page.north) -- ++(\rztspine/2,0) -- ++(0,-\rztcoverheight) -- ++(-\rztspine,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[fill=red!50] (current page.north)++(\rztspine/2,0) -- ++(\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(-\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[fill=blue!50] (current page.north)++(-\rztspine/2,0) -- ++(-\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[fill=yellow!50] (current page.north west) -- ++(\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(-\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[fill=yellow!50] (current page.north east) -- ++(-\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[fill=yellow!50] (current page.north west) -- ++(\paperwidth,0) -- ++(0,-\rztbleed) -- ++(-\paperwidth,0) -- ++(0,\rztbleed) -- cycle;
-  \draw[fill=yellow!50] (current page.south west) -- ++(\paperwidth,0) -- ++(0,\rztbleed) -- ++(-\paperwidth,0) -- ++(0,-\rztbleed) -- cycle;
+  \draw[green] (current page.north) -- ++(\rztspine/2,0) -- ++(0,-\rztcoverheight) -- ++(-\rztspine,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[red] (current page.north)++(\rztspine/2,0) -- ++(\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(-\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[blue] (current page.north)++(-\rztspine/2,0) -- ++(-\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[yellow] (current page.north west) -- ++(\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(-\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[yellow] (current page.north east) -- ++(-\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
+  \draw[yellow] (current page.north west) -- ++(\paperwidth,0) -- ++(0,-\rztbleed) -- ++(-\paperwidth,0) -- ++(0,\rztbleed) -- cycle;
+  \draw[yellow] (current page.south west) -- ++(\paperwidth,0) -- ++(0,\rztbleed) -- ++(-\paperwidth,0) -- ++(0,-\rztbleed) -- cycle;
   \fi
   
   \node[rzt@coverspinetitle,white] at (current page.center) {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont \rzt@coverspinetitle };
