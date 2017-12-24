@@ -196,7 +196,6 @@ rzt@captionbasicstyle/.style={
 % global options
 \define@boolkey{rzt@global}{pagenumbers}[true]{}
 \define@boolkey{rzt@global}{includegutter}[true]{}
-\define@boolkey{rzt@global}{showcoverframe}[true]{}
 \define@boolkey{rzt@global}{cover}[true]{}
 \define@key{rzt@global}{spine}{\setlength\rztspine{#1}}
 \define@key{rzt@global}{bleed}{\setlength\rztbleed{#1}}
@@ -209,6 +208,7 @@ rzt@captionbasicstyle/.style={
 % cover options
 \define@key{rzt@cover}{title}{\def\rzt@covertitle{#1}}
 \define@key{rzt@cover}{spinetitle}{\def\rzt@coverspinetitle{#1}}
+\define@boolkey{rzt@cover}{showframe}[true]{}
 
 \NewDocumentCommand{\rztalbumsetup}{m}{
   \setkeys{rzt@global}{%
@@ -219,7 +219,6 @@ rzt@captionbasicstyle/.style={
     front={206.5mm},%
     back={206.5mm},%
     includegutter={true},%
-    showcoverframe={false},%
     height={210mm},%
     width={297mm},%
     cover={false},%
@@ -364,8 +363,9 @@ rzt@captionbasicstyle/.style={
 
 \NewDocumentCommand{\rztCover}{O{} mmm}{%
   \setkeys{rzt@cover}{%
-    title={\@title},
-    spinetitle={\@title},
+    title={\@title},%
+    spinetitle={\@title},%
+    showframe={false},%
     #1
   }
 \begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep={0pt}, outer sep={0pt}}]
@@ -411,7 +411,7 @@ rzt@captionbasicstyle/.style={
   \fi
   #4
   
-  \ifKV@rzt@global@showcoverframe
+  \ifKV@rzt@cover@showcoverframe
   \draw[green] (current page.north) -- ++(\rztspine/2,0) -- ++(0,-\rztcoverheight) -- ++(-\rztspine,0) -- ++(0,\rztcoverheight) -- cycle;
   \draw[red] (current page.north)++(\rztspine/2,0) -- ++(\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(-\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
   \draw[blue] (current page.north)++(-\rztspine/2,0) -- ++(-\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
