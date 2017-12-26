@@ -8,7 +8,7 @@ if __name__ == "__main__":
     data = [i for i in data if i["name"] != ""]
 
     for frame_idx, frame in enumerate(data):
-      source_file += "%% \subsection{\\texttt{%s}}\n%%\n" % frame["name"].replace("\\", "\\textbackslash ")
+      source_file += "%% \subsection{\\texttt{%s}}\label{frame-definitions}\n%%\n" % frame["name"].replace("\\", "\\textbackslash ")
 
       source_file += ("%% \DescribeMacro{%s}" % frame["name"]) + ("\\allowbreak |[|\\meta{options}|]|\\allowbreak |{|\meta{image}|}|"*len(frame["images"])) + "\n%\n"
       
