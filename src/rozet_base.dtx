@@ -287,20 +287,27 @@
 % \subsection{Sigle Image Options}
 %
 % \begin{itemize}
-%  \item |note|
-%  \item |xoffset|
-%  \item |yoffset|
-%  \item |width|
-%  \item |height|
-%  \item |zoom|
-%  \item |showframe|
-%  \item |onlywidth|
-%  \item |onlyheight|
-%  \item |text|
-%  \item |caption|
-%  \item |captionsetup|
+%  \item |note|: add a note to the centre of the page. This can be used for reminders and should not be used to add annotations or captions.
+%  \item |xoffset| Adds a relative offset such that the image's position changes. An offset of |-1| shifts the image completally rightward, but still fills the entire image frame. |1| does exactly the possosite. In case you want to apply absolute shifts, use |xabsoffset|. This should also not be used for images that fit exactly into the image frame.  
+%  \item |yoffset| Adds a relative offset such that the image's position changes. An offset of |-1| shifts the image completally downward, but still fills the entire image frame. |1| does exactly the possosite. In case you want to apply absolute shifts, use |yabsoffset|. This should also not be used for images that fit exactly into the image frame.  
+%  \item |width| Use a different width for the image. This can be useful in cases where the default width is too wide and one want a smaller size. It can however not be used to make the image wider.
+%  \item |height| Simiar to |width|.
+%  \item |zoom| Zoomfactor to zoom in on the image. 
+%  \item |showframe| Draw the bleed and text safe areas. 
+%  \item |onlywidth| Use the width to fill the frame (default |true|)
+%  \item |onlyheight| Use the height to fill the frame (default |false|)
+%  \item |text| Indicate whether this is a text or image frame. One cannot combine |text| width an image. The text that is provided within the required (image) argument will be typeset as a text box. More on working with text in \cref{}. 
+%  \item |caption| Add a caption to the image. 
+%  \item |captionsetup| Styling that needs to be applied to the caption. This can also be used to move the caption around the image. More details below.
 % \end{itemize}
 %   
+% \subsection{Adding Text Blocks to Albums}
+%
+% \subscetion{Styling and Moving Captions}
+%
+% \section{Predefined Lengths}
+% 
+% 
 % 
 % \section{Frame Definitions}
 %
