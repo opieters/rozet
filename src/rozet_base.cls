@@ -611,9 +611,11 @@ rzt@captionbasicstyle/.style={
   \rzt@setImageDimensions
   
   \ifKV@rzt@global@includegutter
-    \setlength\rzt@coverxoffset{0.5\rztspine+0.5\rztgutter+0.5\rztfront+0.5\rztbleed}
+    \setlength\rzt@coverxoffset{%
+      0.5\rztspine+0.5\rztgutter+0.5\rztfront+0.5\rztbleed}
   \else
-    \setlength\rzt@coverxoffset{0.5\rztspine+\rztgutter+0.5\rztfront+0.5\rztbleed}
+    \setlength\rzt@coverxoffset{%
+      0.5\rztspine+\rztgutter+0.5\rztfront+0.5\rztbleed}
   \fi
   #4
 %    \end{macrocode}
@@ -667,13 +669,17 @@ rzt@captionbasicstyle/.style={
 % Add the title text to the spine
 %
 %    \begin{macrocode}
-  \node[rzt@coverspinetitle,white] at (current page.center) {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont \rzt@coverspinetitle };
+  \node[rzt@coverspinetitle,white] 
+    at (current page.center) 
+    {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont \rzt@coverspinetitle };
 %    \end{macrocode}
 %
 % Add the title text to the front page.
 %
 %    \begin{macrocode}
-  \node[rzt@covertitle,white,align=right,anchor=south east] at ($(current page.south east)+(-2\rztbleed,2\rztbleed)$) {\rzt@covertitle };
+  \node[rzt@covertitle,white,align=right,anchor=south east] 
+  at ($(current page.south east)+(-2\rztbleed,2\rztbleed)$) 
+  {\rzt@covertitle };
 \end{tikzpicture}
 }
 %    \end{macrocode}
