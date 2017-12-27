@@ -20,6 +20,8 @@
 \RequirePackage{xparse}
 \RequirePackage{xkeyval}
 
+\newif\ifrzt@imageIncluded
+
 \newlength\rztmargin
 \newlength\rztbleed
 \newlength\rztspine
@@ -88,6 +90,7 @@
 
   \rzt@resetTextBox
 }
+
 
 \AtEndDocument{%
 \immediate\closeout\rzt@imagedatafile
@@ -272,17 +275,61 @@ rzt@captionbasicstyle/.style={
 
 \def\rzt@boxText{}
 \def\rzt@boxTextOptions{}
+%
+% \begin{macro}{\rztTextBox}
+%
+% Typesets a textbox. 
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rztTextBox}{O{} m}{% 
+%    \end{macrocode}
+%
+% These macros need to be typeset in the global namespace, since they are used
+% to store the arguments of |\rztTextBox|. 
+%
+%    \begin{macrocode}
   \gdef\rzt@boxText{#2}%
   \gdef\rzt@boxTextOptions{#1}%
 }
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\rzt@resetTextBox}
+%
+% This macro is used to undefine the macros set by the |\rztTextBox|. Otherwise,
+% issues might arise where information from previous text boxes is leaked to the 
+% current page.
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rzt@resetTextBox}{}{
+%    \end{macrocode}
+%
+% These macros need to be typeset in the global namespace, since they are used
+% to store the arguments of |\rztTextBox|. 
+%
+%    \begin{macrocode}
   \gdef\rzt@boxText{}%
   \gdef\rzt@boxTextOptions{}%
 }
-\newif\ifrzt@imageIncluded
-
+%    \end{macrocode}
+% \end{macro}
+%
+% 
+% \begin{macro}{\rzt@basicParseDefinitions}
+%
+% Helper macro that parses the node definitions and defines/overwrites all the
+% required macros for |\rzt@basicNodeDefinition|. In time, these two macros will
+% be merged to make it easier to implement new layouts.
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
+%    \end{macrocode}
+%    
+% If the required argument is empty, we draw the frame using the |rzt@noImage|
+% style to indicate where the image should be. All other options are deactivated
+% and lengths are set to zero. 
+%
+%    \begin{macrocode}
   \@IfNoValueOrEmptyTF{#2}{%
     \def\rzt@nodestyle{rzt@noImage}%
     \def\rzt@indexLabel{\Huge #1}%
@@ -291,12 +338,31 @@ rzt@captionbasicstyle/.style={
     \setlength\rzt@imgHeight{0pt}%
     \rzt@imageIncludedfalse
   }{%
+%    \end{macrocode}
+%
+% If the argument is not empty, we calculate the image size (depending on which
+% dimension needs to be used). 
+%
+%    \begin{macrocode}
     \ifKV@rzt@image@onlyheight% 
       \setlength{\rzt@imgSize}{\rztKey@height * \real{\rztKey@zoom}}%
     \else%
       \setlength{\rzt@imgSize}{\rztKey@width * \real{\rztKey@zoom}}%
     \fi%
+%    \end{macrocode}
+% 
+% If text should be inserted in place of text, the macros are set over here.
+%
+%    \begin{macrocode}
     \ifKV@rzt@image@text%
+%    \end{macrocode}
+%    
+% We execute the second argument here. This is needed if a macro is parsed,
+% since this macro needs to be executed. This is savely done inside a box which 
+% does not end up in the document (if no macro is present). Then, we define the 
+% necessary macros to typeset the text. 
+%
+%    \begin{macrocode}
       \sbox{\rzt@box}{#2}
       \def\rzt@nodestyle{rzt@text}%
       \def\rzt@indexLabel{\IfNoText{\rzt@boxText}{#2}{\rzt@boxText}}%
@@ -304,14 +370,24 @@ rzt@captionbasicstyle/.style={
       \setlength\rzt@imgWidth{0pt}%
       \setlength\rzt@imgHeight{0pt}%
     \else%
+%    \end{macrocode}
+%
+% We are including an image. Set the bool flag to true. 
+%
+%    \begin{macrocode}
     \rzt@imageIncludedtrue
-      % This part of the code defines the options that are passed to the 
-      % includegraphics macro.
-      %
-      %
+%    \end{macrocode}
+%
+% This part of the code defines the options that are passed to the 
+% |\includegraphics| macro.
+%
+%    \begin{macrocode}
       \edef\rzt@imageOptions{%
-        % check if width or height should be used
-        % https://tex.stackexchange.com/questions/124252
+%    \end{macrocode}
+%
+% Check if width or height should be used.
+%
+%    \begin{macrocode}
         \ifKV@rzt@image@onlyheight%
           height=\rzt@imgSize,
         \else%
@@ -321,50 +397,122 @@ rzt@captionbasicstyle/.style={
       }%
       \def\rzt@nodestyle{rzt@image}%
       \def\rzt@indexLabel{\Huge\rztKey@note}%
+%    \end{macrocode}
+%
+% Save image height and width. This is useful to crop the images to make the 
+% final PDF smaller without loosing quality.
+%
+%    \begin{macrocode}
       \settowidth\rzt@imgWidth{%
         \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
       \settoheight\rzt@imgHeight{%
         \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
       \rzt@reportImage{#2}
+%    \end{macrocode}
+%
+% Define the actual image.
+%
+%    \begin{macrocode}
       \def\rzt@imageIncl{%
         \node at ($(path picture bounding box.center)+%
-          (0.5*\rzt@imgWidth*\rztKey@xoffset - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
-          0.5*\rzt@imgHeight*\rztKey@yoffset - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$) %
+          (0.5*\rzt@imgWidth*\rztKey@xoffset %
+           - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
+          0.5*\rzt@imgHeight*\rztKey@yoffset %
+           - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$) %
           (rzt image)
+%    \end{macrocode}
+%
+% Two expandafters are needed to make sure that the optional arguments passed to
+% |\includegraphics| are full expanded, since this is required.
+%
+%    \begin{macrocode}
           {\expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}};}%
     \fi%
   }%
 }
-
-
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\rzt@basicNodeDefinition}
+%
+% The macro typsets the image in the image frame. It has four required
+% arguments: |{|\meta{width}|}{|\meta{height}|}{|\meta{xoffset}|}{|%
+% \meta{yoffset}|}|. The optional arguments and actual image we defined in 
+% |\rzt@basicParseDefinitions| are used here to create the final result.
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rzt@basicNodeDefinition}{mm mm}{%
-    \setlength\rzt@imgFrameWidth{#1}%
-    \setlength\rzt@imgFrameHeight{#2}%
-    \node[
-      rzt@basic,%
-      minimum width=#1,%
-      minimum height=#2,%
-      \rzt@nodestyle,%
-      anchor=center,%
-      path picture={%
-        \rzt@imageIncl%
-      },%
-      \rzt@boxTextOptions,%
-      ] at ($(current page.center) %
-            +(#3,#4)
-            +(\rzt@coverxoffset,\rzt@coveryoffset)$)
-      (rzt wrapper)
-      {\rzt@indexLabel};
-      \ifrzt@imageIncluded
-      \node[rzt@captionbasicstyle,rzt@captionopt] {\rztKey@caption};
-      \fi
-      \rzt@resetTextBox
+% \end{macrocode}
+%
+% Define the target image width and height. This is used internally, to typset 
+% the images.
+%
+% \begin{macrocode}
+  \setlength\rzt@imgFrameWidth{#1}%
+  \setlength\rzt@imgFrameHeight{#2}%
+% \end{macrocode}
+%
+% Here, we typset the actual image. 
+%
+% \begin{macrocode}
+  \node[
+    rzt@basic,%
+    minimum width=#1,%
+    minimum height=#2,%
+% \end{macrocode}
+%
+% Depending on the content of the node, a different style is applied. This is 
+% pre-set by the |\rzt@basicParseDefinitions| macro.
+%
+% \begin{macrocode}
+    \rzt@nodestyle,%
+    anchor=center,%
+% \end{macrocode}
+%
+% Include the actual image. By using a |path picture|, we avoid overflow issues. 
+% The image will only be visible in the predefined frame.
+%
+% \begin{macrocode}
+    path picture={%
+      \rzt@imageIncl%
+    },%
+% \end{macrocode}
+%
+% If a textbox is used, additional options are inserted here. Next, the final
+% coordinate is calculated, the label is set and the text is included (if 
+% needed).
+%
+% \begin{macrocode}
+    \rzt@boxTextOptions,%
+    ] at ($(current page.center) %
+          +(#3,#4)
+          +(\rzt@coverxoffset,\rzt@coveryoffset)$)
+    (rzt wrapper)
+    {\rzt@indexLabel};
+% \end{macrocode}
+%
+% If a caption is set and an image is included, we add this caption. 
+%
+% \begin{macrocode}
+  \ifrzt@imageIncluded
+    \node[rzt@captionbasicstyle,rzt@captionopt] {\rztKey@caption};
+  \fi
+% \end{macrocode}
+%
+% This text box reset is needed to avoid information leakage from this frame to
+% subsequent frames.
+%
+% \begin{macrocode}
+  \rzt@resetTextBox
 }
-
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\rztCover}
+%
 % Defines the cover. This is made op of three parts: back, spine and cover. Some
 % optional arguments are possible. See the command reference for details. 
 %
-% \begin{macro}{\rztCover}
 %    \begin{macrocode}
 \NewDocumentCommand{\rztCover}{O{} mmm}{%
 %    \end{macrocode}
