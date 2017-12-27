@@ -361,14 +361,39 @@ rzt@captionbasicstyle/.style={
       \rzt@resetTextBox
 }
 
+% Defines the cover. This is made op of three parts: back, spine and cover. Some
+% optional arguments are possible. See the command reference for details. 
+%
+% \begin{macro}{\rztCover}
+%    \begin{macrocode}
 \NewDocumentCommand{\rztCover}{O{} mmm}{%
+%    \end{macrocode}
+%
+% Process all optional arguments. First provide default values, then process the
+% user defined values. 
+%
+%    \begin{macrocode}
   \setkeys{rzt@cover}{%
     title={\@title},%
     spinetitle={\@title},%
     showframe={false},%
     #1
   }
-\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep={0pt}, outer sep={0pt}}]
+%    \end{macrocode}
+%
+% Define the TikZ picture in which the entire cover will be typeset.
+%
+%    \begin{macrocode}
+\begin{tikzpicture}[
+  remember picture,
+  overlay,
+  every node/.style={inner sep={0pt}, outer sep={0pt}}]
+%    \end{macrocode}
+%
+% Depending on the |includegutter| option, we set the width and hieight of the 
+% current page correctly. 
+%
+%    \begin{macrocode}
   \ifKV@rzt@global@includegutter
     \setlength\rztpaperwidth{\rztfront+\rztgutter+\rztbleed}
     \setlength\rztpaperheight{\rztcoverheight}
@@ -376,15 +401,44 @@ rzt@captionbasicstyle/.style={
     \setlength\rztpaperwidth{\rztfront+\rztbleed}
     \setlength\rztpaperheight{\rztcoverheight}
   \fi
+%    \end{macrocode}
+%
+% Calling this macro will redefine lengths such as |\onePageHorImageWidth| and 
+% |onePageHorImageHeight|, because the page dimensions have changed.
+%
+%    \begin{macrocode}
   \rzt@setImageDimensions
-  
+%    \end{macrocode}
+%
+% This offset is needed to ensure the images appear where they need to.
+% Otherwise, they would apprear with an offset. This si fixed over here.
+%
+%    \begin{macrocode}
   \ifKV@rzt@global@includegutter
-    \setlength\rzt@coverxoffset{-0.5\rztspine-0.5\rztgutter-0.5\rztfront-0.5\rztbleed}
+    \setlength\rzt@coverxoffset{%
+      -0.5\rztspine-0.5\rztgutter-0.5\rztfront-0.5\rztbleed}
   \else
-    \setlength\rzt@coverxoffset{-0.5\rztspine-\rztgutter-0.5\rztfront-0.5\rztbleed}
+    \setlength\rzt@coverxoffset{%
+      -0.5\rztspine-\rztgutter-0.5\rztfront-0.5\rztbleed}
   \fi
+%    \end{macrocode}
+%
+% Calling this macro will redefine lengths such as |\onePageHorImageWidth| and 
+% |onePageHorImageHeight|, because the page dimensions have changed.
+%
+%    \begin{macrocode}
+  \rzt@setImageDimensions
+%    \end{macrocode}
+%
+% Include the first image argument.
+%
+%    \begin{macrocode}
   #2
-  
+%    \end{macrocode}
+%
+% Similar as before, but now for the spine.
+%
+%    \begin{macrocode}
   \ifKV@rzt@global@includegutter
     \setlength\rztpaperwidth{\rztspine}
     \setlength\rztpaperheight{\rztcoverheight}
@@ -394,7 +448,11 @@ rzt@captionbasicstyle/.style={
   \fi
   \setlength\rzt@coverxoffset{0pt}
   #3
-  
+%    \end{macrocode}
+%
+% Similar as before, but now for the front side.
+%
+%    \begin{macrocode}
   \ifKV@rzt@global@includegutter
     \setlength\rztpaperwidth{\rztfront+\rztgutter+\rztbleed}
     \setlength\rztpaperheight{\rztcoverheight}
@@ -410,27 +468,82 @@ rzt@captionbasicstyle/.style={
     \setlength\rzt@coverxoffset{0.5\rztspine+\rztgutter+0.5\rztfront+0.5\rztbleed}
   \fi
   #4
-  
+%    \end{macrocode}
+%
+% If the |showcoverframe| is activated, we need to draw the different margins
+% and safe zones. These are drawn over here in different colours.
+%
+%    \begin{macrocode}
   \ifKV@rzt@cover@showcoverframe
-  \draw[green] (current page.north) -- ++(\rztspine/2,0) -- ++(0,-\rztcoverheight) -- ++(-\rztspine,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[red] (current page.north)++(\rztspine/2,0) -- ++(\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(-\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[blue] (current page.north)++(-\rztspine/2,0) -- ++(-\rztgutter,0) -- ++(0,-\rztcoverheight) -- ++(\rztgutter,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[yellow] (current page.north west) -- ++(\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(-\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[yellow] (current page.north east) -- ++(-\rztbleed,0) -- ++(0,-\rztcoverheight) -- ++(\rztbleed,0) -- ++(0,\rztcoverheight) -- cycle;
-  \draw[yellow] (current page.north west) -- ++(\paperwidth,0) -- ++(0,-\rztbleed) -- ++(-\paperwidth,0) -- ++(0,\rztbleed) -- cycle;
-  \draw[yellow] (current page.south west) -- ++(\paperwidth,0) -- ++(0,\rztbleed) -- ++(-\paperwidth,0) -- ++(0,-\rztbleed) -- cycle;
+%    \end{macrocode}
+%
+% Draw the book spine.
+%
+%    \begin{macrocode}
+    \draw[green] (current page.north) 
+      -- ++(\rztspine/2,0) 
+      -- ++(0,-\rztcoverheight) 
+      -- ++(-\rztspine,0) 
+      -- ++(0,\rztcoverheight) 
+      -- cycle;
+%    \end{macrocode}
+%
+% Draw the gutters. 
+%
+%    \begin{macrocode}
+    \draw[red] (current page.north)++(\rztspine/2,0) 
+      -- ++(\rztgutter,0) 
+      -- ++(0,-\rztcoverheight) 
+      -- ++(-\rztgutter,0) 
+      -- ++(0,\rztcoverheight) 
+      -- cycle;
+    \draw[blue] (current page.north)++(-\rztspine/2,0) 
+      -- ++(-\rztgutter,0) 
+      -- ++(0,-\rztcoverheight) 
+      -- ++(\rztgutter,0) 
+      -- ++(0,\rztcoverheight) 
+      -- cycle;
+%    \end{macrocode}
+%
+% Draw the bleed.
+%
+%    \begin{macrocode}
+    \draw[yellow] (current page.north west) ++(\rztbleed,\rztbleed) 
+      -- ++(0,-\rztcoverheight+2\rztbleed) 
+      -- ++(\rztcoverwidth-2\rztbleed,0) 
+      -- ++(0,\rztcoverheight-2\rztbleed)  
+      -- cycle;
   \fi
-  
+%    \end{macrocode}
+%
+% Add the title text to the spine
+%
+%    \begin{macrocode}
   \node[rzt@coverspinetitle,white] at (current page.center) {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont \rzt@coverspinetitle };
+%    \end{macrocode}
+%
+% Add the title text to the front page.
+%
+%    \begin{macrocode}
   \node[rzt@covertitle,white,align=right,anchor=south east] at ($(current page.south east)+(-2\rztbleed,2\rztbleed)$) {\rzt@covertitle };
 \end{tikzpicture}
 }
-
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\rztBackground}
+% 
+% The background colour macro. This macro can be used to add a colour or similar
+% to the background. It draws this over the entire page. 
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rztBackground}{m}{
   \node[
-    minimum width=\rztpaperwidth,
-    minimum height=\rztpaperheight,
+    minimum width=\rztpaperwidth, %
+    minimum height=\rztpaperheight, %
     #1 %
     ] at (current page.center) {};
 }
+%    \end{macrocode}
+% \end{macro}
 
