@@ -9,7 +9,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoPageSpreadRight"
   images:
@@ -20,7 +20,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoPageSpreadLeft"
   images:
@@ -31,7 +31,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztOneSmallStroke"
   images:
@@ -42,7 +42,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztOneFullPageNoBleed"
   images:
@@ -53,7 +53,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: ""
   images:
@@ -76,7 +76,7 @@
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
-      position: "top"
+      position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
@@ -84,7 +84,7 @@
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoLongHorizontal"
   images:
@@ -95,7 +95,7 @@
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
-      position: "top"
+      position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\fourPageHorImageHeight"
@@ -103,7 +103,7 @@
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoLongVertical"
   images:
@@ -114,7 +114,7 @@
     y_offset: "0"
     caption:
       align: "left"
-      position: "bottom"
+      position: "below"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
@@ -122,7 +122,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoSmallLargeRight"
   images:
@@ -133,7 +133,7 @@
     y_offset: "0"
     caption:
       align: "left"
-      position: "bottom"
+      position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
@@ -141,7 +141,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoSmallLargeLeft"
   images:
@@ -152,7 +152,7 @@
     y_offset: "0"
     caption:
       align: "left"
-      position: "bottom"
+      position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
@@ -160,7 +160,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztTwoStrokesHor"
   images:
@@ -171,7 +171,7 @@
     y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
-      position: "top"
+      position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
@@ -179,7 +179,7 @@
     y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: ""
   images:
@@ -210,7 +210,7 @@
     y_offset: "0"
     caption:
       align: "left"
-      position: "bottom"
+      position: "below"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
@@ -218,7 +218,7 @@
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
-      position: "top"
+      position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
@@ -226,7 +226,7 @@
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztThreeFullRight"
   images:
@@ -237,7 +237,7 @@
     y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
-      position: "top"
+      position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
@@ -245,7 +245,7 @@
     y_offset: "0"
     caption:
       align: "right"
-      position: "top"
+      position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
@@ -253,7 +253,7 @@
     y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
-      position: "bottom"
+      position: "below"
 -
   name: "\\rztThreeSmallLargeLeft"
   images:

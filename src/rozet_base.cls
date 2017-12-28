@@ -1,7 +1,20 @@
-\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{rozet}
-    [2017/12/09 v0.1 Rozet document class for photo albums.]
-
+% A (Xe/Lua)LaTeX document class
+%
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Olivier Pieters.
+% Contact the maintainer at: me (at) olivierpieters (dot) be.
+%
+%    \begin{macrocode}
 \RequirePackage{kvoptions}
 \ProcessKeyvalOptions*
 \DeclareOption*{%
@@ -22,7 +35,6 @@
 
 \newif\ifrzt@imageIncluded
 
-%    \begin{macrocode}
 \newlength\rztmargin
 \newlength\rztbleed
 \newlength\rztspine
@@ -54,7 +66,6 @@
 \newlength\rzt@imgHeight%
 \newlength\rzt@imgFrameWidth%
 \newlength\rzt@imgFrameHeight%
-%    \end{macrocode}
 
 
 \setlength\rztmargin{1cm}
@@ -99,11 +110,13 @@
 
   \rzt@resetTextBox
 }
+%    \end{macrocode}
 
-
+%    \begin{macrocode}
 \AtEndDocument{%
   \immediate\closeout\rzt@imagedatafile
 }
+%    \end{macrocode}
 
 %    \begin{macrocode}
 \tikzset{%

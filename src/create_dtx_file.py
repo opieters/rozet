@@ -25,7 +25,10 @@ if __name__ == "__main__":
         source_file += "%% +(%s,%s)$)\n" % (i["x_offset"], i["y_offset"])
         source_file += "% (rzt wrapper)\n"
         source_file += "%% {%d};\n" % (j+1)
-        source_file += "%% \\node[above=0.025cm of rzt wrapper,draw,rectangle,text width=%s,inner sep=0,outer sep=0,fill=green,green] {};\n" % i["width"]
+        if "caption" in i:
+          source_file += "%% \\node[%s=0.025cm of rzt wrapper,draw,rectangle,text width=%s,inner sep=0,outer sep=0,fill=green,green] {};\n" % (i["caption"]["position"], i["width"])
+        else:
+          source_file += "%% \\node[above=0.025cm of rzt wrapper,draw,rectangle,text width=%s,inner sep=0,outer sep=0,fill=green,green] {};\n" % i["width"]
         source_file += "% \\node[draw,rectangle,minimum width=\\rztpaperwidth+2\\rztbleed,minimum height=\\rztpaperheight+2\\rztbleed,anchor=center] at (0,0) {};\n"
 
       source_file += "% \\end{tikzpicture}\n%\n"
@@ -33,12 +36,93 @@ if __name__ == "__main__":
       if frame_idx % 2 == 1:
         source_file += "% \clearpage\n"
 
-    source_file += "% \StopEventually{}"
-    source_file += "%"
-    source_file += "% \section{Implementation}"
-    source_file += "%"
+    source_file += "% \StopEventually{}\n"
+    source_file += "%\n"
+    source_file += "% \section{Implementation}\n"
+    source_file += "%\n"
 
-    source_file += "\\end{document}\n"
+    source_file += "% \\iffalse\n"
+    source_file += "%<*class>\n"
+    source_file += "% \\fi\n"
+
+    # Add the contents of the cls file
+
+    source_file += open("rozet_base.cls").readlines()
+
+    data = yaml.load(open("frame_definitions.yml"))
+    data = [i for i in data if i["name"] != ""]
+
+    # command name and arguments
+    for frame in data:
+        command = ""
+
+        name = frame["name"]
+        n_images = len(frame["images"])
+        n_cmds = math.ceil(n_images / 4)
+        for i in range(n_cmds):
+            n_args = min([4,n_images - i*4])
+            images = frame["images"][i*4:(i+1)*4]
+
+            # argument structure
+            arguments = " ".join(["O{}m"]*n_args)
+
+            # command name
+            if i != 0:
+                name = name.replace("\\rzt", "\\rzt@") + "Cont"
+            if i > 1:
+                name = name + "x"*(i-1)
+
+            # start parsing command definition
+            command += "%    \\begin{macrocode}\n"
+            command += "\\NewDocumentCommand{%s}{%s}{%%\n" % (name, arguments)
+            command += "  \\begingroup%\n"
+            for j in range(n_args):
+                command += "  \\setkeys{rzt@image}{%%\n"
+                command += "    xoffset={0},\n"
+                command += "    yoffset={0},\n"
+                command += "    onlywidth={true},\n"
+                command += "    onlyheight={false},\n"
+                command += "    zoom={1},\n"
+                command += "    note={},\n"
+                command += "    width={%s},\n" % images[j]["width"]
+                command += "    height={%s},\n" % images[j]["height"]
+                command += "    text={false},%\n"
+                command += "    caption={},%\n"
+                command += "    captionsetup={},%\n"
+                command += "    #%d}%%\n" % (2*j+1)
+
+                command += "  \\rzt@basicParseDefinitions{%s}{#%d}%%\n" % (chr(ord("A")+j+4*i), 2*j+2)
+
+                command += "  \\rzt@basicNodeDefinition%\n"
+                command += "    {%s}%%\n" % frame["images"][j]["width"]
+                command += "    {%s}%%\n" % frame["images"][j]["height"]
+                command += "    {%s}%%\n" % frame["images"][j]["x_offset"]
+                command += "    {%s}%%\n" % frame["images"][j]["y_offset"]
+
+            if i == (n_cmds-1):
+                pass
+            else:
+                next_name = frame["name"]
+                if i != 0:
+                    next_name = next_name.replace("\\rzt", "\\rzt@") + "Cont"
+                if i > 1:
+                    next_name = next_name + "x" * (i - 1)
+                command += "  %s%%\n" % next_name
+
+            command += "  \\endgroup%\n"
+            command += "}\n\n"
+            command += "%    \end{macrocode}\n"
+
+
+        source_file += command
+
+
+    source_file += "% \\iffalse\n"
+    source_file += "%</class>\n"
+    source_file += "% \\fi\n"
+    source_file += "%\n"
+    source_file += "% \\Finale\n"
+
     source_file += "\\endinput\n"
 
     with open("rozet.dtx", "w") as f:
