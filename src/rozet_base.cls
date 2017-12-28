@@ -22,6 +22,7 @@
 
 \newif\ifrzt@imageIncluded
 
+%    \begin{macrocode}
 \newlength\rztmargin
 \newlength\rztbleed
 \newlength\rztspine
@@ -35,6 +36,26 @@
 \newlength\rztpaperheight
 \newlength\rztwidth
 \newlength\rztheight
+\newlength\onePageHorImageWidth
+\newlength\onePageHorImageHeight
+\newlength\fourPageHorImageWidth
+\newlength\fourPageHorImageHeight
+\newlength\sixPageHorImageWidth
+\newlength\sixPageHorImageHeight
+\newlength\twoPageSpreadImageWidth  
+\newlength\twoPageSpreadImageHeight
+\newlength\rzt@coverxoffset
+\newlength\rzt@coveryoffset
+\newlength\rztKey@width
+\newlength\rztKey@height
+\newlength\rzt@imgSize
+% % define size attributes for each image
+\newlength\rzt@imgWidth%
+\newlength\rzt@imgHeight%
+\newlength\rzt@imgFrameWidth%
+\newlength\rzt@imgFrameHeight%
+%    \end{macrocode}
+
 
 \setlength\rztmargin{1cm}
 \setlength\rztbleed{3mm}
@@ -45,24 +66,12 @@
 \setlength\rztinnersep{0.3cm}
 \setlength\rztcoverwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
 \setlength\rztcoverheight{200mm}
-
-\newlength\onePageHorImageWidth
-\newlength\onePageHorImageHeight
-\newlength\fourPageHorImageWidth
-\newlength\fourPageHorImageHeight
-\newlength\sixPageHorImageWidth
-\newlength\sixPageHorImageHeight
-\newlength\twoPageSpreadImageWidth  \newlength\twoPageSpreadImageHeight
-
-\newlength\rzt@coverxoffset
 \setlength\rzt@coverxoffset{0pt}
-\newlength\rzt@coveryoffset
 \setlength\rzt@coveryoffset{0pt}
 
 \NewDocumentCommand{\rzt@setImageDimensions}{}{
   \setlength\onePageHorImageWidth{\rztpaperwidth-2\rztmargin-2\rztbleed}
   \setlength\onePageHorImageHeight{2\onePageHorImageWidth/3}
-
 
   \setlength\fourPageHorImageWidth{(\onePageHorImageWidth-\rztinnersep)/2}
   \setlength\fourPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
@@ -93,88 +102,87 @@
 
 
 \AtEndDocument{%
-\immediate\closeout\rzt@imagedatafile
+  \immediate\closeout\rzt@imagedatafile
 }
 
-
-\ExplSyntaxOn
-\DeclareExpandableDocumentCommand{\@IfNoValueOrEmptyTF}%
-  {mmm}{\IfNoValueTF{#1}{#2}{
-    \tl_if_empty:nTF {#1} {#2} {#3}%
-   }
-}
-\ExplSyntaxOff
-
+%    \begin{macrocode}
 \tikzset{%
-rzt@basic/.style={%
-  rectangle,
+  rzt@basic/.style={%
+    rectangle,
+    },
+  rzt@noImage/.style={%
+    rzt@basic,
+    fill opacity=0.5,
+    text opacity=1,
+    fill=gray,
+    },
+  rzt@image/.style={%
+    rzt@basic,
   },
-rzt@noImage/.style={%
-  rzt@basic,
-  fill opacity=0.5,
-  text opacity=1,
-  fill=gray,
+  rosetta@PhotoStyle/.style={%
   },
-rzt@image/.style={%
-  rzt@basic,
-},
-rosetta@PhotoStyle/.style={%
-},
-rztcovertitle/.style={},
-rzt@covertitle/.style={
-  font=\fontsize{5cm}{5.5cm}\selectfont,
-  rztcovertitle,
-},
-rztspinecovertitle/.style={},
-rzt@coverspinetitle/.style={
-  anchor=center,
-  rotate=-90,
-  font=\Huge,
-  rztspinecovertitle,
-},
-rzt@text/.style={
-  text width=\rzt@imgSize,
-  align=justify,
-  inner sep=0pt,
-  outer sep=0pt,
-},
-rzt@captionbasicstyle/.style={
-  inner sep=0pt,
-  outer sep=0pt,
-  align=center,
-  text width=\rzt@imgSize,
-  above=0cm of rzt image.north,
-  anchor=south,
-},
+  rztcovertitle/.style={},
+  rzt@covertitle/.style={
+    font=\fontsize{5cm}{5.5cm}\selectfont,
+    rztcovertitle,
+  },
+  rztspinecovertitle/.style={},
+  rzt@coverspinetitle/.style={
+    anchor=center,
+    rotate=-90,
+    font=\Huge,
+    rztspinecovertitle,
+  },
+  rzt@text/.style={
+    text width=\rzt@imgSize,
+    align=justify,
+    inner sep=0pt,
+    outer sep=0pt,
+  },
+  rzt@captionbasicstyle/.style={
+    inner sep=0pt,
+    outer sep=0pt,
+    align=center,
+    text width=\rzt@imgSize,
+    above=0cm of rzt image.north,
+    anchor=south,
+  },
 }
+%    \end{macrocode}
 
+%    \begin{macrocode}
 \NewDocumentCommand{\rztFirstAlbumPage}{m}{%
-\begin{tikzpicture}[remember picture,overlay]
-  #1
-\end{tikzpicture}
+  \begin{tikzpicture}[remember picture,overlay]
+    #1
+  \end{tikzpicture}
 }
+%    \end{macrocode}
 
+%    \begin{macrocode}
 \NewDocumentCommand{\rztLastAlbumPage}{m}{%
   \newpage
   \rztFirstAlbumPage{#1}%
 }
-
+%    \end{macrocode}
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rztAlbumPage}{mm}{%
-\newpage
-\begin{tikzpicture}[remember picture,overlay]
-  #1
-\end{tikzpicture}
-\newpage
-\begin{tikzpicture}[remember picture,overlay]
-  #2
-\end{tikzpicture}
+  \newpage
+  \begin{tikzpicture}[remember picture,overlay]
+    #1
+  \end{tikzpicture}
+  \newpage
+  \begin{tikzpicture}[remember picture,overlay]
+    #2
+  \end{tikzpicture}
 }
-
-\newlength\rztKey@width
-\newlength\rztKey@height
-\newlength\rzt@imgSize
-
-
+%
+%    \end{macrocode}
+%
+%
+% Key-value options for individual images in frames.
+%
+%    \begin{macrocode}
 \define@key{rzt@image}{note}{\def\rztKey@note{#1}}
 \define@key{rzt@image}{xoffset}{\def\rztKey@xoffset{#1}}
 \define@key{rzt@image}{yoffset}{\def\rztKey@yoffset{#1}}
@@ -187,16 +195,11 @@ rzt@captionbasicstyle/.style={
 \define@boolkey{rzt@image}{text}[true]{}
 \define@key{rzt@image}{caption}{\def\rztKey@caption{#1}}
 \define@key{rzt@image}{captionsetup}{\tikzset{rzt@captionopt/.style={#1}}}
-
-
-% define size attributes for each image
-\newlength\rzt@imgWidth%
-\newlength\rzt@imgHeight%
-\newlength\rzt@imgFrameWidth%
-\newlength\rzt@imgFrameHeight%
-
-
-% global options
+%    \end{macrocode}
+%
+% Key-value options for the album setup |\rztalbumsetup|. 
+%
+%    \begin{macrocode}
 \define@boolkey{rzt@global}{pagenumbers}[true]{}
 \define@boolkey{rzt@global}{includegutter}[true]{}
 \define@boolkey{rzt@global}{cover}[true]{}
@@ -207,12 +210,22 @@ rzt@captionbasicstyle/.style={
 \define@key{rzt@global}{back}{\setlength\rztback{#1}}
 \define@key{rzt@global}{height}{\setlength\rztheight{#1}}
 \define@key{rzt@global}{width}{\setlength\rztwidth{#1}}
-
-% cover options
+%    \end{macrocode}
+%
+% Key-value options for the cover |\rztCover|. 
+%
+%    \begin{macrocode}
 \define@key{rzt@cover}{title}{\def\rzt@covertitle{#1}}
 \define@key{rzt@cover}{spinetitle}{\def\rzt@coverspinetitle{#1}}
 \define@boolkey{rzt@cover}{showframe}[true]{}
-
+%    \end{macrocode}
+%
+% \begin{macro}{\rztalbumsetup}
+%
+% This macro allows to set some global album options. A key-value syntax needs 
+% to be used. 
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rztalbumsetup}{m}{
   \setkeys{rzt@global}{%
     pagenumbers={false},%
@@ -225,56 +238,134 @@ rzt@captionbasicstyle/.style={
     height={210mm},%
     width={297mm},%
     cover={false},%
-    #1
+    #1 % 
   }
   \ifKV@rzt@global@cover
-  \setlength\rztcoverwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
-  \setlength\rztcoverheight{2\rztbleed+\rztheight}
-  \setlength\rztpaperwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
-  \setlength\rztpaperheight{2\rztbleed+\rztheight}
+    \setlength\rztcoverwidth{%
+      2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+    \setlength\rztcoverheight{2\rztbleed+\rztheight}
+    \setlength\rztpaperwidth{%
+      2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+    \setlength\rztpaperheight{2\rztbleed+\rztheight}
   \else
-  \setlength\rztpaperwidth{\rztwidth+2\rztbleed}
-  \setlength\rztpaperheight{\rztheight+2\rztbleed}
+    \setlength\rztpaperwidth{\rztwidth+2\rztbleed}
+    \setlength\rztpaperheight{\rztheight+2\rztbleed}
   \fi
-  \expandafter\message{Set coverwidth to: \the\rztcoverwidth}
 }
-
-% key-value with expl3 http://www.tug.org/TUGboat/tb31-1/tb97wright-l3keys.pdf
-
-% from: \url{https://tex.stackexchange.com/questions/8260}
+%    \end{macrocode}
+% \end{macro}
+%
+% Turn on LaTeX3 syntax. 
+%
+%    \begin{macrocode}
 \ExplSyntaxOn
-\DeclareExpandableDocumentCommand{\thelength}{ O{mm} m }
- {
+%    \end{macrocode}
+% \begin{macro}{\rzt@IfNoText}
+%
+% By default TeX length units are printed in points, but we are more interested
+% in millimetre. This macro converst between the two. 
+%
+% Source: \url{https://tex.stackexchange.com/questions/8260}
+%
+%    \begin{macrocode}
+\DeclareExpandableDocumentCommand{\rzt@thelength}{ O{mm} m }
+{
   \fp_to_decimal:n { round ( (#2)/(1#1), 5 ) } #1
- }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@IfNoValueOrEmptyTF}
+%
+% This macro checks if the first argument is empty and executes the second
+% argument if true. If false, the third argument is executed.
+%
+%    \begin{macrocode}
+\DeclareExpandableDocumentCommand{\@IfNoValueOrEmptyTF}%
+  {mmm}{\IfNoValueTF{#1}{#2}{
+    \tl_if_empty:nTF {#1} {#2} {#3}%
+   }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% Turn off LaTeX3 syntax. 
+%
+%    \begin{macrocode}
 \ExplSyntaxOff
-
+%    \end{macrocode}
+%
+% \begin{macro}{\rzt@IfNoText}
+%
+% Writes some information of images in the album to a YAML format file. This 
+% can be used to optimise images to save space and make the PDF smaller. It can
+% also be useful to identify issues.
+%
+% We need to manually indicate spaces to make sure the YAML data is valid.
+% The file is automatically opened at the beginning of the document and closed
+% at the end.
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rzt@reportImage}{m}{%
   \immediate\write\rzt@imagedatafile{\space\space -}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "filename": "#1"}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "width": "\thelength{\rzt@imgWidth}"}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "height": "\thelength{\rzt@imgHeight}"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "filename":\space%
+    "#1"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "width":\space%
+    "\rzt@thelength{\rzt@imgWidth}"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "height":\space%
+    "\rzt@thelength{\rzt@imgHeight}"}
 }
-
-\newsavebox{\rzt@box}
-
-\newcommand{\IfNoText}[3]{%
-\begingroup
-\sbox0{#1}%
-\ifdim\wd0=0pt %
-    {#2}% if #1 is empty
-\else%
-  \ifdim0pt=\dimexpr\ht0+\dp0\relax
-    {#2}
-  \else
-    {#3}% if #1 is not empty
-  \fi
-\fi%
-\endgroup
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\rzt@IfNoText}
+% 
+% This macro checks if the first argument results in an empty text or not. If 
+% true, the second argument is exectuted, otherwise the third argument. 
+%
+% Based on: \url{https://tex.stackexchange.com/questions/44919}.
+%
+%    \begin{macrocode}
+\NewDocumentCommand{\rzt@IfNoText}{mmm}{%
+%    \end{macrocode}
+%
+% |\begingroup|/|\endgroup| keeps the assignment to \box0 local.
+%
+%    \begin{macrocode}
+  \begingroup
+  \sbox0{#1}%
+  \ifdim\wd0=0pt %
+      {#2}% if #1 is empty
+  \else%
+    \ifdim0pt=\dimexpr\ht0+\dp0\relax
+      {#2}
+    \else
+      {#3}% if #1 is not empty
+    \fi
+  \fi%
+  \endgroup
 }
-
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\rzt@boxText}
+%  
+% This macro stores the text passed using the |\rztTextBox| macro.
+%
+%    \begin{macrocode}
 \def\rzt@boxText{}
+%    \end{macrocode}
+%
+% \end{macro}
+%
+% \begin{macro}{\rzt@boxTextOptions}
+%
+% This macro stores all options passed using the |\rztTextBox| macro.
+%    \begin{macrocode}
 \def\rzt@boxTextOptions{}
+%    \end{macrocode}
+%
+% \end{macro}
 %
 % \begin{macro}{\rztTextBox}
 %
@@ -365,7 +456,7 @@ rzt@captionbasicstyle/.style={
 %    \begin{macrocode}
       \sbox{\rzt@box}{#2}
       \def\rzt@nodestyle{rzt@text}%
-      \def\rzt@indexLabel{\IfNoText{\rzt@boxText}{#2}{\rzt@boxText}}%
+      \def\rzt@indexLabel{\rzt@IfNoText{\rzt@boxText}{#2}{\rzt@boxText}}%
       \def\rzt@imageIncl{}%
       \setlength\rzt@imgWidth{0pt}%
       \setlength\rzt@imgHeight{0pt}%
