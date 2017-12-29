@@ -62,10 +62,10 @@
 \newlength\rztKey@height
 \newlength\rzt@imgSize
 % % define size attributes for each image
-\newlength\rzt@imgWidth%
-\newlength\rzt@imgHeight%
-\newlength\rzt@imgFrameWidth%
-\newlength\rzt@imgFrameHeight%
+\newlength\rzt@imgWidth
+\newlength\rzt@imgHeight
+\newlength\rzt@imgFrameWidth
+\newlength\rzt@imgFrameHeight
 
 
 \setlength\rztmargin{1cm}
@@ -75,7 +75,8 @@
 \setlength\rztfront{200mm}
 \setlength\rztback{200mm}
 \setlength\rztinnersep{0.3cm}
-\setlength\rztcoverwidth{2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
+\setlength\rztcoverwidth{%
+  2\rztbleed+\rztback+2\rztgutter+\rztspine+\rztfront}
 \setlength\rztcoverheight{200mm}
 \setlength\rzt@coverxoffset{0pt}
 \setlength\rzt@coveryoffset{0pt}
@@ -84,11 +85,15 @@
   \setlength\onePageHorImageWidth{\rztpaperwidth-2\rztmargin-2\rztbleed}
   \setlength\onePageHorImageHeight{2\onePageHorImageWidth/3}
 
-  \setlength\fourPageHorImageWidth{(\onePageHorImageWidth-\rztinnersep)/2}
-  \setlength\fourPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
+  \setlength\fourPageHorImageWidth{%
+    (\onePageHorImageWidth-\rztinnersep)/2}
+  \setlength\fourPageHorImageHeight{%
+    (\onePageHorImageHeight-\rztinnersep)/2}
 
-  \setlength\sixPageHorImageWidth{(\onePageHorImageWidth-2\rztinnersep)/3}
-  \setlength\sixPageHorImageHeight{(\onePageHorImageHeight-\rztinnersep)/2}
+  \setlength\sixPageHorImageWidth{%
+    (\onePageHorImageWidth-2\rztinnersep)/3}
+  \setlength\sixPageHorImageHeight{
+    (\onePageHorImageHeight-\rztinnersep)/2}
 
   \setlength\twoPageSpreadImageWidth{\rztpaperwidth-\rztmargin}
   \setlength\twoPageSpreadImageHeight{\rztpaperheight-2\rztmargin}
@@ -192,7 +197,6 @@
 %
 %    \end{macrocode}
 %
-%
 % Key-value options for individual images in frames.
 %
 %    \begin{macrocode}
@@ -207,7 +211,8 @@
 \define@boolkey{rzt@image}{onlyheight}[true]{}
 \define@boolkey{rzt@image}{text}[true]{}
 \define@key{rzt@image}{caption}{\def\rztKey@caption{#1}}
-\define@key{rzt@image}{captionsetup}{\tikzset{rzt@captionopt/.style={#1}}}
+\define@key{rzt@image}{captionsetup}{%
+  \tikzset{rzt@captionopt/.style={#1}}}
 %    \end{macrocode}
 %
 % Key-value options for the album setup |\rztalbumsetup|. 
@@ -216,6 +221,8 @@
 \define@boolkey{rzt@global}{pagenumbers}[true]{}
 \define@boolkey{rzt@global}{includegutter}[true]{}
 \define@boolkey{rzt@global}{cover}[true]{}
+\define@boolkey{rzt@global}{rztfile}[true]{}
+\define@boolkey{rzt@global}{usedraft}[true]{}
 \define@key{rzt@global}{spine}{\setlength\rztspine{#1}}
 \define@key{rzt@global}{bleed}{\setlength\rztbleed{#1}}
 \define@key{rzt@global}{gutter}{\setlength\rztgutter{#1}}
@@ -235,8 +242,8 @@
 %
 % \begin{macro}{\rztalbumsetup}
 %
-% This macro allows to set some global album options. A key-value syntax needs 
-% to be used. 
+% This macro allows to set some global album options. A key-value syntax  
+% needs to be used. 
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rztalbumsetup}{m}{
@@ -251,6 +258,8 @@
     height={210mm},%
     width={297mm},%
     cover={false},%
+    rztfile={true},%
+    usedraft={false},%
     #1 % 
   }
   \ifKV@rzt@global@cover
@@ -275,8 +284,8 @@
 %    \end{macrocode}
 % \begin{macro}{\rzt@IfNoText}
 %
-% By default TeX length units are printed in points, but we are more interested
-% in millimetre. This macro converst between the two. 
+% By default TeX length units are printed in points, but we are more 
+% interested in millimetre. This macro converst between the two. 
 %
 % Source: \url{https://tex.stackexchange.com/questions/8260}
 %
@@ -290,8 +299,8 @@
 %
 % \begin{macro}{\@IfNoValueOrEmptyTF}
 %
-% This macro checks if the first argument is empty and executes the second
-% argument if true. If false, the third argument is executed.
+% This macro checks if the first argument is empty and executes the 
+% second argument if true. If false, the third argument is executed.
 %
 %    \begin{macrocode}
 \DeclareExpandableDocumentCommand{\@IfNoValueOrEmptyTF}%
@@ -310,31 +319,32 @@
 %
 % \begin{macro}{\rzt@IfNoText}
 %
-% Writes some information of images in the album to a YAML format file. This 
-% can be used to optimise images to save space and make the PDF smaller. It can
-% also be useful to identify issues.
+% Writes some information of images in the album to a YAML format file. 
+% This can be used to optimise images to save space and make the PDF 
+% smaller. It can also be useful to identify issues.
 %
-% We need to manually indicate spaces to make sure the YAML data is valid.
-% The file is automatically opened at the beginning of the document and closed
-% at the end.
+% We need to manually indicate spaces to make sure the YAML data is 
+% valid. The file is automatically opened at the beginning of the 
+% document and closed at the end.
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rzt@reportImage}{m}{%
   \immediate\write\rzt@imagedatafile{\space\space -}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "filename":\space%
-    "#1"}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "width":\space%
-    "\rzt@thelength{\rzt@imgWidth}"}
-  \immediate\write\rzt@imagedatafile{\space\space\space\space "height":\space%
-    "\rzt@thelength{\rzt@imgHeight}"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space %
+    "filename":\space "#1"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "width":%
+    \space "\rzt@thelength{\rzt@imgWidth}"}
+  \immediate\write\rzt@imagedatafile{\space\space\space\space "height":%
+    \space "\rzt@thelength{\rzt@imgHeight}"}
 }
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\rzt@IfNoText}
 % 
-% This macro checks if the first argument results in an empty text or not. If 
-% true, the second argument is exectuted, otherwise the third argument. 
+% This macro checks if the first argument results in an empty text or 
+% not. If true, the second argument is exectuted, otherwise the third 
+% argument. 
 %
 % Based on: \url{https://tex.stackexchange.com/questions/44919}.
 %
@@ -388,8 +398,8 @@
 \NewDocumentCommand{\rztTextBox}{O{} m}{% 
 %    \end{macrocode}
 %
-% These macros need to be typeset in the global namespace, since they are used
-% to store the arguments of |\rztTextBox|. 
+% These macros need to be typeset in the global namespace, since they 
+% are used to store the arguments of |\rztTextBox|. 
 %
 %    \begin{macrocode}
   \gdef\rzt@boxText{#2}%
@@ -400,16 +410,16 @@
 %
 % \begin{macro}{\rzt@resetTextBox}
 %
-% This macro is used to undefine the macros set by the |\rztTextBox|. Otherwise,
-% issues might arise where information from previous text boxes is leaked to the 
-% current page.
+% This macro is used to undefine the macros set by the |\rztTextBox|. 
+% Otherwise, issues might arise where information from previous text 
+% boxes is leaked to the current page.
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rzt@resetTextBox}{}{
 %    \end{macrocode}
 %
-% These macros need to be typeset in the global namespace, since they are used
-% to store the arguments of |\rztTextBox|. 
+% These macros need to be typeset in the global namespace, since they 
+% are used to store the arguments of |\rztTextBox|. 
 %
 %    \begin{macrocode}
   \gdef\rzt@boxText{}%
@@ -421,17 +431,17 @@
 % 
 % \begin{macro}{\rzt@basicParseDefinitions}
 %
-% Helper macro that parses the node definitions and defines/overwrites all the
-% required macros for |\rzt@basicNodeDefinition|. In time, these two macros will
-% be merged to make it easier to implement new layouts.
+% Helper macro that parses the node definitions and defines/overwrites 
+% all the required macros for |\rzt@basicNodeDefinition|. In time, these
+% two macros will be merged to make it easier to implement new layouts.
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rzt@basicParseDefinitions}{mm}{%
 %    \end{macrocode}
 %    
-% If the required argument is empty, we draw the frame using the |rzt@noImage|
-% style to indicate where the image should be. All other options are deactivated
-% and lengths are set to zero. 
+% If the required argument is empty, we draw the frame using the 
+% |rzt@noImage| style to indicate where the image should be. All other 
+% options are deactivated and lengths are set to zero. 
 %
 %    \begin{macrocode}
   \@IfNoValueOrEmptyTF{#2}{%
@@ -444,8 +454,8 @@
   }{%
 %    \end{macrocode}
 %
-% If the argument is not empty, we calculate the image size (depending on which
-% dimension needs to be used). 
+% If the argument is not empty, we calculate the image size (depending 
+% on which dimension needs to be used). 
 %
 %    \begin{macrocode}
     \ifKV@rzt@image@onlyheight% 
@@ -455,21 +465,23 @@
     \fi%
 %    \end{macrocode}
 % 
-% If text should be inserted in place of text, the macros are set over here.
+% If text should be inserted in place of text, the macros are set over 
+% here.
 %
 %    \begin{macrocode}
     \ifKV@rzt@image@text%
 %    \end{macrocode}
 %    
-% We execute the second argument here. This is needed if a macro is parsed,
-% since this macro needs to be executed. This is savely done inside a box which 
-% does not end up in the document (if no macro is present). Then, we define the 
-% necessary macros to typeset the text. 
+% We execute the second argument here. This is needed if a macro is 
+% parsed, since this macro needs to be executed. This is savely done 
+% inside a box which does not end up in the document (if no macro is 
+% present). Then, we define the necessary macros to typeset the text. 
 %
 %    \begin{macrocode}
       \sbox{\rzt@box}{#2}
       \def\rzt@nodestyle{rzt@text}%
-      \def\rzt@indexLabel{\rzt@IfNoText{\rzt@boxText}{#2}{\rzt@boxText}}%
+      \def\rzt@indexLabel{\rzt@IfNoText{\rzt@boxText}{#2}{%
+        \rzt@boxText}}%
       \def\rzt@imageIncl{}%
       \setlength\rzt@imgWidth{0pt}%
       \setlength\rzt@imgHeight{0pt}%
@@ -503,15 +515,20 @@
       \def\rzt@indexLabel{\Huge\rztKey@note}%
 %    \end{macrocode}
 %
-% Save image height and width. This is useful to crop the images to make the 
-% final PDF smaller without loosing quality.
+% Save image height and width. This is useful to crop the images to make 
+% the final PDF smaller without loosing quality. This is optional, but 
+% activated by default.
 %
 %    \begin{macrocode}
-      \settowidth\rzt@imgWidth{%
-        \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
-      \settoheight\rzt@imgHeight{%
-        \expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}}%
-      \rzt@reportImage{#2}
+      \ifKV@rzt@global@rztfile
+        \settowidth\rzt@imgWidth{%
+          \expandafter\includegraphics\expandafter[%
+            \rzt@imageOptions]{#2\ifKV@rzt@global@usedraft -draft\fi}}%
+        \settoheight\rzt@imgHeight{%
+          \expandafter\includegraphics\expandafter[%
+            \rzt@imageOptions]{#2\ifKV@rzt@global@usedraft -draft\fi}}%
+        \rzt@reportImage{#2}
+      \fi
 %    \end{macrocode}
 %
 % Define the actual image.
@@ -526,11 +543,13 @@
           (rzt image)
 %    \end{macrocode}
 %
-% Two expandafters are needed to make sure that the optional arguments passed to
-% |\includegraphics| are full expanded, since this is required.
+% Two expandafters are needed to make sure that the optional arguments 
+% passed to |\includegraphics| are full expanded, since this is 
+% required.
 %
 %    \begin{macrocode}
-          {\expandafter\includegraphics\expandafter[\rzt@imageOptions]{#2}};}%
+          {\expandafter\includegraphics\expandafter[%
+            \rzt@imageOptions]{#2\ifKV@rzt@global@usedraft -draft\fi}};}%
     \fi%
   }%
 }
@@ -541,72 +560,73 @@
 %
 % The macro typsets the image in the image frame. It has four required
 % arguments: |{|\meta{width}|}{|\meta{height}|}{|\meta{xoffset}|}{|%
-% \meta{yoffset}|}|. The optional arguments and actual image we defined in 
-% |\rzt@basicParseDefinitions| are used here to create the final result.
+% \meta{yoffset}|}|. The optional arguments and actual image we defined 
+% in |\rzt@basicParseDefinitions| are used here to create the final 
+% result.
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rzt@basicNodeDefinition}{mm mm}{%
-% \end{macrocode}
+%    \end{macrocode}
 %
-% Define the target image width and height. This is used internally, to typset 
-% the images.
+% Define the target image width and height. This is used internally, to
+% typset the images.
 %
-% \begin{macrocode}
+%    \begin{macrocode}
   \setlength\rzt@imgFrameWidth{#1}%
   \setlength\rzt@imgFrameHeight{#2}%
-% \end{macrocode}
+%    \end{macrocode}
 %
 % Here, we typset the actual image. 
 %
-% \begin{macrocode}
-  \node[
+%    \begin{macrocode}
+  \node[%
     rzt@basic,%
     minimum width=#1,%
     minimum height=#2,%
-% \end{macrocode}
+%    \end{macrocode}
 %
-% Depending on the content of the node, a different style is applied. This is 
-% pre-set by the |\rzt@basicParseDefinitions| macro.
+% Depending on the content of the node, a different style is applied. 
+% This is pre-set by the |\rzt@basicParseDefinitions| macro.
 %
-% \begin{macrocode}
+%    \begin{macrocode}
     \rzt@nodestyle,%
     anchor=center,%
-% \end{macrocode}
+%    \end{macrocode}
 %
-% Include the actual image. By using a |path picture|, we avoid overflow issues. 
-% The image will only be visible in the predefined frame.
+% Include the actual image. By using a |path picture|, we avoid overflow
+% issues. The image will only be visible in the predefined frame.
 %
-% \begin{macrocode}
+%    \begin{macrocode}
     path picture={%
       \rzt@imageIncl%
     },%
-% \end{macrocode}
+%    \end{macrocode}
 %
-% If a textbox is used, additional options are inserted here. Next, the final
-% coordinate is calculated, the label is set and the text is included (if 
-% needed).
+% If a textbox is used, additional options are inserted here. Next, the
+% final coordinate is calculated, the label is set and the text is 
+% included (if needed).
 %
-% \begin{macrocode}
+%    \begin{macrocode}
     \rzt@boxTextOptions,%
     ] at ($(current page.center) %
           +(#3,#4)
           +(\rzt@coverxoffset,\rzt@coveryoffset)$)
     (rzt wrapper)
     {\rzt@indexLabel};
-% \end{macrocode}
+%    \end{macrocode}
 %
 % If a caption is set and an image is included, we add this caption. 
 %
-% \begin{macrocode}
+%    \begin{macrocode}
   \ifrzt@imageIncluded
     \node[rzt@captionbasicstyle,rzt@captionopt] {\rztKey@caption};
   \fi
-% \end{macrocode}
+%    \end{macrocode}
 %
-% This text box reset is needed to avoid information leakage from this frame to
-% subsequent frames.
+% This text box reset is needed to avoid information leakage from this
+% frame to subsequent frames.
 %
-% \begin{macrocode}
+%    \begin{macrocode}
   \rzt@resetTextBox
 }
 %    \end{macrocode}
@@ -614,15 +634,16 @@
 %
 % \begin{macro}{\rztCover}
 %
-% Defines the cover. This is made op of three parts: back, spine and cover. Some
-% optional arguments are possible. See the command reference for details. 
+% Defines the cover. This is made op of three parts: back, spine and 
+% cover. Some optional arguments are possible. See the command reference
+% for details. 
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rztCover}{O{} mmm}{%
 %    \end{macrocode}
 %
-% Process all optional arguments. First provide default values, then process the
-% user defined values. 
+% Process all optional arguments. First provide default values, then 
+% process the user defined values. 
 %
 %    \begin{macrocode}
   \setkeys{rzt@cover}{%
@@ -642,8 +663,8 @@
   every node/.style={inner sep={0pt}, outer sep={0pt}}]
 %    \end{macrocode}
 %
-% Depending on the |includegutter| option, we set the width and hieight of the 
-% current page correctly. 
+% Depending on the |includegutter| option, we set the width and hieight 
+% of the current page correctly. 
 %
 %    \begin{macrocode}
   \ifKV@rzt@global@includegutter
@@ -655,8 +676,9 @@
   \fi
 %    \end{macrocode}
 %
-% Calling this macro will redefine lengths such as |\onePageHorImageWidth| and 
-% |onePageHorImageHeight|, because the page dimensions have changed.
+% Calling this macro will redefine lengths such as 
+% |\onePageHorImageWidth| and |\onePageHorImageHeight|, because the page
+% dimensions have changed.
 %
 %    \begin{macrocode}
   \rzt@setImageDimensions
@@ -675,8 +697,9 @@
   \fi
 %    \end{macrocode}
 %
-% Calling this macro will redefine lengths such as |\onePageHorImageWidth| and 
-% |onePageHorImageHeight|, because the page dimensions have changed.
+% Calling this macro will redefine lengths such as 
+% |\onePageHorImageWidth| and |onePageHorImageHeight|, because the page 
+% dimensions have changed.
 %
 %    \begin{macrocode}
   \rzt@setImageDimensions
@@ -724,8 +747,9 @@
   #4
 %    \end{macrocode}
 %
-% If the |showcoverframe| is activated, we need to draw the different margins
-% and safe zones. These are drawn over here in different colours.
+% If the |showcoverframe| is activated, we need to draw the different 
+% margins and safe zones. These are drawn over here in different 
+% colours.
 %
 %    \begin{macrocode}
   \ifKV@rzt@cover@showcoverframe
@@ -775,7 +799,9 @@
 %    \begin{macrocode}
   \node[rzt@coverspinetitle,white] 
     at (current page.center) 
-    {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont \rzt@coverspinetitle };
+    {\fontsize{0.75\rztspine}{0.85\rztspine}\selectfont %
+     \rzt@coverspinetitle %
+    };
 %    \end{macrocode}
 %
 % Add the title text to the front page.
@@ -791,8 +817,8 @@
 %
 % \begin{macro}{\rztBackground}
 % 
-% The background colour macro. This macro can be used to add a colour or similar
-% to the background. It draws this over the entire page. 
+% The background colour macro. This macro can be used to add a colour or 
+% similar to the background. It draws this over the entire page. 
 %
 %    \begin{macrocode}
 \NewDocumentCommand{\rztBackground}{m}{
