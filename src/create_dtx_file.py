@@ -36,7 +36,7 @@ if __name__ == "__main__":
       if frame_idx % 2 == 1:
         source_file += "% \clearpage\n"
 
-    source_file += "% \StopEventually{}\n"
+    source_file += "% \StopEventually{\PrintChanges\PrintIndex}\n"
     source_file += "%\n"
     source_file += "% \section{Implementation}\n"
     source_file += "%\n"
