@@ -1,5 +1,5 @@
 install:
- - source ./support/texlive_install.sh
+ - source ./support/install_texlive.sh
 cache:
   directories:
     - /tmp/texlive
