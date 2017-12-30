@@ -16,7 +16,7 @@
   -
     width: "\\twoPageSpreadImageWidth"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "-\\rztmargin"
+    x_offset: "-\\paperwidth/2"
     y_offset: "0"
     caption:
       align: "right"
@@ -27,7 +27,7 @@
   -
     width: "\\twoPageSpreadImageWidth"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "\\rztmargin"
+    x_offset: "\\paperwidth/2"
     y_offset: "0"
     caption:
       align: "right"

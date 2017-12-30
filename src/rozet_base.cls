@@ -95,7 +95,7 @@
   \setlength\sixPageHorImageHeight{
     (\onePageHorImageHeight-\rztinnersep)/2}
 
-  \setlength\twoPageSpreadImageWidth{\rztpaperwidth-\rztmargin}
+  \setlength\twoPageSpreadImageWidth{2\rztpaperwidth-2\rztmargin}
   \setlength\twoPageSpreadImageHeight{\rztpaperheight-2\rztmargin}
 }
 
