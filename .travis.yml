@@ -16,8 +16,8 @@ script:
   - mkdir build
   - cd src
   - python3 create_dtx_file.py
+  - travis_wait 5 pdflatex -output-directory ../build ./rozet.dtx
+  - travis_wait 5 pdflatex -output-directory ../build ./rozet.ins
   - cd ..
-  - travis_wait 5 pdflatex -output-directory build ./src/rozet.dtx
-  - travis_wait 5 pdflatex -output-directory build ./src/rozet.ins
   #- source ./examples/germany/download_files.sh
   #- travis_wait 3 pdflatex -output-directory _build ./src/germany/germany.tex
