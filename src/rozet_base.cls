@@ -756,7 +756,7 @@
 % colours.
 %
 %    \begin{macrocode}
-  \ifKV@rzt@cover@showcoverframe
+  \ifKV@rzt@cover@showframe
 %    \end{macrocode}
 %
 % Draw the book spine.
