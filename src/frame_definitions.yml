@@ -16,7 +16,7 @@
   -
     width: "\\twoPageSpreadImageWidth"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "-\\paperwidth/2"
+    x_offset: "-\\rztpaperwidth/2"
     y_offset: "0"
     caption:
       align: "right"
@@ -27,7 +27,52 @@
   -
     width: "\\twoPageSpreadImageWidth"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "\\paperwidth/2"
+    xshift: "0"
+    yshift: "0"
+    x_offset: "0"
+    y_offset: "0"
+    caption:
+      align: "right"
+      position: "below"
+-
+  name: "\\rztCoverSpreadRight"
+  images:
+  -
+    width: "\\rztpaperwidth"
+    height: "\\rztpaperheight"
+    image_width: "\\paperwidth"
+    image_height: "\\paperheight"
+    xshift: "-0.5\\rztspine-0.5\\rztgutter-0.5\\rztfront-0.5\\rztbleed"
+    yshift: "0"
+    x_offset: "0"
+    y_offset: "0"
+    caption:
+      align: "right"
+      position: "below"
+-
+  name: "\\rztCoverSpreadCenter"
+  images:
+  -
+    width: "\\rztpaperwidth"
+    height: "\\rztpaperheight"
+    image_width: "\\paperwidth"
+    image_height: "\\paperheight"
+    x_offset: "0"
+    y_offset: "0"
+    caption:
+      align: "center"
+      position: "below"
+-
+  name: "\\rztCoverSpreadLeft"
+  images:
+  -
+    width: "\\rztpaperwidth"
+    height: "\\rztpaperheight"
+    image_width: "\\paperwidth"
+    image_height: "\\paperheight"
+    xshift: "0.5\\rztspine+0.5\\rztgutter+0.5\\rztback+0.5\\rztbleed"
+    yshift: "0"
+    x_offset: "0"
     y_offset: "0"
     caption:
       align: "right"
