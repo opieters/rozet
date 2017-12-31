@@ -171,7 +171,7 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\NewDocumentCommand{\rztFirstAlbumPage}{m}{%
+\NewDocumentCommand{\rztFirstAlbumPage}{+m}{%
   \begin{tikzpicture}[remember picture,overlay]
     #1
   \end{tikzpicture}
@@ -179,14 +179,14 @@
 %    \end{macrocode}
 
 %    \begin{macrocode}
-\NewDocumentCommand{\rztLastAlbumPage}{m}{%
+\NewDocumentCommand{\rztLastAlbumPage}{+m}{%
   \newpage
   \rztFirstAlbumPage{#1}%
 }
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\NewDocumentCommand{\rztAlbumPage}{mm}{%
+\NewDocumentCommand{\rztAlbumPage}{+m +m}{%
   \newpage
   \begin{tikzpicture}[remember picture,overlay]
     #1
