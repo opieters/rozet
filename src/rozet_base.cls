@@ -751,7 +751,7 @@
   #4
 %    \end{macrocode}
 %
-% If the |showcoverframe| is activated, we need to draw the different 
+% If the |showframe| is activated, we need to draw the different 
 % margins and safe zones. These are drawn over here in different 
 % colours.
 %
