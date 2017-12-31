@@ -95,8 +95,10 @@
   \setlength\sixPageHorImageHeight{
     (\onePageHorImageHeight-\rztinnersep)/2}
 
-  \setlength\twoPageSpreadImageWidth{2\rztpaperwidth-2\rztmargin}
-  \setlength\twoPageSpreadImageHeight{\rztpaperheight-2\rztmargin}
+  \setlength\twoPageSpreadImageWidth{%
+    2\rztpaperwidth-2\rztmargin-2\rztbleed}
+  \setlength\twoPageSpreadImageHeight{%
+    \rztpaperheight-2\rztmargin-2\rztbleed}
 }
 
 \AtBeginDocument{%

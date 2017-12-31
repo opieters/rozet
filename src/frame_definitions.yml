@@ -18,7 +18,7 @@
     height: "\\twoPageSpreadImageHeight"
     image_width: "\\twoPageSpreadImageWidth"
     image_height: "\\twoPageSpreadImageHeight"
-    xshift: "\\twoPageSpreadImageWidth/4"
+    xshift: "-\\twoPageSpreadImageWidth/4"
     yshift: "0"
     x_offset: "-\\rztmargin/2"
     y_offset: "0"
