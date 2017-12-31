@@ -14,9 +14,13 @@
   name: "\\rztTwoPageSpreadRight"
   images:
   -
-    width: "\\twoPageSpreadImageWidth"
+    width: "\\twoPageSpreadImageWidth/2"
     height: "\\twoPageSpreadImageHeight"
-    x_offset: "-\\rztpaperwidth/2"
+    image_width: "\\twoPageSpreadImageWidth"
+    image_height: "\\twoPageSpreadImageHeight"
+    xshift: "\\twoPageSpreadImageWidth/4"
+    yshift: "0"
+    x_offset: "-\\rztmargin/2"
     y_offset: "0"
     caption:
       align: "right"
@@ -25,11 +29,13 @@
   name: "\\rztTwoPageSpreadLeft"
   images:
   -
-    width: "\\twoPageSpreadImageWidth"
+    width: "\\twoPageSpreadImageWidth/2"
     height: "\\twoPageSpreadImageHeight"
-    xshift: "0"
+    image_height: "\\twoPageSpreadImageHeight"
+    image_width: "\\twoPageSpreadImageWidth"
+    xshift: "\\twoPageSpreadImageWidth/4"
     yshift: "0"
-    x_offset: "0"
+    x_offset: "\\rztmargin/2"
     y_offset: "0"
     caption:
       align: "right"

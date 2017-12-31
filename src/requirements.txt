@@ -1,4 +1,3 @@
-rozet
 pyyaml>=3.0
 pillow>=4.0
 
