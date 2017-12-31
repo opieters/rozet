@@ -80,15 +80,18 @@ if __name__ == "__main__":
                 command += "  \\setkeys{rzt@image}{%%\n"
                 command += "    xoffset={0},\n"
                 command += "    yoffset={0},\n"
+                command += "    xshift={%s},\n" % (images[j]["xshift"] if "xshift" in images[j] else "0")
+                command += "    yshift={%s},\n" % (images[j]["yshift"] if "yshift" in images[j] else "0")
                 command += "    onlywidth={true},\n"
                 command += "    onlyheight={false},\n"
                 command += "    zoom={1},\n"
                 command += "    note={},\n"
-                command += "    width={%s},\n" % images[j]["width"]
-                command += "    height={%s},\n" % images[j]["height"]
+                command += "    width={%s},\n" % (images[j]["image_width"] if "image_width" in images[j] else images[j]["width"])
+                command += "    height={%s},\n" % (images[j]["image_height"] if "image_height" in images[j] else images[j]["height"])
                 command += "    text={false},%\n"
                 command += "    caption={},%\n"
-                command += "    captionsetup={},%\n"
+                command += "    showframe=false,%\n"
+                command += "    captionsetup={%s=0.1cm of rzt wrapper,align=%s},%%\n" % (images[j]["caption"]["position"], images[j]["caption"]["align"])
                 command += "    #%d}%%\n" % (2*j+1)
 
                 command += "  \\rzt@basicParseDefinitions{%s}{#%d}%%\n" % (chr(ord("A")+j+4*i), 2*j+2)
