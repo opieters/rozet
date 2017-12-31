@@ -6,5 +6,8 @@ cache:
     - $HOME/.texlive
 script:
   # Prefix command with travis_wait x so it times out after 3 mins
+  - mkdir build
+  - travis_wait 5 pdflatex -output-directory _build ./src/rozet.dtx
+  - travis_wait 5 pdflatex -output-directory _build ./src/rozet.ins
   #- source ./examples/germany/download_files.sh
   #- travis_wait 3 pdflatex -output-directory _build ./src/germany/germany.tex
