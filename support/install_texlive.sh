@@ -22,13 +22,13 @@ tlmgr install xetex
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
 tlmgr install   \
+  l3kernel \
+  l3packages \
   listings \
   pgf \
   tools \
   graphics \
-  l3­pack­ages \
   xkeyval \
-  l3k­er­nel \
   hyperref \
   xcolor \
   cleveref
