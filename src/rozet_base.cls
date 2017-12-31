@@ -203,6 +203,8 @@
 \define@key{rzt@image}{note}{\def\rztKey@note{#1}}
 \define@key{rzt@image}{xoffset}{\def\rztKey@xoffset{#1}}
 \define@key{rzt@image}{yoffset}{\def\rztKey@yoffset{#1}}
+\define@key{rzt@image}{xshift}{\def\rztKey@xshift{#1}}
+\define@key{rzt@image}{yshift}{\def\rztKey@yshift{#1}}
 \define@key{rzt@image}{width}{\setlength\rztKey@width{#1}}
 \define@key{rzt@image}{height}{\setlength\rztKey@height{#1}}
 \define@key{rzt@image}{zoom}{\def\rztKey@zoom{#1}}
@@ -537,9 +539,11 @@
       \def\rzt@imageIncl{%
         \node at ($(path picture bounding box.center)+%
           (0.5*\rzt@imgWidth*\rztKey@xoffset %
-           - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset,%
+           - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset %
+           + \rztKey@xshift,%
           0.5*\rzt@imgHeight*\rztKey@yoffset %
-           - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset)$) %
+           - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset %
+           + \rztKey@yshift)$) %
           (rzt image)
 %    \end{macrocode}
 %
