@@ -30,6 +30,7 @@ tlmgr install   \
   xkeyval \
   l3k­er­nel \
   hyperref \
+  xcolor \
   cleveref
 
 # Keep no backups (not required, simply makes cache bigger)
