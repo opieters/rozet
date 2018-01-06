@@ -31,7 +31,8 @@ tlmgr install   \
   xkeyval \
   hyperref \
   xcolor \
-  cleveref
+  cleveref \
+  etoolbox
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0

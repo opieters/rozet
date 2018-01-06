@@ -31,6 +31,7 @@
 \usetikzlibrary{calc,positioning,backgrounds}
 
 \RequirePackage{xparse}
+\RequirePackage{etoolbox}
 \RequirePackage{xkeyval}
 
 \newif\ifrzt@imageIncluded
@@ -365,16 +366,7 @@
 %
 %    \begin{macrocode}
   \begingroup
-  \sbox0{#1}%
-  \ifdim\wd0=0pt %
-      {#2}% if #1 is empty
-  \else%
-    \ifdim0pt=\dimexpr\ht0+\dp0\relax
-      {#2}
-    \else
-      {#3}% if #1 is not empty
-    \fi
-  \fi%
+  \ifdefempty{#1}{#2}{#3}
   \endgroup
 }
 %    \end{macrocode}
