@@ -30,8 +30,8 @@
 
 \usetikzlibrary{calc,positioning,backgrounds}
 
-\RequirePackage{xparse}
 \RequirePackage{etoolbox}
+\RequirePackage{xparse}
 \RequirePackage{xkeyval}
 
 \newif\ifrzt@imageIncluded
@@ -292,7 +292,7 @@
 %    \begin{macrocode}
 \ExplSyntaxOn
 %    \end{macrocode}
-% \begin{macro}{\rzt@IfNoText}
+% \begin{macro}{\rzt@thelength}
 %
 % By default TeX length units are printed in points, but we are more 
 % interested in millimetre. This macro converst between the two. 
@@ -327,7 +327,7 @@
 \ExplSyntaxOff
 %    \end{macrocode}
 %
-% \begin{macro}{\rzt@IfNoText}
+% \begin{macro}{\rzt@reportImage}
 %
 % Writes some information of images in the album to a YAML format file. 
 % This can be used to optimise images to save space and make the PDF 
@@ -350,27 +350,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\rzt@IfNoText}
-% 
-% This macro checks if the first argument results in an empty text or 
-% not. If true, the second argument is exectuted, otherwise the third 
-% argument. 
-%
-% Based on: \url{https://tex.stackexchange.com/questions/44919}.
-%
-%    \begin{macrocode}
-\NewDocumentCommand{\rzt@IfNoText}{mmm}{%
-%    \end{macrocode}
-%
-% |\begingroup|/|\endgroup| keeps the assignment to \box0 local.
-%
-%    \begin{macrocode}
-  \begingroup
-  \ifdefempty{#1}{#2}{#3}
-  \endgroup
-}
-%    \end{macrocode}
-% \end{macro}
 %
 % \begin{macro}{\rzt@boxText}
 %  
@@ -481,7 +460,7 @@
 %    \begin{macrocode}
       \sbox{\rzt@box}{#2}
       \def\rzt@nodestyle{rzt@text}%
-      \def\rzt@indexLabel{\rzt@IfNoText{\rzt@boxText}{#2}{%
+      \def\rzt@indexLabel{\ifdefempty{\rzt@boxText}{#2}{%
         \rzt@boxText}}%
       \def\rzt@imageIncl{}%
       \setlength\rzt@imgWidth{0pt}%
@@ -513,10 +492,10 @@
         %
       }%
       \def\rzt@nodestyle{rzt@image}%
-      \rzt@IfNoText{\rztKey@note}{%
-        \def\rzt@indexLabel{}%
+      \ifdefempty{\rztKey@note}{%
+        \gdef\rzt@indexLabel{}%
       }{%
-        \def\rzt@indexLabel{\Huge\rztKey@note}%
+        \gdef\rzt@indexLabel{\Huge\rztKey@note}%
         \stepcounter{rzt@notes}
       }
 %    \end{macrocode}
