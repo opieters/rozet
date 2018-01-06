@@ -20,7 +20,7 @@
     image_height: "\\twoPageSpreadImageHeight"
     xshift: "-\\twoPageSpreadImageWidth/4"
     yshift: "0"
-    x_offset: "-\\rztmargin/2"
+    x_offset: "-\\rztmargin/2-\\rztbleed/2"
     y_offset: "0"
     caption:
       align: "right"
@@ -35,7 +35,7 @@
     image_width: "\\twoPageSpreadImageWidth"
     xshift: "\\twoPageSpreadImageWidth/4"
     yshift: "0"
-    x_offset: "\\rztmargin/2"
+    x_offset: "\\rztmargin/2+\\rztbleed/2"
     y_offset: "0"
     caption:
       align: "right"
