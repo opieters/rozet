@@ -34,6 +34,9 @@
 \RequirePackage{xkeyval}
 
 \newif\ifrzt@imageIncluded
+\newif\ifrzt@print % TODO: make this an option that removes all possible issues due to notes and showframe
+
+\newcounter{rzt@notes}
 
 \newlength\rztmargin
 \newlength\rztbleed
@@ -121,6 +124,11 @@
 
 %    \begin{macrocode}
 \AtEndDocument{%
+  \ifnum\value{rzt@notes}>0
+    \ClassWarningNoLine{rozet}{\the\value{rzt@notes} notes have been %
+    defined! Make sure te remove these before printing or turn on the %
+    print option of the class.}
+  \fi
   \immediate\closeout\rzt@imagedatafile
 }
 %    \end{macrocode}
@@ -129,6 +137,7 @@
 \tikzset{%
   rzt@basic/.style={%
     rectangle,
+    draw=none, %TODO!!! Check if this is placed correctly! % this removes the border :)
     },
   rzt@noImage/.style={%
     rzt@basic,
@@ -162,10 +171,6 @@
   rzt@captionbasicstyle/.style={
     inner sep=0pt,
     outer sep=0pt,
-    align=center,
-    text width=\rzt@imgSize,
-    above=0cm of rzt image.north,
-    anchor=south,
   },
 }
 %    \end{macrocode}
@@ -516,7 +521,12 @@
         %
       }%
       \def\rzt@nodestyle{rzt@image}%
-      \def\rzt@indexLabel{\Huge\rztKey@note}%
+      \rzt@IfNoText{\rztKey@note}{%
+        \def\rzt@indexLabel{}%
+      }{%
+        \def\rzt@indexLabel{\Huge\rztKey@note}%
+        \stepcounter{rzt@notes}
+      }
 %    \end{macrocode}
 %
 % Save image height and width. This is useful to crop the images to make 
@@ -625,7 +635,7 @@
 %
 %    \begin{macrocode}
   \ifrzt@imageIncluded
-    \node[rzt@captionbasicstyle,rzt@captionopt] {\rztKey@caption};
+    \node[rzt@captionbasicstyle,text width=#1,rzt@captionopt] {\rztKey@caption};
   \fi
 %    \end{macrocode}
 %
