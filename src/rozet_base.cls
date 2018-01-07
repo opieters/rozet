@@ -15,43 +15,173 @@
 % Contact the maintainer at: me (at) olivierpieters (dot) be.
 %
 %    \begin{macrocode}
-\RequirePackage{kvoptions}
-\ProcessKeyvalOptions*
 \DeclareOption*{%
   \PassOptionsToClass{\CurrentOption}{article}%
 }
 \ProcessOptions\relax
+%    \end{macrocode}
+%
+% Load the base class.
+%
+%    \begin{macrocode}
 \LoadClass{article}
-
+%    \end{macrocode}
+%
+% More advanced length calculations.
+%
+%    \begin{macrocode}
 \RequirePackage{calc}
-%\RequirePackage{geometry}
 \RequirePackage{graphics}
+%    \end{macrocode}
+%
+% Needed for to draw the images.
+%
+%    \begin{macrocode}
 \RequirePackage{tikz}
-
 \usetikzlibrary{calc,positioning,backgrounds}
-
+%    \end{macrocode}
+%
+% Needed for because of |\ifdefempty|
+%
+%    \begin{macrocode}
 \RequirePackage{etoolbox}
+%    \end{macrocode}
+%
+% Needed to define macros.
+%
+%    \begin{macrocode}
 \RequirePackage{xparse}
+%    \end{macrocode}
+%
+% Needed for key-value structures.
+%
+%    \begin{macrocode}
 \RequirePackage{xkeyval}
-
+%    \end{macrocode}
+%
+% Keeps track of data type in image node, since this can be either an
+% image or text. 
+%
+%    \begin{macrocode}
 \newif\ifrzt@imageIncluded
-\newif\ifrzt@print % TODO: make this an option that removes all possible issues due to notes and showframe
-
+%    \end{macrocode}
+%
+% TODO: make this an option that removes all possible issues due to 
+% notes and showframe
+%
+%    \begin{macrocode}
+\newif\ifrzt@print
+%    \end{macrocode}
+%
+% A |\newpage| is not needed for the first page, so this macro stores 
+% whether we still need to typeset the first page or not.  
+%
+%    \begin{macrocode}
+\newif\ifrzt@firstpage
+\rzt@firstpagetrue
+%    \end{macrocode}
+%
+% Counter used to check if notes have been defined ot not. These notes 
+% should be removed before the final printing.  
+%
+%    \begin{macrocode}
 \newcounter{rzt@notes}
-
+%    \end{macrocode}
+%
+% Define all lengths used throughout the image class. Some lengths
+% overlap with existig lengths in \LaTeX, but it is preferred to use 
+% custom lengths than artificaially manipulate existing lengths to 
+% avoid conflicts with other packages. 
+%
+% Length from the bleedline to the image. Useful to create a white 
+% border. If no border is desired, this length should be set to 
+% |-\rztbleed|, since very small white lines may occur otherwise. Use 
+% the relevant package options to achieve a borderless album.
+%    \begin{macrocode}
 \newlength\rztmargin
+%    \end{macrocode}
+% 
+% Size of the image bleed. 
+%
+%    \begin{macrocode}
 \newlength\rztbleed
+%    \end{macrocode}
+%
+% Width of the spine of the book. This length is only needed for the 
+% cover. Does not include gutter size!
+%
+%    \begin{macrocode}
 \newlength\rztspine
+%    \end{macrocode}
+%
+% Size of the gutter (place where book folds when it opens). 
+%
+%    \begin{macrocode}
 \newlength\rztgutter
+%    \end{macrocode}
+% 
+% Width of the front cover. 
+% 
+%    \begin{macrocode}
 \newlength\rztfront
+%    \end{macrocode}
+%
+% Width of the back cover. 
+%
+%    \begin{macrocode}
 \newlength\rztback
+%    \end{macrocode}
+%
+% Separation between images on a single album page. 
+%
+%    \begin{macrocode}
 \newlength\rztinnersep
+%    \end{macrocode}
+%
+% Width of the entire cover. This should not be manipulated by the user!
+%
+%    \begin{macrocode}
 \newlength\rztcoverwidth
+%    \end{macrocode}
+%
+% Height of the entire cover. This should not be manipulated by the 
+% user!
+%
+%    \begin{macrocode}
 \newlength\rztcoverheight
+%    \end{macrocode}
+%
+% Width of the current page. Should only be expanded when used, but
+% before, since this macro is manipulated between the different 
+% arguments of |\rztCover|. Should not be manipulated by the user!
+%
+%    \begin{macrocode}
 \newlength\rztpaperwidth
+%    \end{macrocode}
+%
+% Height of the current page. Should only be expanded when used, but
+% before, since this macro is manipulated between the different 
+% arguments of |\rztCover|. Should not be manipulated by the user!
+%
+%    \begin{macrocode}
 \newlength\rztpaperheight
+%    \end{macrocode}
+%
+% Width of an album page \emph{without bleed}.
+%
+%    \begin{macrocode}
 \newlength\rztwidth
+%    \end{macrocode}
+%
+% Height of an album page \emph{without bleed}.
+%
+%    \begin{macrocode}
 \newlength\rztheight
+%    \end{macrocode}
+%
+% Lengths used to define the image layouts.
+%
+%    \begin{macrocode}
 \newlength\onePageHorImageWidth
 \newlength\onePageHorImageHeight
 \newlength\fourPageHorImageWidth
@@ -60,18 +190,52 @@
 \newlength\sixPageHorImageHeight
 \newlength\twoPageSpreadImageWidth  
 \newlength\twoPageSpreadImageHeight
+%    \end{macrocode}
+%
+% Internal lengths macros. These should \emph{not} be used or
+% manipulated directly by the user!
+%
+% Offsets used to make images on the cover page appear at the correct
+% location. This is needed since the cover is a single page for \LaTeX,
+% as required the printing service. But in fact, this is a collection of
+% pages (front, spine and back). 
+% 
+%    \begin{macrocode}
 \newlength\rzt@coverxoffset
 \newlength\rzt@coveryoffset
+%    \end{macrocode}
+%
+% Width and height of the displayed image. Set using the |width| and 
+% |height| options of images.
+%
+%    \begin{macrocode}
 \newlength\rztKey@width
 \newlength\rztKey@height
+%    \end{macrocode}
+%
+% Size of the displayed image. This can be either height or width.
+%
+%    \begin{macrocode}
 \newlength\rzt@imgSize
-% % define size attributes for each image
+%    \end{macrocode}
+%
+% Size attributes for each image.
+%
+%    \begin{macrocode}
 \newlength\rzt@imgWidth
 \newlength\rzt@imgHeight
+%    \end{macrocode}
+%
+% Size attributes for each image frame (this contains a single image).
+%
+%    \begin{macrocode}
 \newlength\rzt@imgFrameWidth
 \newlength\rzt@imgFrameHeight
-
-
+%    \end{macrocode}
+% 
+% Apply some default values to certain lengths. 
+%
+%    \begin{macrocode}
 \setlength\rztmargin{1cm}
 \setlength\rztbleed{3mm}
 \setlength\rztspine{8mm}
@@ -84,7 +248,15 @@
 \setlength\rztcoverheight{200mm}
 \setlength\rzt@coverxoffset{0pt}
 \setlength\rzt@coveryoffset{0pt}
-
+%    \end{macrocode}
+%
+% \begin{macro}{\rzt@setImageDimensions}
+%
+% Redefines all lengths associated with image sizes. This is useful when
+% album properties have changed such as the bleed size, margin or 
+% paper size. 
+%
+%    \begin{macrocode}
 \NewDocumentCommand{\rzt@setImageDimensions}{}{
   \setlength\onePageHorImageWidth{\rztpaperwidth-2\rztmargin-2\rztbleed}
   \setlength\onePageHorImageHeight{2\onePageHorImageWidth/3}
@@ -104,96 +276,217 @@
   \setlength\twoPageSpreadImageHeight{%
     \rztpaperheight-2\rztmargin-2\rztbleed}
 }
-
+%    \end{macrocode}
+% \end{macro}
+%
+% Code executed at the start of the document. 
+%
+%    \begin{macrocode}
 \AtBeginDocument{%
+%    \end{macrocode}
+%
+% Set the correct sizes of the |paperwidth| and |paperheight| for  
+% internal macros. This cannot be set prior to this point, since we need
+% to wait for the user to load the |geometry| package and we make no  
+% assumptions w.r.t. the placement of the configuration macro 
+% |\rztalbumsetup| and the loading of the |geometry| package. The user
+% can of course still manipulate the macros him-/herself also, but
+% using the |geometry| package is advised. 
+%
+%    \begin{macrocode}
   \setlength\rztpaperwidth{\paperwidth}
   \setlength\rztpaperheight{\paperheight}
-
+%    \end{macrocode}
+%
+% Since we now know how large the pages are, we can define the image
+% sizes. 
+%
+%    \begin{macrocode}
   \rzt@setImageDimensions
-
+%    \end{macrocode}
+%
+% If requested, page numbers are removed.
+%
+%    \begin{macrocode}
   \ifx\ifKV@rzt@global@pagenumbers\iffalse
     \pagestyle{empty}
   \fi
-
+%    \end{macrocode}
+%
+% Open file to which image data will be written. 
+%
+%    \begin{macrocode}
   \newwrite\rzt@imagedatafile
   \immediate\openout\rzt@imagedatafile=\jobname.rzt
   \immediate\write\rzt@imagedatafile{"images":}
-
+%    \end{macrocode}
+%
+% Reset textbox macros, just in case. 
+%
+%    \begin{macrocode}
   \rzt@resetTextBox
 }
 %    \end{macrocode}
-
+%
+% At the end of the document, we need to close the file to which we 
+% write the image sizes. Additionally, we also print any warnings to 
+% indicate that the album is not yet finished to that the output can be
+% undesirable. 
+%
 %    \begin{macrocode}
 \AtEndDocument{%
+%    \end{macrocode}
+% 
+% This prints a warning in case the |note| option has been used, since 
+% this prints text over the image, and is only intended to serve as
+% reminders when defining the album. 
+%
+%    \begin{macrocode}
   \ifnum\value{rzt@notes}>0
     \ClassWarningNoLine{rozet}{\the\value{rzt@notes} notes have been %
-    defined! Make sure te remove these before printing or turn on the %
+    defined! Make sure to remove these before printing or turn on the %
     print option of the class.}
   \fi
+%    \begin{macrocode}
+%
+% Close the datafile. 
+%
+%    \begin{macrocode}
   \immediate\closeout\rzt@imagedatafile
 }
 %    \end{macrocode}
-
+%
+% TikZ style definitions for the user and inner workings.
+%
 %    \begin{macrocode}
 \tikzset{%
+%    \end{macrocode}
+%
+% This is the basic stsyle for each image node.
+%
+%    \begin{macrocode}
   rzt@basic/.style={%
     rectangle,
-    draw=none, %TODO!!! Check if this is placed correctly! % this removes the border :)
+%    \end{macrocode}
+%
+% This removes the border if the node is drawn with the |\draw| macro.
+%
+%    \begin{macrocode}
+    draw=none,
     },
+%    \end{macrocode}
+%
+% This style is applied if no image is loaded for the node, then the 
+% corresponding letter needs to be displayed. This style inherits from
+% |rzt@basic|.
+%
+%    \begin{macrocode}
   rzt@noImage/.style={%
     rzt@basic,
     fill opacity=0.5,
     text opacity=1,
     fill=gray,
     },
+%    \end{macrocode}
+%
+% This style is applied to images.
+%
+%    \begin{macrocode}
   rzt@image/.style={%
     rzt@basic,
   },
-  rosetta@PhotoStyle/.style={%
-  },
+%    \end{macrocode}
+%
+% This style is accessable by the user and can be used to apply
+% different styling to the title on the cover page. 
+%
+%    \begin{macrocode}
   rztcovertitle/.style={},
+%    \end{macrocode}
+%
+% Internal definition of style applied to title on front page.
+%
+%    \begin{macrocode}
   rzt@covertitle/.style={
     font=\fontsize{5cm}{5.5cm}\selectfont,
     rztcovertitle,
   },
+%    \end{macrocode}
+%
+% Same as |rztcovertitle| but for the title on the spine.
+%
+%    \begin{macrocode}
   rztspinecovertitle/.style={},
+%    \end{macrocode}
+%
+% Similar to |rzt@covertitle| but for the spine.
+%
+%    \begin{macrocode}
   rzt@coverspinetitle/.style={
     anchor=center,
     rotate=-90,
     font=\Huge,
     rztspinecovertitle,
   },
+%    \end{macrocode}
+%
+% Style applied to text nodes that are inserted when largers texts are 
+% needed in place of images.
+%
+%    \begin{macrocode}
   rzt@text/.style={
     text width=\rzt@imgSize,
     align=justify,
     inner sep=0pt,
     outer sep=0pt,
   },
-  rzt@captionbasicstyle/.style={
+%    \end{macrocode}
+%
+% Style accessible for users that alters caption appearance. 
+%
+%    \begin{macrocode}
+  rztcaptionstyle/.style={
     inner sep=0pt,
     outer sep=0pt,
   },
-}
 %    \end{macrocode}
-
+%
+% Internal style for captions.
+%
 %    \begin{macrocode}
-\NewDocumentCommand{\rztFirstAlbumPage}{+m}{%
-  \begin{tikzpicture}[remember picture,overlay]
-    #1
-  \end{tikzpicture}
-}
-%    \end{macrocode}
-
-%    \begin{macrocode}
-\NewDocumentCommand{\rztLastAlbumPage}{+m}{%
-  \newpage
-  \rztFirstAlbumPage{#1}%
+  rzt@captionbasicstyle/.style={
+    inner sep=0pt,
+    outer sep=0pt,
+    rztcaptionstyle,
+  },
 }
 %    \end{macrocode}
 %
+% \begin{macro}{\rztSingleAlbumPage}
+%
+% This macro is used to typeset a single album page. This is useful for
+% the first album page, if the album starts on the right side and/or for
+% the last album page if this ends on the left side. 
+%
+%    \begin{macrocode}
+\NewDocumentCommand{\rztSingleAlbumPage}{+m}{%
+  \ifx\ifrzt@firstpage\iffalse
+    \newpage
+  \else
+    \rzt@firstpagefalse
+  \fi
+  \rztFirstAlbumPage{#1}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
 %    \begin{macrocode}
 \NewDocumentCommand{\rztAlbumPage}{+m +m}{%
-  \newpage
+  \ifx\ifrzt@firstpage\iffalse
+    \newpage
+  \else
+    \rzt@firstpagefalse
+  \fi
   \begin{tikzpicture}[remember picture,overlay]
     #1
   \end{tikzpicture}
