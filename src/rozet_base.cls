@@ -203,14 +203,16 @@
 %    \begin{macrocode}
 \newlength\rzt@coverxoffset
 \newlength\rzt@coveryoffset
+\newlength\rztKey@xshift
+\newlength\rztKey@yshift
+\newlength\rztKey@imgFrameXShift
+\newlength\rztKey@imgFrameYShift
 %    \end{macrocode}
 %
 % Width and height of the displayed image. Set using the |width| and 
 % |height| options of images.
 %
 %    \begin{macrocode}
-\newlength\rztKey@width
-\newlength\rztKey@height
 %    \end{macrocode}
 %
 % Size of the displayed image. This can be either height or width.
@@ -459,6 +461,14 @@
     outer sep=0pt,
     rztcaptionstyle,
   },
+%    \end{macrocode}
+% 
+% Styling that is applied to the node in which the image is typeset.
+% This is automatically defined per image and reset afterwards. The 
+% corresponding key should be used to set the value.
+%
+%    \begin{macrocode}
+  rzt@imgStyle/.style={},
 }
 %    \end{macrocode}
 %
@@ -475,7 +485,9 @@
   \else
     \rzt@firstpagefalse
   \fi
-  \rztFirstAlbumPage{#1}%
+  \begin{tikzpicture}[remember picture,overlay]
+    #1
+  \end{tikzpicture}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -504,15 +516,26 @@
 \define@key{rzt@image}{note}{\def\rztKey@note{#1}}
 \define@key{rzt@image}{xoffset}{\def\rztKey@xoffset{#1}}
 \define@key{rzt@image}{yoffset}{\def\rztKey@yoffset{#1}}
-\define@key{rzt@image}{xshift}{\def\rztKey@xshift{#1}}
-\define@key{rzt@image}{yshift}{\def\rztKey@yshift{#1}}
-\define@key{rzt@image}{width}{\setlength\rztKey@width{#1}}
-\define@key{rzt@image}{height}{\setlength\rztKey@height{#1}}
+\define@key{rzt@image}{xshift}{\setlength\rztKey@imgFrameXShift{#1}}
+\define@key{rzt@image}{yshift}{\setlength\rztKey@imgFrameYShift{#1}}
+\define@key{rzt@image}{width}{%
+  \setlength\rzt@imgFrameWidth{#1}%
+  \setlength\rzt@imgWidth{#1}%
+}
+\define@key{rzt@image}{height}{%
+  \setlength\rzt@imgFrameHeight{#1}%
+  \setlength\rzt@imgHeight{#1}%
+}
+\define@key{rzt@image}{ximgoffset}{\def\rztKey@ximgoffset{#1}}
+\define@key{rzt@image}{yimgoffset}{\def\rztKey@yimgoffset{#1}}
+\define@key{rzt@image}{ximgshift}{\def\rztKey@ximgshift{#1}}
+\define@key{rzt@image}{yimgshift}{\def\rztKey@yimgshift{#1}}
 \define@key{rzt@image}{zoom}{\def\rztKey@zoom{#1}}
 \define@key{rzt@image}{showframe}{\def\rztKey@showframe{#1}}
 \define@boolkey{rzt@image}{onlywidth}[true]{}
 \define@boolkey{rzt@image}{onlyheight}[true]{}
 \define@boolkey{rzt@image}{text}[true]{}
+\define@key{rzt@image}{style}{\tikzset{rzt@imgStyle/.style={#1}}}
 \define@key{rzt@image}{caption}{\def\rztKey@caption{#1}}
 \define@key{rzt@image}{captionsetup}{%
   \tikzset{rzt@captionopt/.style={#1}}}
@@ -533,6 +556,7 @@
 \define@key{rzt@global}{back}{\setlength\rztback{#1}}
 \define@key{rzt@global}{height}{\setlength\rztheight{#1}}
 \define@key{rzt@global}{width}{\setlength\rztwidth{#1}}
+\define@key{rzt@global}{margin}{\setlength\rztmargin{#1}}
 %    \end{macrocode}
 %
 % Key-value options for the cover |\rztCover|. 
@@ -560,6 +584,7 @@
     includegutter={true},%
     height={210mm},%
     width={297mm},%
+    margin={10mm},%
     cover={false},%
     rztfile={true},%
     usedraft={false},%
@@ -588,7 +613,7 @@
 % \begin{macro}{\rzt@thelength}
 %
 % By default TeX length units are printed in points, but we are more 
-% interested in millimetre. This macro converst between the two. 
+% interested in millimetre. This macro converts between the two. 
 %
 % Source: \url{https://tex.stackexchange.com/questions/8260}
 %
@@ -732,9 +757,9 @@
 %
 %    \begin{macrocode}
     \ifKV@rzt@image@onlyheight% 
-      \setlength{\rzt@imgSize}{\rztKey@height * \real{\rztKey@zoom}}%
+      \setlength{\rzt@imgSize}{\rzt@imgHeight * \real{\rztKey@zoom}}%
     \else%
-      \setlength{\rzt@imgSize}{\rztKey@width * \real{\rztKey@zoom}}%
+      \setlength{\rzt@imgSize}{\rzt@imgWidth * \real{\rztKey@zoom}}%
     \fi%
 %    \end{macrocode}
 % 
@@ -813,12 +838,15 @@
 %
 %    \begin{macrocode}
       \def\rzt@imageIncl{%
-        \node at ($(path picture bounding box.center)+%
-          (0.5*\rzt@imgWidth*\rztKey@xoffset %
-           - 0.5*\rzt@imgFrameWidth*\rztKey@xoffset %
+        \node[%
+          minimum height=\rzt@imgHeight,
+          minimum width=\rzt@imgWidth,
+        ] at ($(path picture bounding box.center)+%
+          (0.5*\rzt@imgWidth*\rztKey@ximgoffset %
+           - 0.5*\rzt@imgFrameWidth*\rztKey@ximgoffset %
            + \rztKey@xshift,%
-          0.5*\rzt@imgHeight*\rztKey@yoffset %
-           - 0.5*\rzt@imgFrameHeight*\rztKey@yoffset %
+          0.5*\rzt@imgHeight*\rztKey@yimgoffset %
+           - 0.5*\rzt@imgFrameHeight*\rztKey@yimgoffset %
            + \rztKey@yshift)$) %
           (rzt image)
 %    \end{macrocode}
@@ -845,15 +873,7 @@
 % result.
 %
 %    \begin{macrocode}
-\NewDocumentCommand{\rzt@basicNodeDefinition}{mm mm}{%
-%    \end{macrocode}
-%
-% Define the target image width and height. This is used internally, to
-% typset the images.
-%
-%    \begin{macrocode}
-  \setlength\rzt@imgFrameWidth{#1}%
-  \setlength\rzt@imgFrameHeight{#2}%
+\NewDocumentCommand{\rzt@basicNodeDefinition}{}{%
 %    \end{macrocode}
 %
 % Here, we typset the actual image. 
@@ -861,8 +881,8 @@
 %    \begin{macrocode}
   \node[%
     rzt@basic,%
-    minimum width=#1,%
-    minimum height=#2,%
+    minimum width=\rzt@imgFrameWidth,%
+    minimum height=\rzt@imgFrameHeight,%
 %    \end{macrocode}
 %
 % Depending on the content of the node, a different style is applied. 
@@ -888,8 +908,9 @@
 %
 %    \begin{macrocode}
     \rzt@boxTextOptions,%
+    rzt@imgStyle,%
     ] at ($(current page.center) %
-          +(#3,#4)
+          +(\rztKey@imgFrameXShift,\rztKey@imgFrameYShift)
           +(\rzt@coverxoffset,\rzt@coveryoffset)$)
     (rzt wrapper)
     {\rzt@indexLabel};
@@ -899,7 +920,7 @@
 %
 %    \begin{macrocode}
   \ifrzt@imageIncluded
-    \node[rzt@captionbasicstyle,text width=#1,rzt@captionopt] {\rztKey@caption};
+    \node[rzt@captionbasicstyle,text width=\rzt@imgWidth,rzt@captionopt] {\rztKey@caption};
   \fi
 %    \end{macrocode}
 %
@@ -1066,7 +1087,7 @@
 % Draw the bleed.
 %
 %    \begin{macrocode}
-    \draw[yellow] (current page.north west) ++(\rztbleed,\rztbleed) 
+    \draw[yellow] (current page.north west) ++(\rztbleed,-\rztbleed) 
       -- ++(0,-\rztcoverheight+2\rztbleed) 
       -- ++(\rztcoverwidth-2\rztbleed,0) 
       -- ++(0,\rztcoverheight-2\rztbleed)  

@@ -1,12 +1,14 @@
 # frame with one or less images
+# {x,y}offset = offset used to move frame
+# {x,y}shift = shift applied to image within frame
 -
   name: "\\rztOneFull"
   images:
   -
     width: "\\onePageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -19,9 +21,9 @@
     image_width: "\\twoPageSpreadImageWidth"
     image_height: "\\twoPageSpreadImageHeight"
     xshift: "-\\twoPageSpreadImageWidth/4"
-    yshift: "0"
-    x_offset: "-\\rztmargin/2-\\rztbleed/2"
-    y_offset: "0"
+    yshift: "0mm"
+    xoffset: "-\\rztmargin/2-\\rztbleed/2"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -34,9 +36,9 @@
     image_height: "\\twoPageSpreadImageHeight"
     image_width: "\\twoPageSpreadImageWidth"
     xshift: "\\twoPageSpreadImageWidth/4"
-    yshift: "0"
-    x_offset: "\\rztmargin/2+\\rztbleed/2"
-    y_offset: "0"
+    yshift: "0mm"
+    xoffset: "\\rztmargin/2+\\rztbleed/2"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -49,9 +51,9 @@
     image_width: "\\paperwidth"
     image_height: "\\paperheight"
     xshift: "-0.5\\rztspine-0.5\\rztgutter-0.5\\rztfront-0.5\\rztbleed"
-    yshift: "0"
-    x_offset: "0"
-    y_offset: "0"
+    yshift: "0mm"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -63,8 +65,8 @@
     height: "\\rztpaperheight"
     image_width: "\\paperwidth"
     image_height: "\\paperheight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "center"
       position: "below"
@@ -77,9 +79,9 @@
     image_width: "\\paperwidth"
     image_height: "\\paperheight"
     xshift: "0.5\\rztspine+0.5\\rztgutter+0.5\\rztback+0.5\\rztbleed"
-    yshift: "0"
-    x_offset: "0"
-    y_offset: "0"
+    yshift: "0mm"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -89,8 +91,8 @@
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -100,8 +102,8 @@
   -
     width: "\\rztpaperwidth"
     height: "\\rztpaperheight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -111,8 +113,8 @@
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
@@ -123,16 +125,16 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -142,16 +144,16 @@
   -
     width: "\\onePageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -161,16 +163,16 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -180,16 +182,16 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -199,16 +201,16 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -218,16 +220,16 @@
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -237,16 +239,16 @@
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
@@ -257,24 +259,24 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -284,24 +286,24 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -311,24 +313,24 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -338,24 +340,24 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -365,24 +367,24 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
@@ -392,24 +394,24 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -419,24 +421,24 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -446,24 +448,24 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -473,24 +475,24 @@
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -500,24 +502,24 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -527,24 +529,24 @@
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -554,24 +556,24 @@
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
@@ -582,32 +584,32 @@
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "\\fourPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\fourPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\fourPageHorImageWidth"
     height: "\\fourPageHorImageHeight"
-    x_offset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\fourPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "-\\fourPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -617,32 +619,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -652,32 +654,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -687,32 +689,32 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
@@ -722,32 +724,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -757,32 +759,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -792,32 +794,32 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth/2+\\rztinnersep/2"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -827,32 +829,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -862,32 +864,32 @@
   -
     width: "\\onePageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -897,32 +899,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
@@ -932,32 +934,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
@@ -967,32 +969,32 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -1002,32 +1004,32 @@
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
@@ -1038,40 +1040,40 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "0"
-    y_offset: "0"
+    xoffset: "0mm"
+    yoffset: "0mm"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -1081,40 +1083,40 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "0"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "right"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
@@ -1124,40 +1126,40 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\onePageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "0"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "0mm"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -1167,40 +1169,40 @@
   -
     width: "2\\sixPageHorImageWidth+\\rztinnersep"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth/2-\\rztinnersep/2"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -1210,40 +1212,40 @@
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
@@ -1254,48 +1256,48 @@
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "left"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "center"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "\\sixPageHorImageHeight/2+\\rztinnersep/2"
     caption:
       align: "right"
       position: "above"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "-\\sixPageHorImageWidth-\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "-\\sixPageHorImageWidth-\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "left"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "0"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "0mm"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "center"
       position: "below"
   -
     width: "\\sixPageHorImageWidth"
     height: "\\sixPageHorImageHeight"
-    x_offset: "\\sixPageHorImageWidth+\\rztinnersep"
-    y_offset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
+    xoffset: "\\sixPageHorImageWidth+\\rztinnersep"
+    yoffset: "-\\sixPageHorImageHeight/2-\\rztinnersep/2"
     caption:
       align: "right"
       position: "below"
@@ -1305,48 +1307,48 @@
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""
   -
     width: ""
     height: ""
-    x_offset: ""
-    y_offset: ""
+    xoffset: ""
+    yoffset: ""
     caption:
       align: ""
       position: ""

@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
       source_file += ("%% \DescribeMacro{%s}" % frame["name"]) + ("\\allowbreak |[|\\meta{options}|]|\\allowbreak |{|\meta{image}|}|"*len(frame["images"])) + "\n%\n"
       
-      source_file += "% \\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt}]\n%"
+      source_file += "% \\begin{tikzpicture}[every node/.style={inner sep=0pt,outer sep=0pt}]\n"
 
       for j, i in enumerate(frame["images"]):
         source_file += "% \\node[\n"
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         source_file += "% fill opacity=0.5,text opacity=1,fill=gray,\n"
         source_file += "% anchor=center,\n"
         source_file += "% ] at ($(0,0)\n"
-        source_file += "%% +(%s,%s)$)\n" % (i["x_offset"], i["y_offset"])
+        source_file += "%% +(%s,%s)$)\n" % (i["xoffset"], i["yoffset"])
         source_file += "% (rzt wrapper)\n"
         source_file += "%% {%d};\n" % (j+1)
         if "caption" in i:
@@ -78,14 +78,19 @@ if __name__ == "__main__":
             command += "  \\begingroup%\n"
             for j in range(n_args):
                 command += "  \\setkeys{rzt@image}{%%\n"
-                command += "    xoffset={0},\n"
-                command += "    yoffset={0},\n"
-                command += "    xshift={%s},\n" % (images[j]["xshift"] if "xshift" in images[j] else "0")
-                command += "    yshift={%s},\n" % (images[j]["yshift"] if "yshift" in images[j] else "0")
+                command += "    ximgoffset={0},\n"
+                command += "    yimgoffset={0},\n"
+                command += "    ximgshift={%s},\n" % (images[j]["xshift"] if "xshift" in images[j] else "0pt")
+                command += "    yimgshift={%s},\n" % (images[j]["yshift"] if "yshift" in images[j] else "0pt")
+                command += "    xshift={%s},\n" % (images[j]["xoffset"] if "xoffset" in images[j] else "0pt")
+                command += "    yshift={%s},\n" % (images[j]["yoffset"] if "yoffset" in images[j] else "0pt")
+                command += "    xoffset={%s},\n" % ("0")
+                command += "    yoffset={%s},\n" % ("0")
                 command += "    onlywidth={true},\n"
                 command += "    onlyheight={false},\n"
                 command += "    zoom={1},\n"
                 command += "    note={},\n"
+                command += "    style={},\n"
                 command += "    width={%s},\n" % (images[j]["image_width"] if "image_width" in images[j] else images[j]["width"])
                 command += "    height={%s},\n" % (images[j]["image_height"] if "image_height" in images[j] else images[j]["height"])
                 command += "    text={false},%\n"
@@ -97,10 +102,6 @@ if __name__ == "__main__":
                 command += "  \\rzt@basicParseDefinitions{%s}{#%d}%%\n" % (chr(ord("A")+j+4*i), 2*j+2)
 
                 command += "  \\rzt@basicNodeDefinition%\n"
-                command += "    {%s}%%\n" % frame["images"][j]["width"]
-                command += "    {%s}%%\n" % frame["images"][j]["height"]
-                command += "    {%s}%%\n" % frame["images"][j]["x_offset"]
-                command += "    {%s}%%\n" % frame["images"][j]["y_offset"]
 
             if i == (n_cmds-1):
                 pass
