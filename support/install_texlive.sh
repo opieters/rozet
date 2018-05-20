@@ -14,6 +14,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #  cd ..
 #fi
 
+# init tree
+tlmgr init-usertree
+
 # Just including texlua so the cache check above works
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
