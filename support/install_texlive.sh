@@ -15,6 +15,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #fi
 
 # init tree
+tlmgr option repository ftp://tug.org/historic/systems/texlive/2013/tlnet-final 
 tlmgr init-usertree
 
 # Just including texlua so the cache check above works
