@@ -4,8 +4,8 @@ python:
   - "3.5"
   - "3.6"
 install:
-  - sudo apt-get -y install liblz4-dev python3-pip xzdec xz-utils wget texlive-base
   - source ./support/install_texlive.sh
+  - sudo apt-get -y install python3-pip
   - sudo pip3 install -r src/requirements.txt
 cache:
   directories:
