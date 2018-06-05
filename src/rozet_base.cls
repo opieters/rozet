@@ -844,10 +844,10 @@
         ] at ($(path picture bounding box.center)+%
           (0.5*\rzt@imgWidth*\rztKey@ximgoffset %
            - 0.5*\rzt@imgFrameWidth*\rztKey@ximgoffset %
-           + \rztKey@xshift,%
+           + \rztKey@ximgshift,%
           0.5*\rzt@imgHeight*\rztKey@yimgoffset %
            - 0.5*\rzt@imgFrameHeight*\rztKey@yimgoffset %
-           + \rztKey@yshift)$) %
+           + \rztKey@yimgshift)$) %
           (rzt image)
 %    \end{macrocode}
 %
